@@ -38,10 +38,33 @@ class ScrapeRosters extends Command
      */
     public function handle()
     {
+        $season = 2020;
+        $teams = config('const.UrlTeams');
+        $data = [];
+
+        foreach($teams as $val) {
+            // Startersのポジションを取得
+            $crawler = \Goutte::request('GET', 'https://www.pro-football-reference.com/teams/'.$val.'/'.$season.'_roster.htm');
+            $positions = $crawler->filter('#starters .full_table > th')->each(function ($node) {
+                // Startersに記載されている全ポジションを$postionsに格納
+                return $node->text();
+                // dump($node->text());
+            });
+
+            $data[$val] = $positions;
+        }
+
+        foreach($data as $team => $array) {
+            foreach($array as $val) {
+                // 例) buf : QB
+                dump($team.' : '.$val);
+            }
+        }
+
         // Startersのポジションを取得
-        $crawler = \Goutte::request('GET', 'https://www.pro-football-reference.com/teams/sfo/2020_roster.htm');
-        $crawler->filter('#starters .full_table > th')->each(function ($node) {
-            dump($node->text());
-        });
+        // $crawler = \Goutte::request('GET', 'https://www.pro-football-reference.com/teams/sfo/2020_roster.htm');
+        // $crawler->filter('#starters .full_table > th')->each(function ($node) {
+        //     dump($node->text());
+        // });
     }
 }
