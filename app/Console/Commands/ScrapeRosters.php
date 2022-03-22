@@ -48,16 +48,32 @@ class ScrapeRosters extends Command
             $positions = $crawler->filter('#starters .full_table > th')->each(function ($node) {
                 // Startersに記載されている全ポジションを$postionsに格納
                 return $node->text();
-                // dump($node->text());
             });
 
-            $data[$val] = $positions;
+            $lastnamelist = [];
+            $firstnamelist = [];
+            $crawler->filter('#starters .full_table > td')->each(function ($node) use(&$firstnamelist, &$lastnamelist) {
+                // Startersに記載されている全選手の名前を$namelistに格納
+                if(!is_null($node->attr('csk')) && $node->attr('data-stat') === 'player') {
+                    // 選手名を取得して$namelistに追加する
+                    $lastnamelist[] = explode(',', $node->attr('csk'))[0];
+                    $firstnamelist[] = explode(',', $node->attr('csk'))[1];
+                }
+            });
+
+            // foreach($firstnamelist as $name) {
+            //     dump($val.' : '.$name);
+            // }
+            
+            $data[$val]['position'] = $positions;
+            $data[$val]['firstname'] = $firstnamelist;
+            $data[$val]['lastname'] = $lastnamelist;
         }
 
-        foreach($data as $team => $array) {
-            foreach($array as $val) {
-                // 例) buf : QB
-                dump($team.' : '.$val);
+        foreach($teams as $team) {
+            for($i = 0; $i < count($data[$team]['firstname']); $i++) {
+                // 例) sfo : FB , Kyle Juszczyk
+                dump($team.' : '.$data[$team]['position'][$i].' , '.$data[$team]['firstname'][$i].' '.$data[$team]['lastname'][$i]);
             }
         }
 
