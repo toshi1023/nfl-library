@@ -61,7 +61,7 @@ class ScrapeRosters extends Command
             // if(!is_null($element->attr('data-stat')) && $element->attr('data-stat') === 'pos') {
             //     dump($element->attr('csk'));
             // }
-            dump($element->text());
+            dump($element);
         }
         $browser->close();
 
