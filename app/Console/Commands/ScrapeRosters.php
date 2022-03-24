@@ -2,6 +2,9 @@
 
 namespace App\Console\Commands;
 
+require_once 'vendor/autoload.php';
+
+use Nesk\Puphpeteer\Puppeteer;
 use Illuminate\Console\Command;
 
 
@@ -41,68 +44,88 @@ class ScrapeRosters extends Command
         $season = 2020;
         $teams = config('const.UrlTeams');
         $data = [];
+        
+        $puppeteer = new Puppeteer();
+        $browser = $puppeteer->launch([
+        'args' => ['--no-sandbox', '--disable-setuid-sandbox']
+        ]);
+        
+        $page = $browser->newPage();
+        $page->goto('https://www.pro-football-reference.com/teams/sfo/2020_roster.htm');
 
-        foreach($teams as $val) {
-            // スクレイピングの設定
-            $crawler = \Goutte::request('GET', 'https://www.pro-football-reference.com/teams/'.$val.'/'.$season.'_roster.htm');
-
-            // rosterの選手名/ポジション/生年月日を取得
-            $lastnamelist = [];
-            $firstnamelist = [];
-            $positions = [];
-            $birthdaylist = [];
-            $a = $crawler->filter('#all_roster .is_setup #roster table tbody th')->eq(0);
-            dump($a);
-            $crawler->filter('#roster')->eq(0)->filter('tbody td')->each(function ($node) use(&$firstnamelist, &$lastnamelist) {
-                dump($firstnamelist);
-                // 選手名
-                if(!is_null($node->attr('data-stat')) && $node->attr('data-stat') === 'player' && !is_null($node->attr('csk'))) {
-                    $lastnamelist[] = explode(',', $node->attr('csk'))[0];
-                    $firstnamelist[] = explode(',', $node->attr('csk'))[1];
-                }
-                // // ポジション
-                // if(!is_null($node->attr('data-stat')) && $node->attr('data-stat') === 'pos'){
-                //     $positions[] = $node->text();
-                // }
-                // // 生年月日
-                // if(!is_null($node->attr('data-stat')) && $node->attr('data-stat') === 'birth_date_mod' && !is_null($node->attr('csk'))){
-                //     $birthdaylist[] = $node->attr('csk');
-                // }
-            });
-
-            // foreach($firstnamelist as $val) {
-            //     dump($val);
+        $positions = [];
+        foreach ($page->querySelectorAll('#starters .full_table > th') as $element) {
+            // $repositories[] = trim($element->querySelectorEval('a', 
+            //     \Nesk\Rialto\Data\JsFunction::createWithParameters(['element'])->body('return element.innerHTML')
+            // ));
+            // if(!is_null($element->attr('data-stat')) && $element->attr('data-stat') === 'pos') {
+            //     dump($element->attr('csk'));
             // }
-
-            // rosterの生年月日を取得
-            // $crawler->filter('#roster td')->each(function($node) use (&$birthdaylist) {
-            //     if(!is_null($node->attr('data-stat')) && $node->attr('data-stat') === 'birth_date_mod'){
-            //        $birthdaylist[] = $node->attr('csk');
-            //     }
-            // });
-
-            // foreach($firstnamelist as $name) {
-            //     dump($val.' : '.$name);
-            // }
-            
-            $data[$val]['position'] = $positions;
-            $data[$val]['firstname'] = $firstnamelist;
-            $data[$val]['lastname'] = $lastnamelist;
-            $data[$val]['birthday'] = $birthdaylist;
+            dump($element->text());
         }
+        $browser->close();
 
-        // foreach($data['firstname'] as $val) {
-        //     dump($val);
-        // }
+        // foreach($teams as $val) {
+        //     // スクレイピングの設定
+        //     $crawler = \Goutte::request('GET', 'https://www.pro-football-reference.com/teams/'.$val.'/'.$season.'_roster.htm');
 
-        // foreach($teams as $team) {
-        //     // for($i = 0; $i < count($data[$team]['firstname']); $i++) {
-        //     //     // 例) sfo : FB , Kyle Juszczyk
-        //     //     dump($team.' : '.$data[$team]['position'][$i].' , '.$data[$team]['firstname'][$i].' '.$data[$team]['lastname'][$i].' , '.$data[$team]['birthday'][$i]);
+        //     // rosterの選手名/ポジション/生年月日を取得
+        //     $lastnamelist = [];
+        //     $firstnamelist = [];
+        //     $positions = [];
+        //     $birthdaylist = [];
+        //     $a = $crawler->filter('#all_roster .is_setup #roster table tbody th')->eq(0);
+        //     dump($a);
+        //     $crawler->filter('#roster')->eq(0)->filter('tbody td')->each(function ($node) use(&$firstnamelist, &$lastnamelist) {
+        //         dump($firstnamelist);
+        //         // 選手名
+        //         if(!is_null($node->attr('data-stat')) && $node->attr('data-stat') === 'player' && !is_null($node->attr('csk'))) {
+        //             $lastnamelist[] = explode(',', $node->attr('csk'))[0];
+        //             $firstnamelist[] = explode(',', $node->attr('csk'))[1];
+        //         }
+        //         // // ポジション
+        //         // if(!is_null($node->attr('data-stat')) && $node->attr('data-stat') === 'pos'){
+        //         //     $positions[] = $node->text();
+        //         // }
+        //         // // 生年月日
+        //         // if(!is_null($node->attr('data-stat')) && $node->attr('data-stat') === 'birth_date_mod' && !is_null($node->attr('csk'))){
+        //         //     $birthdaylist[] = $node->attr('csk');
+        //         // }
+        //     });
+
+        //     // foreach($firstnamelist as $val) {
+        //     //     dump($val);
         //     // }
-        //     foreach($data[$team]['firstname'] as $val) {
-        //         dump($val);
-        //     }
+
+        //     // rosterの生年月日を取得
+        //     // $crawler->filter('#roster td')->each(function($node) use (&$birthdaylist) {
+        //     //     if(!is_null($node->attr('data-stat')) && $node->attr('data-stat') === 'birth_date_mod'){
+        //     //        $birthdaylist[] = $node->attr('csk');
+        //     //     }
+        //     // });
+
+        //     // foreach($firstnamelist as $name) {
+        //     //     dump($val.' : '.$name);
+        //     // }
+            
+        //     $data[$val]['position'] = $positions;
+        //     $data[$val]['firstname'] = $firstnamelist;
+        //     $data[$val]['lastname'] = $lastnamelist;
+        //     $data[$val]['birthday'] = $birthdaylist;
         // }
+
+        // // foreach($data['firstname'] as $val) {
+        // //     dump($val);
+        // // }
+
+        // // foreach($teams as $team) {
+        // //     // for($i = 0; $i < count($data[$team]['firstname']); $i++) {
+        // //     //     // 例) sfo : FB , Kyle Juszczyk
+        // //     //     dump($team.' : '.$data[$team]['position'][$i].' , '.$data[$team]['firstname'][$i].' '.$data[$team]['lastname'][$i].' , '.$data[$team]['birthday'][$i]);
+        // //     // }
+        // //     foreach($data[$team]['firstname'] as $val) {
+        // //         dump($val);
+        // //     }
+        // // }
     }
 }
