@@ -54,8 +54,7 @@ class ScrapeRosters extends Command
 
             // 変数設定
             $season = 2020;
-            $teams = config('const.UrlTeams');
-            $data = [];
+            $urlteams = config('const.UrlTeams');
             $player = new Player();
     
             // webdriveの設定
@@ -131,8 +130,8 @@ class ScrapeRosters extends Command
     
             // // ブラウザを閉じる
             // $driver->quit();
-    
-            foreach($teams as $val) {
+            $team_id = 1;
+            foreach($urlteams as $val) {
                 // スクレイピングの設定
                 $driver->get('https://www.pro-football-reference.com/teams/'.$val.'/'.$season.'_roster.htm');
                 // 表示されるまで待つ
@@ -144,6 +143,7 @@ class ScrapeRosters extends Command
                 $lastnamelist = [];
                 $firstnamelist = [];
                 $positions = [];
+                $numbers = [];
                 $birthdaylist = [];
                 $elements = $driver->findElements(WebDriverBy::cssSelector('.is_setup #roster tbody td'));
                 foreach($elements as $el) {
@@ -155,6 +155,10 @@ class ScrapeRosters extends Command
                     // ポジション
                     if(!is_null($el->getAttribute('data-stat')) && $el->getAttribute('data-stat') === 'pos'){
                         $positions[] = $el->getText();
+                    }
+                    // 背番号
+                    if(!is_null($el->getAttribute('data-stat')) && $el->getAttribute('data-stat') === 'uniform_number'){
+                        $numbers[] = $el->getText();
                     }
                     // 生年月日
                     if(!is_null($el->getAttribute('data-stat')) && $el->getAttribute('data-stat') === 'birth_date_mod' && !is_null($el->getAttribute('csk'))){
@@ -184,15 +188,9 @@ class ScrapeRosters extends Command
                 //        $birthdaylist[] = $node->attr('csk');
                 //     }
                 // });
-    
-                // foreach($firstnamelist as $name) {
-                //     dump($val.' : '.$name);
-                // }
-                
-                // $data[$val]['position'] = $positions;
-                // $data[$val]['firstname'] = $firstnamelist;
-                // $data[$val]['lastname'] = $lastnamelist;
-                // $data[$val]['birthday'] = $birthdaylist;
+
+                // team_idを更新
+                $team_id += 1;
             }
 
             // ブラウザを閉じる
