@@ -17,7 +17,7 @@ class CreatePlayersTable extends Migration
             $table->increments('id')->comment('ID');
             $table->string('firstname')->comment('名前');
             $table->string('lastname')->comment('苗字');
-            $table->dateTime('birthday')->comment('生年月日');
+            $table->string('birthday')->comment('生年月日');
             $table->string('image_file')->nullable()->comment('画像名');
             $table->timestamps();
         });

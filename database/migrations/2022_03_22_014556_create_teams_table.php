@@ -15,7 +15,8 @@ class CreateTeamsTable extends Migration
     {
         Schema::create('teams', function (Blueprint $table) {
             $table->increments('id')->comment('ID');
-            $table->string('name')->comment('名前');
+            $table->string('city')->comment('拠点名');                      // 例) SanFrancisco
+            $table->string('name')->comment('チーム名');                    // 例) 49ers
             $table->string('image_file')->nullable()->comment('画像名');
             $table->timestamps();
         });
