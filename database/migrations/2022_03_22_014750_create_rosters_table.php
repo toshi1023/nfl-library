@@ -19,7 +19,7 @@ class CreateRostersTable extends Migration
             $table->integer('team_id')->comment('teamsのID');
             $table->integer('player_id')->comment('playersのID');
             $table->integer('position_id')->comment('positionsのID');
-            $table->integer('number')->comment('背番号');
+            $table->integer('number')->nullable()->comment('背番号');
             $table->integer('rating')->nullable()->comment('能力値');
             $table->timestamps();
         });

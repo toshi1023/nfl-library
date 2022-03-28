@@ -16,6 +16,9 @@ use Facebook\WebDriver\WebDriverPoint;
 use Facebook\WebDriver\Interactions\WebDriverActions;
 use Facebook\WebDriver\WebDriverDimension;
 use App\Models\Player;
+use App\Models\Position;
+use App\Models\Roster;
+use Exception;
 
 class ScrapeRosters extends Command
 {
@@ -53,9 +56,10 @@ class ScrapeRosters extends Command
         try {
 
             // 変数設定
-            $season = 2020;
+            $season = 2019;
             $urlteams = config('const.UrlTeams');
-            $player = new Player();
+            $playerModel = new Player();
+            $positionModel = new Position();
     
             // webdriveの設定
             $driverPath = realpath("/usr/local/bin/chromedriver");
@@ -74,62 +78,7 @@ class ScrapeRosters extends Command
             $capabilitites = DesiredCapabilities::chrome();
             $capabilitites->setCapability(ChromeOptions::CAPABILITY, $options);
             $driver = ChromeDriver::start($capabilitites);
-    
-            // // スクレイピングの設定
-            // $driver->get('https://www.pro-football-reference.com/teams/sfo/2013_roster.htm');
-            // // 表示されるまで待つ
-            // $driver->wait(1)->until(
-            //     WebDriverExpectedCondition::presenceOfElementLocated(WebDriverBy::cssSelector('.is_setup #roster'))
-            // );
-    
-            // // rosterの選手名/ポジション/生年月日を取得
-            // $lastnamelist = [];
-            // $firstnamelist = [];
-            // $positions = [];
-            // $birthdaylist = [];
-            // $elements = $driver->findElements(WebDriverBy::cssSelector('.is_setup #roster tbody td'));
-            // foreach($elements as $el) {
-            //     // 選手名
-            //     if(!is_null($el->getAttribute('data-stat')) && $el->getAttribute('data-stat') === 'player' && !is_null($el->getAttribute('csk'))) {
-            //         $lastnamelist[] = explode(',', $el->getAttribute('csk'))[0];
-            //         $firstnamelist[] = explode(',', $el->getAttribute('csk'))[1];
-            //     }
-            //     // ポジション
-            //     if(!is_null($el->getAttribute('data-stat')) && $el->getAttribute('data-stat') === 'pos'){
-            //         $positions[] = $el->getText();
-            //     }
-            //     // 生年月日
-            //     if(!is_null($el->getAttribute('data-stat')) && $el->getAttribute('data-stat') === 'birth_date_mod' && !is_null($el->getAttribute('csk'))){
-            //         $birthdaylist[] = explode('-', $el->getAttribute('csk'))[0].explode('-', $el->getAttribute('csk'))[1].explode('-', $el->getAttribute('csk'))[2];
-            //     }
-            // }
-    
-            // for($i = 0; $i < count($positions); $i++) {
-            //     $exist = $player->where('firstname', $firstnamelist[$i])->where('lastname', $lastnamelist[$i])->where('birthday', $birthdaylist[$i])->exists();
-            //     if(!$exist) {
-            //         Player::create([
-            //             'firstname' => $firstnamelist[$i],
-            //             'lastname'  => $lastnamelist[$i],
-            //             'birthday'  => $birthdaylist[$i]
-            //         ]);
-            //         dump($positions[$i].' : '.$firstnamelist[$i].' '.$lastnamelist[$i].' , '.$birthdaylist[$i]);
-            //     }
-            // }
-    
-            // // フォームに文字列を入力して検索実行
-            // $element = $driver->findElement(WebDriverBy::name('q'))
-            //     ->sendKeys('うっかりさん　困った時の備忘録')
-            //     ->submit();
-    
-            // // 表示されるまで待つ
-            // $driver->wait(3)->until(WebDriverExpectedCondition::titleContains('うっかりさん'));
-    
-            // キャプチャをとる
-            // $file = __DIR__."/sample.png";
-            // $driver->takeScreenshot($file);
-    
-            // // ブラウザを閉じる
-            // $driver->quit();
+
             $team_id = 1;
             foreach($urlteams as $val) {
                 // スクレイピングの設定
@@ -156,38 +105,47 @@ class ScrapeRosters extends Command
                     if(!is_null($el->getAttribute('data-stat')) && $el->getAttribute('data-stat') === 'pos'){
                         $positions[] = $el->getText();
                     }
-                    // 背番号
-                    if(!is_null($el->getAttribute('data-stat')) && $el->getAttribute('data-stat') === 'uniform_number'){
-                        $numbers[] = $el->getText();
-                    }
                     // 生年月日
                     if(!is_null($el->getAttribute('data-stat')) && $el->getAttribute('data-stat') === 'birth_date_mod' && !is_null($el->getAttribute('csk'))){
                         $birthdaylist[] = explode('-', $el->getAttribute('csk'))[0].explode('-', $el->getAttribute('csk'))[1].explode('-', $el->getAttribute('csk'))[2];
                     }
                 }
+                // 背番号取得
+                $elements = $driver->findElements(WebDriverBy::cssSelector('.is_setup #roster tbody th'));
+                foreach($elements as $el) {
+                    // 背番号
+                    if(!is_null($el->getAttribute('data-stat')) && $el->getAttribute('data-stat') === 'uniform_number' && $el->getText() !== 'No.'){
+                        $numbers[] = $el->getText();
+                    }
+                }
 
+                // playersテーブルとrostersテーブルのデータ作成
                 for($i = 0; $i < count($positions); $i++) {
-                    $exist = $player->where('firstname', $firstnamelist[$i])->where('lastname', $lastnamelist[$i])->where('birthday', $birthdaylist[$i])->exists();
-                    if(!$exist) {
-                        Player::create([
+                    $exist = $playerModel->where('firstname', $firstnamelist[$i])->where('lastname', $lastnamelist[$i])->where('birthday', $birthdaylist[$i])->first();
+                    if(is_null($exist)) {
+                        // playersデータを作成
+                        $exist = Player::create([
                             'firstname' => $firstnamelist[$i],
                             'lastname'  => $lastnamelist[$i],
                             'birthday'  => $birthdaylist[$i]
                         ]);
+
                         dump($positions[$i].' : '.$firstnamelist[$i].' '.$lastnamelist[$i].' , '.$birthdaylist[$i]);
                     }
+                    // rostersデータを作成
+                    if(empty($positions[$i])) $positions[$i] = 'No Data';
+                    $position = $positionModel->where('name', $positions[$i])->first();
+                    if(is_null($position)) throw new Exception('position is not define. team: '.$val.', position: '.$positions[$i]);
+                    if(empty($numbers[$i])) $numbers[$i] = null;
+
+                    Roster::create([
+                        'season'        => $season,
+                        'team_id'       => $team_id,
+                        'player_id'     => $exist['id'],
+                        'position_id'   => $position['id'],
+                        'number'        => $numbers[$i]
+                    ]);
                 }
-    
-                // foreach($firstnamelist as $val) {
-                //     dump($val);
-                // }
-    
-                // rosterの生年月日を取得
-                // $crawler->filter('#roster td')->each(function($node) use (&$birthdaylist) {
-                //     if(!is_null($node->attr('data-stat')) && $node->attr('data-stat') === 'birth_date_mod'){
-                //        $birthdaylist[] = $node->attr('csk');
-                //     }
-                // });
 
                 // team_idを更新
                 $team_id += 1;
@@ -206,7 +164,7 @@ class ScrapeRosters extends Command
             //     }
             // }
         } catch(Exception $e) {
-            dump($e->getMessage());
+            $this->error($e->getMessage());
             $driver->quit();
         } finally {
             $driver->quit();
