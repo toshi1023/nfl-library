@@ -26,17 +26,17 @@ class PositionsTableSeeder extends Seeder
         ]);
         // RB
         Position::create([
-            'category' => config('const.Category.RB'),
+            'category' => config('const.Category.HB'),
             'name' => 'RB'
         ]);
         // HB
         Position::create([
-            'category' => config('const.Category.RB'),
+            'category' => config('const.Category.HB'),
             'name' => 'HB'
         ]);
         // FB
         Position::create([
-            'category' => config('const.Category.RB'),
+            'category' => config('const.Category.FB'),
             'name' => 'FB'
         ]);
         // WR
@@ -125,7 +125,7 @@ class PositionsTableSeeder extends Seeder
 
         
         /** 
-         *  Deffence Category
+         *  Defence Category
          **/
 
         // RDT

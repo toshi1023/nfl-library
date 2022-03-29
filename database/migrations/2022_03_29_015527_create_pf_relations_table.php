@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFormationsTable extends Migration
+class CreatePfRelationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateFormationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('formations', function (Blueprint $table) {
+        Schema::create('pf_relations', function (Blueprint $table) {
             $table->increments('id')->comment('ID');
-            $table->boolean('odflg')->comment('攻守フラグ');   // true: Offence, false: Deffence
-            $table->string('name')->comment('名前');
+            $table->integer('formation_id')->comment('formationsのID');
+            $table->integer('position_category')->comment('positionsのcategory');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateFormationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('formations');
+        Schema::dropIfExists('pf_relations');
     }
 }

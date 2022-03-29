@@ -36,10 +36,15 @@ return [
     ],
     // positionsテーブルのカテゴリ
     'Category' => [
-        'QB' => 1, 'RB' => 2, 'WR' => 3, 'TE' => 4, 'RG' => 5, 'LG' => 6, 'ROT' => 7, 'LOT' => 8, 'C' => 9,                             // Offence Category
-        'RDT' => 10, 'LDT' => 11, 'NT' => 12, 'RDE' => 13, 'LDE' => 14, 'MLB' => 15, 'RLB' => 16, 'LLB' => 17,                          // Deffece Category
-        'RCB' => 18, 'LCB' => 19, 'SS' => 20, 'FS' => 21,                                                                               // Deffece Category
-        'K' => 22, 'P' => 23, 'LS' => 24,                                                                                               // Special Category
+        'QB' => 1, 'HB' => 2, 'FB' => 3, 'WR' => 4, 'TE' => 5, 'RG' => 6, 'LG' => 7, 'ROT' => 8, 'LOT' => 9, 'C' => 10,                 // Offence Category
+        'RDT' => 11, 'LDT' => 12, 'NT' => 13, 'RDE' => 14, 'LDE' => 15, 'MLB' => 16, 'RLB' => 17, 'LLB' => 18,                          // Deffece Category
+        'RCB' => 19, 'LCB' => 20, 'SS' => 21, 'FS' => 22,                                                                               // Deffece Category
+        'K' => 23, 'P' => 24, 'LS' => 25,                                                                                               // Special Category
         'NOTHING' => 99
+    ],
+    // formationsテーブルのodflg
+    'ODflg' => [
+        'offence' => true,
+        'defence' => false
     ]
 ];
