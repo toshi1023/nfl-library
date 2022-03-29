@@ -34,7 +34,7 @@ class ScrapeRosters extends Command
      *
      * @var string
      */
-    protected $description = 'scrapping nfl rosters';
+    protected $description = 'scrapping all nfl rosters';
 
     /**
      * Create a new command instance.
@@ -47,7 +47,8 @@ class ScrapeRosters extends Command
     }
 
     /**
-     * NFLのロスター情報を指定したwebページからスクレイピングする
+     * NFLのロスター情報を指定したwebページから一括でスクレイピングする
+     * 使用するときは $season の値のみを変更する
      *
      * @return int
      */
@@ -56,10 +57,13 @@ class ScrapeRosters extends Command
         try {
 
             // 変数設定
-            $season = 2019;
+            $season = 2012;
             $urlteams = config('const.UrlTeams');
+
+            // Model設定
             $playerModel = new Player();
             $positionModel = new Position();
+            $rosterModel = new Roster();
     
             // webdriveの設定
             $driverPath = realpath("/usr/local/bin/chromedriver");
@@ -81,6 +85,10 @@ class ScrapeRosters extends Command
 
             $team_id = 1;
             foreach($urlteams as $val) {
+                // rosterのデータ存在有無を確認
+                $exist = $rosterModel->where('season', $season)->where('team_id', $team_id)->exists();
+                if($exist) continue;
+
                 // スクレイピングの設定
                 $driver->get('https://www.pro-football-reference.com/teams/'.$val.'/'.$season.'_roster.htm');
                 // 表示されるまで待つ
@@ -153,16 +161,7 @@ class ScrapeRosters extends Command
 
             // ブラウザを閉じる
             $driver->quit();
-    
-            // foreach($teams as $team) {
-            //     // for($i = 0; $i < count($data[$team]['firstname']); $i++) {
-            //     //     // 例) sfo : FB , Kyle Juszczyk
-            //     //     dump($team.' : '.$data[$team]['position'][$i].' , '.$data[$team]['firstname'][$i].' '.$data[$team]['lastname'][$i].' , '.$data[$team]['birthday'][$i]);
-            //     // }
-            //     foreach($data[$team]['firstname'] as $val) {
-            //         dump($val);
-            //     }
-            // }
+
         } catch(Exception $e) {
             $this->error($e->getMessage());
             $driver->quit();

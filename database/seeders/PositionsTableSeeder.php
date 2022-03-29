@@ -54,6 +54,11 @@ class PositionsTableSeeder extends Seeder
             'category' => config('const.Category.WR'),
             'name' => 'WR/CB'
         ]);
+        // PR([bears]Devin Hester)
+        Position::create([
+            'category' => config('const.Category.WR'),
+            'name' => 'PR'
+        ]);
         // TE
         Position::create([
             'category' => config('const.Category.TE'),
@@ -121,6 +126,16 @@ class PositionsTableSeeder extends Seeder
         Position::create([
             'category' => config('const.Category.C'),
             'name' => 'OL'
+        ]);
+        // G/C
+        Position::create([
+            'category' => config('const.Category.C'),
+            'name' => 'G/C'
+        ]);
+        // G,C
+        Position::create([
+            'category' => config('const.Category.C'),
+            'name' => 'G,C'
         ]);
 
         
