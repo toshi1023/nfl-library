@@ -38,26 +38,31 @@ class CsvImport extends Command
      */
     public function handle()
     {
-        // SplFileObjectの作成
-        $file = new \SplFileObject(storage_path('app/public/san_francisco_49ers_madden_nfl_25.csv'));
+        $season = 2013;
+        $teams = config('const.UrlTeams');
 
-        // 読み込み設定
-        $file->setFlags(
-            \SplFileObject::READ_CSV | // CSVを配列形式で読み込む
-            \SplFileObject::READ_AHEAD |
-            \SplFileObject::SKIP_EMPTY | // 前の行と合わせて、空行があったら読み飛ばす
-            \SplFileObject::DROP_NEW_LINE // 改行コードは無視する
-        );
-        // 1行ずつ読み込んで配列に保存
-        $members = [];
-        foreach($file as $member){
-            // $members[] = $member;
-            dump($member[0]);
-            dump($member[1]);
-            dump($member[2]);
-            dump($member[3]);
-            dump($member[4]);
-            dump($member[5]);
+        foreach($teams as $val) {
+            // SplFileObjectの作成
+            $file = new \SplFileObject(storage_path('app/public/'.$season.'/'.$val.'_madden_nfl_'.config('const.Madden.'.strval($season)).'.csv'));
+
+            // 読み込み設定
+            $file->setFlags(
+                \SplFileObject::READ_CSV |      // CSVを配列形式で読み込む
+                \SplFileObject::READ_AHEAD |
+                \SplFileObject::SKIP_EMPTY |    // 前の行と合わせて、空行があったら読み飛ばす
+                \SplFileObject::DROP_NEW_LINE   // 改行コードは無視する
+            );
+            // 1行ずつ読み込んで配列に保存
+            $members = [];
+            foreach($file as $member){
+                // $members[] = $member;
+                dump($member[0]);
+                dump($member[1]);
+                dump($member[2]);
+                dump($member[3]);
+                dump($member[4]);
+                dump($member[5]);
+            }
         }
     }
 }
