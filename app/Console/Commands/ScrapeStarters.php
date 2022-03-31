@@ -3,6 +3,11 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use App\Models\Player;
+use App\Models\Roster;
+use App\Models\Position;
+use App\Models\Starter;
+use Exception;
 
 class ScrapeStarters extends Command
 {
@@ -37,42 +42,73 @@ class ScrapeStarters extends Command
      */
     public function handle()
     {
-        $season = 2020;
-        $teams = config('const.UrlTeams');
-        $data = [];
-
-        foreach($teams as $val) {
-            // スクレイピングの設定
-            $crawler = \Goutte::request('GET', 'https://www.pro-football-reference.com/teams/'.$val.'/'.$season.'_roster.htm');
-
-            // startersのポジションを取得
-            $positions = $crawler->filter('#starters .full_table > th')->each(function ($node) {
-                // startersに記載されている全ポジションを$postionsに格納
-                return $node->text();
-            });
-
-            // startersの選手名を取得
-            $lastnamelist = [];
-            $firstnamelist = [];
-            $crawler->filter('#starters .full_table > td')->each(function ($node) use(&$firstnamelist, &$lastnamelist) {
-                // startersに記載されている全選手の名前を$namelistに格納
-                if(!is_null($node->attr('csk')) && $node->attr('data-stat') === 'player') {
-                    // 選手名を取得して$namelistに追加する
-                    $lastnamelist[] = explode(',', $node->attr('csk'))[0];
-                    $firstnamelist[] = explode(',', $node->attr('csk'))[1];
-                }
-            });
-            
-            $data[$val]['position'] = $positions;
-            $data[$val]['firstname'] = $firstnamelist;
-            $data[$val]['lastname'] = $lastnamelist;
-        }
-
-        foreach($teams as $team) {
-            for($i = 0; $i < count($data[$team]['firstname']); $i++) {
-                // 例) sfo : FB , Kyle Juszczyk
-                dump($team.' : '.$data[$team]['position'][$i].' , '.$data[$team]['firstname'][$i].' '.$data[$team]['lastname'][$i]);
+        try {
+            $season = 2012;
+            $teams = config('const.UrlTeams');
+            $data = [];
+    
+            // Model設定
+            $playerModel = new Player();
+            $rosterModel = new Roster();
+            $postionModel = new Position();
+    
+            $team_id = 1;
+            foreach($teams as $val) {
+                // スクレイピングの設定
+                $crawler = \Goutte::request('GET', 'https://www.pro-football-reference.com/teams/'.$val.'/'.$season.'_roster.htm');
+    
+                // startersのポジションを取得
+                $positions = $crawler->filter('#starters .full_table > th')->each(function ($node) {
+                    // startersに記載されている全ポジションを$postionsに格納
+                    return $node->text();
+                });
+    
+                // startersの選手名を取得
+                $lastnamelist = [];
+                $firstnamelist = [];
+                $crawler->filter('#starters .full_table > td')->each(function ($node) use(&$firstnamelist, &$lastnamelist) {
+                    // startersに記載されている全選手の名前を$namelistに格納
+                    if(!is_null($node->attr('csk')) && $node->attr('data-stat') === 'player') {
+                        // 選手名を取得して$namelistに追加する
+                        $lastnamelist[] = explode(',', $node->attr('csk'))[0];
+                        $firstnamelist[] = explode(',', $node->attr('csk'))[1];
+                    }
+                });
+                
+                $data[$val]['position'] = $positions;
+                $data[$val]['firstname'] = $firstnamelist;
+                $data[$val]['lastname'] = $lastnamelist;
+                $data[$val]['team_id'] = $team_id;
+    
+                // team_idを更新
+                $team_id += 1;
             }
+    
+            foreach($teams as $team) {
+                for($i = 0; $i < count($data[$team]['firstname']); $i++) {
+                    // playersテーブルのidを取得
+                    $player_id = $playerModel->where('firstname', $data[$team]['firstname'][$i])->where('lastname', $data[$team]['lastname'][$i])->first()->id;
+                    // positionsテーブルのidを取得
+                    $position_id = $postionModel->where('name', $data[$team]['position'][$i])->first()->id;
+                    // rostersテーブルの情報を更新
+                    $roster = $rosterModel->where('season', $season)->where('team_id', $data[$team]['team_id'])->where('player_id', $player_id)->first();
+                    $roster->position_id = $position_id;
+                    $roster->save();
+
+                    // startersテーブルに新規保存
+                    if(!Starter::where('roster_id', $roster->id)->exists()) {
+                        Starter::create([
+                            'season'        => $season,
+                            'roster_id'     => $roster->id
+                        ]);
+                    }
+
+                    // 例) sfo : FB , Kyle Juszczyk
+                    dump($team.' : '.$data[$team]['position'][$i].' , '.$data[$team]['firstname'][$i].' '.$data[$team]['lastname'][$i]);
+                }
+            }
+        } catch(Exception $e) {
+            $this->error($e->getMessage());
         }
     }
 }
