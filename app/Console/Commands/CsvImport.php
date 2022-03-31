@@ -41,6 +41,7 @@ class CsvImport extends Command
         $season = 2013;
         $teams = config('const.UrlTeams');
 
+        $data = [];
         foreach($teams as $val) {
             // SplFileObjectの作成
             $file = new \SplFileObject(storage_path('app/public/'.$season.'/'.$val.'_madden_nfl_'.config('const.Madden.'.strval($season)).'.csv'));
@@ -53,15 +54,26 @@ class CsvImport extends Command
                 \SplFileObject::DROP_NEW_LINE   // 改行コードは無視する
             );
             // 1行ずつ読み込んで配列に保存
-            $members = [];
             foreach($file as $member){
                 // $members[] = $member;
-                dump($member[0]);
-                dump($member[1]);
-                dump($member[2]);
-                dump($member[3]);
-                dump($member[4]);
-                dump($member[5]);
+                // dump($member[0]);
+                // dump($member[1]);
+                // dump($member[2]);
+                // dump($member[3]);
+                // dump($member[4]);
+                // dump($member[5]);
+                $data[$val]['team'] = $member[0];
+                $data[$val]['name'][] = $member[1].' '.$member[2];
+                $data[$val]['position'][] = $member[3];
+                $data[$val]['number'][] = $member[4];
+                $data[$val]['rating'][] = $member[5];
+            }
+        }
+
+        foreach($teams as $team) {
+            for($i = 0; $i < count($data[$team]['name']); $i++) {
+                // 例)【49ers】 No.7 QB : Colin Kaepernick - 89
+                dump(' 【'.$data[$team]['team'].'】 No.'.$data[$team]['number'][$i].' '.$data[$team]['position'][$i].' : '.$data[$team]['name'][$i].' - '.$data[$team]['rating'][$i]);
             }
         }
     }
