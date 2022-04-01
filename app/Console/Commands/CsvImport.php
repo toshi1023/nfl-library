@@ -3,7 +3,9 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Storage;
+use App\Models\Player;
+use App\Models\Roster;
+use App\Models\Position;
 
 class CsvImport extends Command
 {
@@ -40,6 +42,11 @@ class CsvImport extends Command
     {
         $season = 2012;
         $teams = config('const.UrlTeams');
+
+        // Model設定
+        $playerModel = new Player();
+        $rosterModel = new Roster();
+        $postionModel = new Position();
 
         $data = [];
         $file = null;
@@ -91,6 +98,7 @@ class CsvImport extends Command
                                 $numIndex = $j;
                                 break;
                             case 'Overall':
+                            case 'Overall Rating':
                             case 'OVR':
                                 $ratIndex = $j;
                                 break;
@@ -122,24 +130,45 @@ class CsvImport extends Command
             }
         }
 
+        $team_id = 1;
         foreach($teams as $team) {
             for($i = 0; $i < count($data[$team]['name']); $i++) {
                 $is_team = array_key_exists('team', $data[$team]);
                 $is_num = array_key_exists('number', $data[$team]);
+                // positionsテーブルのidを取得
+                // $position_id = $postionModel->where('name', $data[$team]['position'][$i])->first()->id;
+                // rostersテーブルの情報を更新
+                $roster = $rosterModel->leftJoin('players', 'players.id', '=', 'rosters.player_id')
+                                      ->where('rosters.season', $season)->where('rosters.team_id', $team_id)
+                                      ->where('players.firstname', explode(' ', $data[$team]['name'][$i])[0])->where('players.lastname', explode(' ', $data[$team]['name'][$i])[1])
+                                      ->select('rosters.*')
+                                      ->first();
+                
+                // $roster->position_id = $position_id;
+                $roster->rating = $data[$team]['rating'][$i];
+
                 if($is_team && $is_num) {
+                    $roster->number = $data[$team]['number'][$i];
+                    
                     // 例)【49ers】 No.7 QB : Colin Kaepernick - 89
                     dump(' 【'.$data[$team]['team'].'】 No.'.$data[$team]['number'][$i].' '.$data[$team]['position'][$i].' : '.$data[$team]['name'][$i].' - '.$data[$team]['rating'][$i]);
                 } else if ($is_team && !$is_num) {
                     // 例)【49ers】 QB : Colin Kaepernick - 89
                     dump(' 【'.$data[$team]['team'].'】 '.$data[$team]['position'][$i].' : '.$data[$team]['name'][$i].' - '.$data[$team]['rating'][$i]);
                 } else if (!$is_team && $is_num) {
+                    $roster->number = $data[$team]['number'][$i];
                     // 例)No.7 QB : Colin Kaepernick - 89
                     dump('No.'.$data[$team]['number'][$i].' '.$data[$team]['position'][$i].' : '.$data[$team]['name'][$i].' - '.$data[$team]['rating'][$i]);
                 } else {
                     // 例)QB : Colin Kaepernick - 89
                     dump($data[$team]['position'][$i].' : '.$data[$team]['name'][$i].' - '.$data[$team]['rating'][$i]);
                 }
+
+                // rostersテーブルのデータ変更を保存
+                $roster->save();
             }
+            // team_idを更新
+            $team_id += 1;
         }
     }
 }
