@@ -116,16 +116,17 @@ class CsvImport extends Command
                         $j += 1;
                     }
                 }
-                if(!is_null($teamIndex)) $data[$val]['team'] = $member[$teamIndex];
-                if(!is_null($fnameIndex) && !is_null($lnameIndex) && is_null($nameIndex)) {
-                    $data[$val]['name'][] = $member[$fnameIndex].' '.$member[$lnameIndex];
-                } else {
-                    $data[$val]['name'][] = $member[$nameIndex];
+                if($i !== 0) {
+                    if(!is_null($teamIndex)) $data[$val]['team'] = $member[$teamIndex];
+                    if(!is_null($fnameIndex) && !is_null($lnameIndex) && is_null($nameIndex)) {
+                        $data[$val]['name'][] = $member[$fnameIndex].' '.$member[$lnameIndex];
+                    } else {
+                        $data[$val]['name'][] = $member[$nameIndex];
+                    }
+                    $data[$val]['position'][] = $member[$posIndex];
+                    if(!is_null($numIndex)) $data[$val]['number'][] = $member[$numIndex];
+                    $data[$val]['rating'][] = $member[$ratIndex];
                 }
-                $data[$val]['position'][] = $member[$posIndex];
-                if(!is_null($numIndex)) $data[$val]['number'][] = $member[$numIndex];
-                $data[$val]['rating'][] = $member[$ratIndex];
-
                 $i += 1;
             }
         }
@@ -136,7 +137,7 @@ class CsvImport extends Command
                 $is_team = array_key_exists('team', $data[$team]);
                 $is_num = array_key_exists('number', $data[$team]);
                 // positionsテーブルのidを取得
-                // $position_id = $postionModel->where('name', $data[$team]['position'][$i])->first()->id;
+                $position_id = $postionModel->where('name', $data[$team]['position'][$i])->first()->id;
                 // rostersテーブルの情報を更新
                 $roster = $rosterModel->leftJoin('players', 'players.id', '=', 'rosters.player_id')
                                       ->where('rosters.season', $season)->where('rosters.team_id', $team_id)
@@ -144,7 +145,10 @@ class CsvImport extends Command
                                       ->select('rosters.*')
                                       ->first();
                 
-                // $roster->position_id = $position_id;
+                // rostersに存在しない場合はスキップ
+                if(is_null($roster)) continue;
+                
+                $roster->position_id = $position_id;
                 $roster->rating = $data[$team]['rating'][$i];
 
                 if($is_team && $is_num) {
