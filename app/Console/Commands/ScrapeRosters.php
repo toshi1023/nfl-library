@@ -60,6 +60,8 @@ class ScrapeRosters extends Command
             $season = 2012;
             $urlteams = config('const.UrlTeams');
 
+            if($season < 2012) throw new Exception('The value is invalid. Please set the value above 2012.');
+
             // Model設定
             $playerModel = new Player();
             $positionModel = new Position();
