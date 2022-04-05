@@ -3,7 +3,6 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use App\Models\Player;
 use App\Models\Roster;
 use App\Models\Position;
 use App\Models\Starter;
@@ -48,7 +47,6 @@ class ScrapeStarters extends Command
             $data = [];
     
             // Model設定
-            $playerModel = new Player();
             $rosterModel = new Roster();
             $postionModel = new Position();
     
@@ -84,14 +82,18 @@ class ScrapeStarters extends Command
                 $team_id += 1;
             }
     
+            $team_id = 1;
             foreach($teams as $team) {
                 for($i = 0; $i < count($data[$team]['firstname']); $i++) {
-                    // playersテーブルのidを取得
-                    $player_id = $playerModel->where('firstname', $data[$team]['firstname'][$i])->where('lastname', $data[$team]['lastname'][$i])->first()->id;
+                    // rostersテーブルの情報を取得
+                    $roster = $rosterModel->leftJoin('players', 'players.id', '=', 'rosters.player_id')
+                                      ->where('rosters.season', $season)->where('rosters.team_id', $team_id)
+                                      ->where('players.firstname', $data[$team]['firstname'][$i])->where('players.lastname', $data[$team]['lastname'][$i])
+                                      ->select('rosters.*')
+                                      ->first();
                     // positionsテーブルのidを取得
                     $position_id = $postionModel->where('name', $data[$team]['position'][$i])->first()->id;
                     // rostersテーブルの情報を更新
-                    $roster = $rosterModel->where('season', $season)->where('team_id', $data[$team]['team_id'])->where('player_id', $player_id)->first();
                     $roster->position_id = $position_id;
                     $roster->save();
 
@@ -106,6 +108,8 @@ class ScrapeStarters extends Command
                     // 例) sfo : FB , Kyle Juszczyk
                     dump($team.' : '.$data[$team]['position'][$i].' , '.$data[$team]['firstname'][$i].' '.$data[$team]['lastname'][$i]);
                 }
+                // team_idを更新
+                $team_id += 1;
             }
         } catch(Exception $e) {
             $this->error($e->getMessage());
