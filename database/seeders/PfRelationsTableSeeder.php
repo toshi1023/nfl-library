@@ -206,7 +206,7 @@ class PfRelationsTableSeeder extends Seeder
         ]);
 
 
-        // プロセット(スプリットバック)
+        // プロセット(スプリットバック) FB & HB
         PfRelation::create([
             'formation_id'      => 5,
             'position_category' => config('const.Category.QB')
@@ -394,7 +394,7 @@ class PfRelationsTableSeeder extends Seeder
         ]);
 
 
-        // フレックスボーン
+        // フレックスボーン(WRが4人バージョン)
         PfRelation::create([
             'formation_id'      => 9,
             'position_category' => config('const.Category.QB')
@@ -437,100 +437,192 @@ class PfRelationsTableSeeder extends Seeder
         ]);
         PfRelation::create([
             'formation_id'      => 9,
+            'position_category' => config('const.Category.C')
+        ]);
+
+        // フレックスボーン(WRが2人・TEが2人バージョン)
+        PfRelation::create([
+            'formation_id'      => 10,
+            'position_category' => config('const.Category.QB')
+        ]);
+        PfRelation::create([
+            'formation_id'      => 10,
+            'position_category' => config('const.Category.FB')
+        ]);
+        PfRelation::create([
+            'formation_id'      => 10,
+            'position_category' => config('const.Category.WR')
+        ]);
+        PfRelation::create([
+            'formation_id'      => 10,
+            'position_category' => config('const.Category.WR')
+        ]);
+        PfRelation::create([
+            'formation_id'      => 10,
+            'position_category' => config('const.Category.WR')
+        ]);
+        PfRelation::create([
+            'formation_id'      => 10,
+            'position_category' => config('const.Category.WR')
+        ]);
+        PfRelation::create([
+            'formation_id'      => 10,
+            'position_category' => config('const.Category.ROT')
+        ]);
+        PfRelation::create([
+            'formation_id'      => 10,
+            'position_category' => config('const.Category.LOT')
+        ]);
+        PfRelation::create([
+            'formation_id'      => 10,
+            'position_category' => config('const.Category.RG')
+        ]);
+        PfRelation::create([
+            'formation_id'      => 10,
+            'position_category' => config('const.Category.LG')
+        ]);
+        PfRelation::create([
+            'formation_id'      => 10,
             'position_category' => config('const.Category.C')
         ]);
 
 
         // ウィングT
         PfRelation::create([
-            'formation_id'      => 10,
+            'formation_id'      => 11,
             'position_category' => config('const.Category.QB')
         ]);
         PfRelation::create([
-            'formation_id'      => 10,
+            'formation_id'      => 11,
             'position_category' => config('const.Category.HB')
         ]);
         PfRelation::create([
-            'formation_id'      => 10,
+            'formation_id'      => 11,
             'position_category' => config('const.Category.FB')
         ]);
         PfRelation::create([
-            'formation_id'      => 10,
+            'formation_id'      => 11,
             'position_category' => config('const.Category.WR')
         ]);
         PfRelation::create([
-            'formation_id'      => 10,
+            'formation_id'      => 11,
             'position_category' => config('const.Category.WR')
         ]);
         PfRelation::create([
-            'formation_id'      => 10,
+            'formation_id'      => 11,
             'position_category' => config('const.Category.TE')
         ]);
         PfRelation::create([
-            'formation_id'      => 10,
+            'formation_id'      => 11,
             'position_category' => config('const.Category.ROT')
         ]);
         PfRelation::create([
-            'formation_id'      => 10,
+            'formation_id'      => 11,
             'position_category' => config('const.Category.LOT')
         ]);
         PfRelation::create([
-            'formation_id'      => 10,
+            'formation_id'      => 11,
             'position_category' => config('const.Category.RG')
         ]);
         PfRelation::create([
-            'formation_id'      => 10,
+            'formation_id'      => 11,
             'position_category' => config('const.Category.LG')
         ]);
         PfRelation::create([
-            'formation_id'      => 10,
+            'formation_id'      => 11,
             'position_category' => config('const.Category.C')
         ]);
 
 
         // エンプティバックフィールド
         PfRelation::create([
-            'formation_id'      => 11,
+            'formation_id'      => 12,
             'position_category' => config('const.Category.QB')
         ]);
         PfRelation::create([
-            'formation_id'      => 11,
+            'formation_id'      => 12,
             'position_category' => config('const.Category.WR')
         ]);
         PfRelation::create([
-            'formation_id'      => 11,
+            'formation_id'      => 12,
             'position_category' => config('const.Category.WR')
         ]);
         PfRelation::create([
-            'formation_id'      => 11,
+            'formation_id'      => 12,
             'position_category' => config('const.Category.WR')
         ]);
         PfRelation::create([
-            'formation_id'      => 11,
+            'formation_id'      => 12,
             'position_category' => config('const.Category.WR')
         ]);
         PfRelation::create([
-            'formation_id'      => 11,
+            'formation_id'      => 12,
             'position_category' => config('const.Category.WR')
         ]);
         PfRelation::create([
-            'formation_id'      => 11,
+            'formation_id'      => 12,
             'position_category' => config('const.Category.ROT')
         ]);
         PfRelation::create([
-            'formation_id'      => 11,
+            'formation_id'      => 12,
             'position_category' => config('const.Category.LOT')
         ]);
         PfRelation::create([
-            'formation_id'      => 11,
+            'formation_id'      => 12,
             'position_category' => config('const.Category.RG')
         ]);
         PfRelation::create([
-            'formation_id'      => 11,
+            'formation_id'      => 12,
             'position_category' => config('const.Category.LG')
         ]);
         PfRelation::create([
-            'formation_id'      => 11,
+            'formation_id'      => 12,
+            'position_category' => config('const.Category.C')
+        ]);
+
+        // プロセット(スプリットバック) HB & HB
+        PfRelation::create([
+            'formation_id'      => 13,
+            'position_category' => config('const.Category.QB')
+        ]);
+        PfRelation::create([
+            'formation_id'      => 13,
+            'position_category' => config('const.Category.HB')
+        ]);
+        PfRelation::create([
+            'formation_id'      => 13,
+            'position_category' => config('const.Category.HB')
+        ]);
+        PfRelation::create([
+            'formation_id'      => 13,
+            'position_category' => config('const.Category.WR')
+        ]);
+        PfRelation::create([
+            'formation_id'      => 13,
+            'position_category' => config('const.Category.WR')
+        ]);
+        PfRelation::create([
+            'formation_id'      => 13,
+            'position_category' => config('const.Category.TE')
+        ]);
+        PfRelation::create([
+            'formation_id'      => 13,
+            'position_category' => config('const.Category.ROT')
+        ]);
+        PfRelation::create([
+            'formation_id'      => 13,
+            'position_category' => config('const.Category.LOT')
+        ]);
+        PfRelation::create([
+            'formation_id'      => 13,
+            'position_category' => config('const.Category.RG')
+        ]);
+        PfRelation::create([
+            'formation_id'      => 13,
+            'position_category' => config('const.Category.LG')
+        ]);
+        PfRelation::create([
+            'formation_id'      => 13,
             'position_category' => config('const.Category.C')
         ]);
 
@@ -541,188 +633,188 @@ class PfRelationsTableSeeder extends Seeder
 
         // 3-4
         PfRelation::create([
-            'formation_id'      => 14,
+            'formation_id'      => 50,
             'position_category' => config('const.Category.NT')
         ]);
         PfRelation::create([
-            'formation_id'      => 14,
+            'formation_id'      => 50,
             'position_category' => config('const.Category.RDE')
         ]);
         PfRelation::create([
-            'formation_id'      => 14,
+            'formation_id'      => 50,
             'position_category' => config('const.Category.LDE')
         ]);
         PfRelation::create([
-            'formation_id'      => 14,
+            'formation_id'      => 50,
             'position_category' => config('const.Category.MLB')
         ]);
         PfRelation::create([
-            'formation_id'      => 14,
+            'formation_id'      => 50,
             'position_category' => config('const.Category.MLB')
         ]);
         PfRelation::create([
-            'formation_id'      => 14,
+            'formation_id'      => 50,
             'position_category' => config('const.Category.RLB')
         ]);
         PfRelation::create([
-            'formation_id'      => 14,
+            'formation_id'      => 50,
             'position_category' => config('const.Category.LLB')
         ]);
         PfRelation::create([
-            'formation_id'      => 14,
+            'formation_id'      => 50,
             'position_category' => config('const.Category.RCB')
         ]);
         PfRelation::create([
-            'formation_id'      => 14,
+            'formation_id'      => 50,
             'position_category' => config('const.Category.LCB')
         ]);
         PfRelation::create([
-            'formation_id'      => 14,
+            'formation_id'      => 50,
             'position_category' => config('const.Category.SS')
         ]);
         PfRelation::create([
-            'formation_id'      => 14,
+            'formation_id'      => 50,
             'position_category' => config('const.Category.FS')
         ]);
 
 
         // 4-3
         PfRelation::create([
-            'formation_id'      => 15,
+            'formation_id'      => 51,
             'position_category' => config('const.Category.RDT')
         ]);
         PfRelation::create([
-            'formation_id'      => 15,
+            'formation_id'      => 51,
             'position_category' => config('const.Category.LDT')
         ]);
         PfRelation::create([
-            'formation_id'      => 15,
+            'formation_id'      => 51,
             'position_category' => config('const.Category.RDE')
         ]);
         PfRelation::create([
-            'formation_id'      => 15,
+            'formation_id'      => 51,
             'position_category' => config('const.Category.LDE')
         ]);
         PfRelation::create([
-            'formation_id'      => 15,
+            'formation_id'      => 51,
             'position_category' => config('const.Category.MLB')
         ]);
         PfRelation::create([
-            'formation_id'      => 15,
+            'formation_id'      => 51,
             'position_category' => config('const.Category.RLB')
         ]);
         PfRelation::create([
-            'formation_id'      => 15,
+            'formation_id'      => 51,
             'position_category' => config('const.Category.LLB')
         ]);
         PfRelation::create([
-            'formation_id'      => 15,
+            'formation_id'      => 51,
             'position_category' => config('const.Category.RCB')
         ]);
         PfRelation::create([
-            'formation_id'      => 15,
+            'formation_id'      => 51,
             'position_category' => config('const.Category.LCB')
         ]);
         PfRelation::create([
-            'formation_id'      => 15,
+            'formation_id'      => 51,
             'position_category' => config('const.Category.SS')
         ]);
         PfRelation::create([
-            'formation_id'      => 15,
+            'formation_id'      => 51,
             'position_category' => config('const.Category.FS')
         ]);
 
 
         // 4-4
         PfRelation::create([
-            'formation_id'      => 16,
+            'formation_id'      => 52,
             'position_category' => config('const.Category.RDT')
         ]);
         PfRelation::create([
-            'formation_id'      => 16,
+            'formation_id'      => 52,
             'position_category' => config('const.Category.LDT')
         ]);
         PfRelation::create([
-            'formation_id'      => 16,
+            'formation_id'      => 52,
             'position_category' => config('const.Category.RDE')
         ]);
         PfRelation::create([
-            'formation_id'      => 16,
+            'formation_id'      => 52,
             'position_category' => config('const.Category.LDE')
         ]);
         PfRelation::create([
-            'formation_id'      => 16,
+            'formation_id'      => 52,
             'position_category' => config('const.Category.MLB')
         ]);
         PfRelation::create([
-            'formation_id'      => 16,
+            'formation_id'      => 52,
             'position_category' => config('const.Category.MLB')
         ]);
         PfRelation::create([
-            'formation_id'      => 16,
+            'formation_id'      => 52,
             'position_category' => config('const.Category.RLB')
         ]);
         PfRelation::create([
-            'formation_id'      => 16,
+            'formation_id'      => 52,
             'position_category' => config('const.Category.LLB')
         ]);
         PfRelation::create([
-            'formation_id'      => 16,
+            'formation_id'      => 52,
             'position_category' => config('const.Category.RCB')
         ]);
         PfRelation::create([
-            'formation_id'      => 16,
+            'formation_id'      => 52,
             'position_category' => config('const.Category.LCB')
         ]);
         PfRelation::create([
-            'formation_id'      => 16,
+            'formation_id'      => 52,
             'position_category' => config('const.Category.SS')
         ]);
 
 
         // 5-2
         PfRelation::create([
-            'formation_id'      => 17,
+            'formation_id'      => 53,
             'position_category' => config('const.Category.NT')
         ]);
         PfRelation::create([
-            'formation_id'      => 17,
+            'formation_id'      => 53,
             'position_category' => config('const.Category.RDT')
         ]);
         PfRelation::create([
-            'formation_id'      => 17,
+            'formation_id'      => 53,
             'position_category' => config('const.Category.LDT')
         ]);
         PfRelation::create([
-            'formation_id'      => 17,
+            'formation_id'      => 53,
             'position_category' => config('const.Category.RDE')
         ]);
         PfRelation::create([
-            'formation_id'      => 17,
+            'formation_id'      => 53,
             'position_category' => config('const.Category.LDE')
         ]);
         PfRelation::create([
-            'formation_id'      => 17,
+            'formation_id'      => 53,
             'position_category' => config('const.Category.MLB')
         ]);
         PfRelation::create([
-            'formation_id'      => 17,
+            'formation_id'      => 53,
             'position_category' => config('const.Category.MLB')
         ]);
         PfRelation::create([
-            'formation_id'      => 17,
+            'formation_id'      => 53,
             'position_category' => config('const.Category.RCB')
         ]);
         PfRelation::create([
-            'formation_id'      => 17,
+            'formation_id'      => 53,
             'position_category' => config('const.Category.LCB')
         ]);
         PfRelation::create([
-            'formation_id'      => 17,
+            'formation_id'      => 53,
             'position_category' => config('const.Category.SS')
         ]);
         PfRelation::create([
-            'formation_id'      => 17,
+            'formation_id'      => 53,
             'position_category' => config('const.Category.FS')
         ]);
     }
