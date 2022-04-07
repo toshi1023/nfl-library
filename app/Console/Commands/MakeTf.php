@@ -40,7 +40,7 @@ class MakeTf extends Command
     public function handle()
     {
         try {
-            $season = 2012;
+            $season = config('const.Season');
             $teams = config('const.UrlTeams');
 
             if($season < 2012) throw new Exception('The value is invalid. Please set the value above 2012.');

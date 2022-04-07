@@ -1,13 +1,9 @@
 <p>【利用手順】</p>
 <p>1: csv.zipを解凍して、その中身を「storage\app\public」直下に配置してください</p>
 <br>
-<p>2: 以下のファイルを開き、$seasonの変数に取得したい年数を設定します</p>
-   <p>(※注意)必ず全ファイルの年数を統一してください</p>
+<p>2: 以下のファイルを開き、キーがSeasonの値に取得したい年数を設定します</p>
    <p>(※注意)年数は2012年以降しか設定出来ません</p>
-   <p>・ScrapeRosters.php</p>
-   <p>・CsvImport.php</p>
-   <p>・ScrapeStarters.php</p>
-   <p>・MakeTf.php</p>
+   <p>【ファイル】: ~\config\const.php</p>
 <br>
 <p>3: 以下の順番でコマンドを実行してください</p>
    <p>・php artisan scrape:rosters</p>

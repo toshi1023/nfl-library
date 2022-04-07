@@ -1,6 +1,9 @@
 <?php
 
 return [
+    // batch実行のseasonを指定
+    'Season' => 2019,
+    
     // rosterのスクレイプ先URLの設定で使用する定数
     'UrlTeams' => [
         'buf', 'nwe', 'mia', 'nyj',  // AFC東地区

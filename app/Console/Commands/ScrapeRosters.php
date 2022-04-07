@@ -48,7 +48,6 @@ class ScrapeRosters extends Command
 
     /**
      * NFLのロスター情報を指定したwebページから一括でスクレイピングする
-     * 使用するときは $season の値のみを変更する
      *
      * @return int
      */
@@ -57,7 +56,7 @@ class ScrapeRosters extends Command
         try {
 
             // 変数設定
-            $season = 2012;
+            $season = config('const.Season');
             $urlteams = config('const.UrlTeams');
 
             if($season < 2012) throw new Exception('The value is invalid. Please set the value above 2012.');

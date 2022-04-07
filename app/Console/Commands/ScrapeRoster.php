@@ -41,7 +41,7 @@ class ScrapeRoster extends Command
 
     /**
      * NFLのロスター情報を指定したwebページから1つだけスクレイピングする
-     * 使用するときは $season と $team_id の値のみを変更する
+     * 使用するときは $team_id の値のみを変更する
      *
      * @return int
      */
@@ -49,7 +49,7 @@ class ScrapeRoster extends Command
     {
         try {
             // 変数設定
-            $season = 2012;
+            $season = config('const.Season');
             $team_id = 32;
             $urlteam = config('const.UrlTeams')[$team_id - 1];
 

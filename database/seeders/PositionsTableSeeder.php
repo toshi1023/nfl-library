@@ -205,6 +205,11 @@ class PositionsTableSeeder extends Seeder
             'category' => config('const.Category.MLB'),
             'name' => 'MLB'
         ]);
+        // IL
+        Position::create([
+            'category' => config('const.Category.MLB'),
+            'name' => 'IL'
+        ]);
         // ILB
         Position::create([
             'category' => config('const.Category.MLB'),

@@ -4,7 +4,6 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\Models\Roster;
-use App\Models\Position;
 use App\Models\Starter;
 use Exception;
 
@@ -42,7 +41,7 @@ class ScrapeStarters extends Command
     public function handle()
     {
         try {
-            $season = 2012;
+            $season = config('const.Season');
             $teams = config('const.UrlTeams');
             $data = [];
 
@@ -50,7 +49,6 @@ class ScrapeStarters extends Command
     
             // Model設定
             $rosterModel = new Roster();
-            $postionModel = new Position();
     
             $team_id = 1;
             foreach($teams as $val) {
@@ -93,11 +91,6 @@ class ScrapeStarters extends Command
                                       ->where('players.firstname', $data[$team]['firstname'][$i])->where('players.lastname', $data[$team]['lastname'][$i])
                                       ->select('rosters.*')
                                       ->first();
-                    // positionsテーブルのidを取得
-                    $position_id = $postionModel->where('name', $data[$team]['position'][$i])->first()->id;
-                    // rostersテーブルの情報を更新
-                    $roster->position_id = $position_id;
-                    $roster->save();
 
                     // startersテーブルに新規保存
                     if(!Starter::where('roster_id', $roster->id)->exists()) {
