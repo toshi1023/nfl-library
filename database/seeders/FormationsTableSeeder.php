@@ -38,10 +38,10 @@ class FormationsTableSeeder extends Seeder
             'odflg' => config('const.ODflg.offence'),
             'name' => 'Spread formation'
         ]);
-        // プロセット(スプリットバック)
+        // プロセット(スプリットバック) FB & HB
         Formation::create([
             'odflg' => config('const.ODflg.offence'),
-            'name' => 'Pro set(Split back)'
+            'name' => 'Pro set(Split back) FB & HB'
         ]);
         // ショットガン
         Formation::create([
@@ -58,10 +58,15 @@ class FormationsTableSeeder extends Seeder
             'odflg' => config('const.ODflg.offence'),
             'name' => 'Wishbone'
         ]);
-        // フレックスボーン
+        // フレックスボーン (WRが4人バージョン)
         Formation::create([
             'odflg' => config('const.ODflg.offence'),
-            'name' => 'Flexbone'
+            'name' => 'Flexbone WR4'
+        ]);
+        // フレックスボーン (WRが2人・TEが2人バージョン)
+        Formation::create([
+            'odflg' => config('const.ODflg.offence'),
+            'name' => 'Flexbone WR2 & TE2'
         ]);
         // ウィングT
         Formation::create([
@@ -82,6 +87,11 @@ class FormationsTableSeeder extends Seeder
         Formation::create([
             'odflg' => config('const.ODflg.offence'),
             'name' => 'Wildcat formation'
+        ]);
+        // プロセット(スプリットバック) HB & HB
+        Formation::create([
+            'odflg' => config('const.ODflg.offence'),
+            'name' => 'Pro set(Split back) HB & HB'
         ]);
 
 

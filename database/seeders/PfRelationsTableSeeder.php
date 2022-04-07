@@ -582,47 +582,47 @@ class PfRelationsTableSeeder extends Seeder
 
         // プロセット(スプリットバック) HB & HB
         PfRelation::create([
-            'formation_id'      => 13,
+            'formation_id'      => 15,
             'position_category' => config('const.Category.QB')
         ]);
         PfRelation::create([
-            'formation_id'      => 13,
+            'formation_id'      => 15,
             'position_category' => config('const.Category.HB')
         ]);
         PfRelation::create([
-            'formation_id'      => 13,
+            'formation_id'      => 15,
             'position_category' => config('const.Category.HB')
         ]);
         PfRelation::create([
-            'formation_id'      => 13,
+            'formation_id'      => 15,
             'position_category' => config('const.Category.WR')
         ]);
         PfRelation::create([
-            'formation_id'      => 13,
+            'formation_id'      => 15,
             'position_category' => config('const.Category.WR')
         ]);
         PfRelation::create([
-            'formation_id'      => 13,
+            'formation_id'      => 15,
             'position_category' => config('const.Category.TE')
         ]);
         PfRelation::create([
-            'formation_id'      => 13,
+            'formation_id'      => 15,
             'position_category' => config('const.Category.ROT')
         ]);
         PfRelation::create([
-            'formation_id'      => 13,
+            'formation_id'      => 15,
             'position_category' => config('const.Category.LOT')
         ]);
         PfRelation::create([
-            'formation_id'      => 13,
+            'formation_id'      => 15,
             'position_category' => config('const.Category.RG')
         ]);
         PfRelation::create([
-            'formation_id'      => 13,
+            'formation_id'      => 15,
             'position_category' => config('const.Category.LG')
         ]);
         PfRelation::create([
-            'formation_id'      => 13,
+            'formation_id'      => 15,
             'position_category' => config('const.Category.C')
         ]);
 

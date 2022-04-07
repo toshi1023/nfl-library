@@ -110,7 +110,7 @@ class MakeTf extends Command
                 if($fb === 1 && $hb === 0 && $wr >= 4 && $te === 0) $formation_id = 9;
                 if($fb === 0 && $hb === 1 && $wr >= 2 && $te === 2) $formation_id = 10;
                 if($fb === 0 && $hb === 0 && $wr >= 5 && $te === 0) $formation_id = 12;
-                if($fb === 0 && $hb === 2 && $wr >= 2 && $te === 1) $formation_id = 13;
+                if($fb === 0 && $hb === 2 && $wr >= 2 && $te === 1) $formation_id = 15;
                 if($formation_id === 0) $formation_id = 3;
 
                 $exists = $tfModel->leftJoin('formations', 'formations.id', '=', 'tf_relations.formation_id')
