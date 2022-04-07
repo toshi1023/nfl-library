@@ -43,6 +43,11 @@ class FormationsTableSeeder extends Seeder
             'odflg' => config('const.ODflg.offence'),
             'name' => 'Pro set(Split back) FB & HB'
         ]);
+        // プロセット(スプリットバック) HB & HB
+        Formation::create([
+            'odflg' => config('const.ODflg.offence'),
+            'name' => 'Pro set(Split back) HB & HB'
+        ]);
         // ショットガン
         Formation::create([
             'odflg' => config('const.ODflg.offence'),
@@ -87,11 +92,6 @@ class FormationsTableSeeder extends Seeder
         Formation::create([
             'odflg' => config('const.ODflg.offence'),
             'name' => 'Wildcat formation'
-        ]);
-        // プロセット(スプリットバック) HB & HB
-        Formation::create([
-            'odflg' => config('const.ODflg.offence'),
-            'name' => 'Pro set(Split back) HB & HB'
         ]);
 
 

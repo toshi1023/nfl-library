@@ -102,16 +102,16 @@ class MakeTf extends Command
                 // フォーメーション設定
                 // offence
                 $formation_id = 0;
-                if($fb === 1 && $hb === 2 && $wr === 0 && $te === 2) $formation_id = 1;
-                if($fb === 1 && $hb === 1 && $wr >= 2 && $te === 1) $formation_id = 2;
-                if($fb === 0 && $hb === 1 && $wr >= 3 && $te === 1) $formation_id = 3;
-                if($fb === 0 && $hb === 1 && $wr >= 4 && $te === 0) $formation_id = 4;
-                if($fb === 1 && $hb === 2 && $wr === 0 && $te === 2) $formation_id = 8;
-                if($fb === 1 && $hb === 0 && $wr >= 4 && $te === 0) $formation_id = 9;
-                if($fb === 0 && $hb === 1 && $wr >= 2 && $te === 2) $formation_id = 10;
-                if($fb === 0 && $hb === 0 && $wr >= 5 && $te === 0) $formation_id = 12;
-                if($fb === 0 && $hb === 2 && $wr >= 2 && $te === 1) $formation_id = 15;
-                if($formation_id === 0) $formation_id = 3;
+                if($fb === 1 && $hb === 2 && $wr === 0 && $te === 2) $formation_id = config('const.Formationid.T');
+                if($fb === 1 && $hb === 1 && $wr >= 2 && $te === 1) $formation_id = config('const.Formationid.I');
+                if($fb === 0 && $hb === 1 && $wr >= 3 && $te === 1) $formation_id = config('const.Formationid.SSB');
+                if($fb === 0 && $hb === 1 && $wr >= 4 && $te === 0) $formation_id = config('const.Formationid.SF');
+                if($fb === 1 && $hb === 2 && $wr === 0 && $te === 2) $formation_id = config('const.Formationid.WB');
+                if($fb === 1 && $hb === 0 && $wr >= 4 && $te === 0) $formation_id = config('const.Formationid.FBW4');
+                if($fb === 0 && $hb === 1 && $wr >= 2 && $te === 2) $formation_id = config('const.Formationid.FBWT');
+                if($fb === 0 && $hb === 0 && $wr >= 5 && $te === 0) $formation_id = config('const.Formationid.EB');
+                if($fb === 0 && $hb === 2 && $wr >= 2 && $te === 1) $formation_id = config('const.Formationid.PSHH');
+                if($formation_id === 0) $formation_id = config('const.Formationid.SSB');
 
                 $exists = $tfModel->leftJoin('formations', 'formations.id', '=', 'tf_relations.formation_id')
                                   ->where('tf_relations.season', $season)->where('tf_relations.team_id', $team_id)->where('formations.odflg', 1)
@@ -130,11 +130,11 @@ class MakeTf extends Command
 
                 // defence
                 $formation_id = 0;
-                if($dl === 3 && $lb === 4) $formation_id = 50;
-                if($dl === 4 && $lb === 3) $formation_id = 51;
-                if($dl === 4 && $lb === 4) $formation_id = 52;
-                if($dl === 5 && $lb === 2) $formation_id = 53;
-                if($formation_id === 0) $formation_id = 51;
+                if($dl === 3 && $lb === 4) $formation_id = config('const.Formationid.3-4');
+                if($dl === 4 && $lb === 3) $formation_id = config('const.Formationid.4-3');
+                if($dl === 4 && $lb === 4) $formation_id = config('const.Formationid.4-4');
+                if($dl === 5 && $lb === 2) $formation_id = config('const.Formationid.5-2');
+                if($formation_id === 0) $formation_id = config('const.Formationid.4-3');
 
                 $exists = $tfModel->leftJoin('formations', 'formations.id', '=', 'tf_relations.formation_id')
                                   ->where('tf_relations.season', $season)->where('tf_relations.team_id', $team_id)->where('formations.odflg', 0)
