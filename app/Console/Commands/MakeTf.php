@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
 use App\Models\Starter;
 use App\Models\TfRelation;
 
@@ -13,7 +14,7 @@ class MakeTf extends Command
      *
      * @var string
      */
-    protected $signature = 'make:tf';
+    protected $signature = 'make:tf {season?}';
 
     /**
      * The console command description.
@@ -41,6 +42,7 @@ class MakeTf extends Command
     {
         try {
             $season = config('const.Season');
+            if(!is_null($this->argument('season'))) $season = $this->argument('season');
             $teams = config('const.UrlTeams');
 
             if($season < 2012) throw new Exception('The value is invalid. Please set the value above 2012.');
@@ -156,7 +158,21 @@ class MakeTf extends Command
                 // team_idを更新
                 $team_id += 1;
             }
+
+            $this->info('');
+            $this->info('Make Tf Successfully.');
         } catch(Exception $e) {
+            Log::error($e->getMessage());
+            // stack traceをLogに出力
+            $index = 1;
+            foreach($e->getTrace() as $val) {
+                // 例) StackTrace[1] :: /home/test/app/Http/Controllers/TestController.php 22行目, { class: Test , function: test }
+                $trace = 'StackTrace['.$index.'] :: '.$val["file"].' '.$val["line"].'行目 , { class: '.$val["class"].' , function: '.$val["function"].' }';
+                Log::error($trace);
+    
+                $index += 1;
+            }
+            $this->info('');
             $this->error($e->getMessage());
         }
     }

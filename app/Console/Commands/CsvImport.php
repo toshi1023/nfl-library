@@ -14,7 +14,7 @@ class CsvImport extends Command
      *
      * @var string
      */
-    protected $signature = 'csv:import';
+    protected $signature = 'csv:import {season?}';
 
     /**
      * The console command description.
@@ -40,7 +40,10 @@ class CsvImport extends Command
      */
     public function handle()
     {
+        
         $season = config('const.Season');
+        if(!is_null($this->argument('season'))) $season = $this->argument('season');
+
         $teams = config('const.UrlTeams');
 
         if($season < 2012) throw new Exception('The value is invalid. Please set the value above 2012.');
@@ -87,34 +90,59 @@ class CsvImport extends Command
                                 $teamIndex = $j;
                                 break;
                             case 'First Name':
+                            case 'FIRST':
                                 $fnameIndex = $j;
                                 break;
                             case 'Last Name':
+                            case 'LAST':
                                 $lnameIndex = $j; 
                                 break;
                             case 'Position':
+                            case 'POSITION':
                                 $posIndex = $j;
                                 break;
                             case 'Jersey':
                             case 'Jersey Number':
+                            case 'JERSEY':
+                            case 'Jersey #':
                                 $numIndex = $j;
                                 break;
                             case 'Overall':
                             case 'Overall Rating':
                             case 'OVR':
+                            case 'OVERALL RATING':
                                 $ratIndex = $j;
                                 break;
                             default:
+                                // csvのデータカラムに"・First"が存在するため、ここでチェック
+                                preg_match('/\bFIRST\b/', $col, $matches);
+                                if($matches) {
+                                    $fnameIndex = $j;
+                                    break;
+                                }
+                                
+                                // csvのデータカラムに"・First Name"が存在するため、ここでチェック
+                                preg_match('/\bFirst Name\b/', $col, $matches);
+                                if($matches) {
+                                    $fnameIndex = $j;
+                                    break;
+                                }
+                                
                                 // csvのデータカラムに"・Name"が存在するため、ここでチェック
                                 preg_match('/\bName\b/', $col, $matches);
-                                if($matches) $nameIndex = $j;
+                                if($matches) {
+                                    $nameIndex = $j;
+                                    break;
+                                }
 
                                 // csvのデータカラムに"・Team"が存在するため、ここでチェック
                                 preg_match('/\bTeam\b/', $col, $matches);
-                                if($matches) $teamIndex = $j;
-
-                                break;
+                                if($matches) {
+                                    $teamIndex = $j;
+                                    break;
+                                }
                         }
+                        // dump('fname: '.$fnameIndex.', lname: '.$lnameIndex.', name: '.$nameIndex);
                         $j += 1;
                     }
                 }
@@ -176,5 +204,8 @@ class CsvImport extends Command
             // team_idを更新
             $team_id += 1;
         }
+
+        $this->info('');
+        $this->info('Csv Import Successfully.');
     }
 }

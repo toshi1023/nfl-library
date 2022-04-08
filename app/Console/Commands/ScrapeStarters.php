@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use App\Models\Roster;
 use App\Models\Starter;
+use Illuminate\Support\Facades\Log;
 use Exception;
 
 class ScrapeStarters extends Command
@@ -14,7 +15,7 @@ class ScrapeStarters extends Command
      *
      * @var string
      */
-    protected $signature = 'scrape:starters';
+    protected $signature = 'scrape:starters {season?}';
 
     /**
      * The console command description.
@@ -42,6 +43,7 @@ class ScrapeStarters extends Command
     {
         try {
             $season = config('const.Season');
+            if(!is_null($this->argument('season'))) $season = $this->argument('season');
             $teams = config('const.UrlTeams');
             $data = [];
 
@@ -106,7 +108,21 @@ class ScrapeStarters extends Command
                 // team_idを更新
                 $team_id += 1;
             }
+
+            $this->info('');
+            $this->info('Scrape Starters All Successfully.');
         } catch(Exception $e) {
+            Log::error($e->getMessage());
+            // stack traceをLogに出力
+            $index = 1;
+            foreach($e->getTrace() as $val) {
+                // 例) StackTrace[1] :: /home/test/app/Http/Controllers/TestController.php 22行目, { class: Test , function: test }
+                $trace = 'StackTrace['.$index.'] :: '.$val["file"].' '.$val["line"].'行目 , { class: '.$val["class"].' , function: '.$val["function"].' }';
+                Log::error($trace);
+    
+                $index += 1;
+            }
+            $this->info('');
             $this->error($e->getMessage());
         }
     }

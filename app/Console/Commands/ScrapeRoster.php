@@ -8,6 +8,7 @@ use Facebook\WebDriver\Chrome\ChromeDriver;
 use Facebook\WebDriver\Remote\DesiredCapabilities;
 use Facebook\WebDriver\WebDriverExpectedCondition;
 use Facebook\WebDriver\WebDriverBy;
+use Illuminate\Support\Facades\Log;
 use App\Models\Player;
 use App\Models\Position;
 use App\Models\Roster;
@@ -20,7 +21,7 @@ class ScrapeRoster extends Command
      *
      * @var string
      */
-    protected $signature = 'scrape:roster';
+    protected $signature = 'scrape:roster {season?}';
 
     /**
      * The console command description.
@@ -50,6 +51,8 @@ class ScrapeRoster extends Command
         try {
             // 変数設定
             $season = config('const.Season');
+            if(!is_null($this->argument('season'))) $season = $this->argument('season');
+
             $team_id = 32;
             $urlteam = config('const.UrlTeams')[$team_id - 1];
 
@@ -143,11 +146,25 @@ class ScrapeRoster extends Command
                 ]);
             }
 
+            $this->info('');
+            $this->info('Scrape Roster Successfully.');
         } catch(Exception $e) {
+            Log::error($e->getMessage());
+            // stack traceをLogに出力
+            $index = 1;
+            foreach($e->getTrace() as $val) {
+                // 例) StackTrace[1] :: /home/test/app/Http/Controllers/TestController.php 22行目, { class: Test , function: test }
+                $trace = 'StackTrace['.$index.'] :: '.$val["file"].' '.$val["line"].'行目 , { class: '.$val["class"].' , function: '.$val["function"].' }';
+                Log::error($trace);
+    
+                $index += 1;
+            }
+
+            $this->info('');
             $this->error($e->getMessage());
-            $driver->quit();
+            if(isset($driver)) $driver->quit();
         } finally {
-            $driver->quit();
+            if(isset($driver)) $driver->quit();
         }
     }
 }
