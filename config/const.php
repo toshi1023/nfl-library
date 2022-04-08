@@ -2,7 +2,7 @@
 
 return [
     // batch実行のseasonを指定
-    'Season' => 2019,
+    'Season' => 2020,
 
     // rosterのスクレイプ先URLの設定で使用する定数
     'UrlTeams' => [
