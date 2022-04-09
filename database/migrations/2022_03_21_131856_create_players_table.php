@@ -18,6 +18,8 @@ class CreatePlayersTable extends Migration
             $table->string('firstname')->comment('名前');
             $table->string('lastname')->comment('苗字');
             $table->string('birthday')->comment('生年月日');
+            $table->integer('height')->comment('身長');
+            $table->integer('weight')->comment('体重');
             $table->string('image_file')->nullable()->comment('画像名');
             $table->timestamps();
         });
