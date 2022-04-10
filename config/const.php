@@ -4,6 +4,12 @@ return [
     // batch実行のseasonを指定
     'Season' => 2020,
 
+    // 身長・体重計算値
+    'Calc' => [
+        'Weight' => 0.45,
+        'Feet'   => 30.48,
+        'Inch'   => 2.54
+    ],
     // rosterのスクレイプ先URLの設定で使用する定数
     'UrlTeams' => [
         'buf', 'nwe', 'mia', 'nyj',  // AFC東地区

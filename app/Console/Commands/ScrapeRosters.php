@@ -105,6 +105,8 @@ class ScrapeRosters extends Command
                 $positions = [];
                 $numbers = [];
                 $birthdaylist = [];
+                $weightlist = [];
+                $heightlist = [];
                 $elements = $driver->findElements(WebDriverBy::cssSelector('.is_setup #roster tbody td'));
                 foreach($elements as $el) {
                     // 選手名
@@ -120,6 +122,14 @@ class ScrapeRosters extends Command
                     if(!is_null($el->getAttribute('data-stat')) && $el->getAttribute('data-stat') === 'birth_date_mod' && !is_null($el->getAttribute('csk'))){
                         $birthdaylist[] = explode('-', $el->getAttribute('csk'))[0].explode('-', $el->getAttribute('csk'))[1].explode('-', $el->getAttribute('csk'))[2];
                     }
+                    // 体重
+                    if(!is_null($el->getAttribute('data-stat')) && $el->getAttribute('data-stat') === 'weight'){
+                        $weightlist[] = $el->getText();
+                    }
+                    // 身長
+                    if(!is_null($el->getAttribute('data-stat')) && $el->getAttribute('data-stat') === 'height'){
+                        $heightlist[] = $el->getText();
+                    }
                 }
                 // 背番号取得
                 $elements = $driver->findElements(WebDriverBy::cssSelector('.is_setup #roster tbody th'));
@@ -134,11 +144,16 @@ class ScrapeRosters extends Command
                 for($i = 0; $i < count($positions); $i++) {
                     $exist = $playerModel->where('firstname', $firstnamelist[$i])->where('lastname', $lastnamelist[$i])->where('birthday', $birthdaylist[$i])->first();
                     if(is_null($exist)) {
+                        // 身長と体重を日本式に変換
+                        $weight = round($weightlist[$i] * config('const.Calc.Weight'), 1);
+                        $height = round((explode('-', $heightlist[$i])[0] * config('const.Calc.Feet')) + (explode('-', $heightlist[$i])[1] * config('const.Calc.Inch')), 1);
                         // playersデータを作成
                         $exist = Player::create([
                             'firstname' => $firstnamelist[$i],
                             'lastname'  => $lastnamelist[$i],
-                            'birthday'  => $birthdaylist[$i]
+                            'birthday'  => $birthdaylist[$i],
+                            'weight'    => $weight,
+                            'height'    => $height
                         ]);
 
                         dump($positions[$i].' : '.$firstnamelist[$i].' '.$lastnamelist[$i].' , '.$birthdaylist[$i]);
