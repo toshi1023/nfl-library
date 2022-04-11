@@ -145,8 +145,11 @@ class ScrapeRosters extends Command
                     $exist = $playerModel->where('firstname', $firstnamelist[$i])->where('lastname', $lastnamelist[$i])->where('birthday', $birthdaylist[$i])->first();
                     if(is_null($exist)) {
                         // 身長と体重を日本式に変換
-                        $weight = round($weightlist[$i] * config('const.Calc.Weight'), 1);
-                        $height = round((explode('-', $heightlist[$i])[0] * config('const.Calc.Feet')) + (explode('-', $heightlist[$i])[1] * config('const.Calc.Inch')), 1);
+                        $weight = null;
+                        $height = null;
+                        if(!empty($weightlist[$i])) $weight = round($weightlist[$i] * config('const.Calc.Weight'), 1);
+                        if(!empty($heightlist[$i])) $height = round((explode('-', $heightlist[$i])[0] * config('const.Calc.Feet')) + (explode('-', $heightlist[$i])[1] * config('const.Calc.Inch')), 1);
+                        
                         // playersデータを作成
                         $exist = Player::create([
                             'firstname' => $firstnamelist[$i],
@@ -156,7 +159,7 @@ class ScrapeRosters extends Command
                             'height'    => $height
                         ]);
 
-                        dump($positions[$i].' : '.$firstnamelist[$i].' '.$lastnamelist[$i].' , '.$birthdaylist[$i]);
+                        dump('【'.$val.'】'.$positions[$i].' : '.$firstnamelist[$i].' '.$lastnamelist[$i].' , '.$birthdaylist[$i]);
                     }
                     // rostersデータを作成
                     if(empty($positions[$i])) $positions[$i] = 'No Data';
