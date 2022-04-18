@@ -16,6 +16,7 @@ class CreateStartersTable extends Migration
         Schema::create('starters', function (Blueprint $table) {
             $table->increments('id')->comment('ID');
             $table->integer('season')->comment('シーズン');
+            $table->boolean('odflg')->comment('攻守フラグ');   // true: Offence, false: Deffence
             $table->integer('roster_id')->comment('rostersのID');
             $table->timestamps();
         });

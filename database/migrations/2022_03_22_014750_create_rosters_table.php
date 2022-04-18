@@ -21,6 +21,7 @@ class CreateRostersTable extends Migration
             $table->integer('position_id')->comment('positionsのID');
             $table->integer('number')->nullable()->comment('背番号');
             $table->integer('rating')->nullable()->comment('能力値');
+            $table->integer('experience')->nullable()->comment('プロ経験年数');
             $table->timestamps();
         });
     }

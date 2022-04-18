@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use App\Models\Roster;
 use App\Models\Starter;
+use App\Models\Position;
 use Illuminate\Support\Facades\Log;
 use Exception;
 
@@ -94,10 +95,13 @@ class ScrapeStarters extends Command
                                       ->select('rosters.*')
                                       ->first();
 
+                    $position_model = Position::where('name', $data[$team]['position'][$i])->first();
+
                     // startersテーブルに新規保存
                     if(!Starter::where('roster_id', $roster->id)->exists()) {
                         Starter::create([
                             'season'        => $season,
+                            'odflg'         => !is_null($position_model) && $position_model->category < 11 ? true : false,
                             'roster_id'     => $roster->id
                         ]);
                     }
