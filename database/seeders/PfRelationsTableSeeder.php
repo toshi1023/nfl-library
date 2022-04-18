@@ -816,5 +816,143 @@ class PfRelationsTableSeeder extends Seeder
             'formation_id'      => config('const.Formationid.5-2'),
             'position_category' => config('const.Category.FS')
         ]);
+
+        // Nickel(LCB)
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.Nickel_LCB'),
+            'position_category' => config('const.Category.RDT')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.Nickel_LCB'),
+            'position_category' => config('const.Category.LDT')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.Nickel_LCB'),
+            'position_category' => config('const.Category.RDE')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.Nickel_LCB'),
+            'position_category' => config('const.Category.LDE')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.Nickel_LCB'),
+            'position_category' => config('const.Category.RLB')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.Nickel_LCB'),
+            'position_category' => config('const.Category.LLB')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.Nickel_LCB'),
+            'position_category' => config('const.Category.RCB')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.Nickel_LCB'),
+            'position_category' => config('const.Category.LCB')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.Nickel_LCB'),
+            'position_category' => config('const.Category.LCB')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.Nickel_LCB'),
+            'position_category' => config('const.Category.SS')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.Nickel_LCB'),
+            'position_category' => config('const.Category.FS')
+        ]);
+
+        // Nickel(RCB)
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.Nickel_RCB'),
+            'position_category' => config('const.Category.RDT')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.Nickel_RCB'),
+            'position_category' => config('const.Category.LDT')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.Nickel_RCB'),
+            'position_category' => config('const.Category.RDE')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.Nickel_RCB'),
+            'position_category' => config('const.Category.LDE')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.Nickel_RCB'),
+            'position_category' => config('const.Category.RLB')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.Nickel_RCB'),
+            'position_category' => config('const.Category.LLB')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.Nickel_RCB'),
+            'position_category' => config('const.Category.RCB')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.Nickel_RCB'),
+            'position_category' => config('const.Category.RCB')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.Nickel_RCB'),
+            'position_category' => config('const.Category.LCB')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.Nickel_RCB'),
+            'position_category' => config('const.Category.SS')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.Nickel_RCB'),
+            'position_category' => config('const.Category.FS')
+        ]);
+
+        // Dime
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.Dime'),
+            'position_category' => config('const.Category.RDT')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.Dime'),
+            'position_category' => config('const.Category.LDT')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.Dime'),
+            'position_category' => config('const.Category.RDE')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.Dime'),
+            'position_category' => config('const.Category.LDE')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.Dime'),
+            'position_category' => config('const.Category.MLB')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.Dime'),
+            'position_category' => config('const.Category.RCB')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.Dime'),
+            'position_category' => config('const.Category.RCB')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.Dime'),
+            'position_category' => config('const.Category.LCB')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.Dime'),
+            'position_category' => config('const.Category.LCB')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.Dime'),
+            'position_category' => config('const.Category.SS')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.Dime'),
+            'position_category' => config('const.Category.FS')
+        ]);
     }
 }

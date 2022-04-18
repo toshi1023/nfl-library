@@ -68,6 +68,8 @@ class MakeTf extends Command
                 // defence
                 $dl = 0;
                 $lb = 0;
+                $lcb = 0;
+                $rcb = 0;
                 
                 foreach($subdata as $val) {
                     dump($team.'('.$val->team_id.') : '.$val->name.'('.$val->category.')');
@@ -95,6 +97,12 @@ class MakeTf extends Command
                         case 17:
                         case 18:
                             $lb += 1;
+                            break;
+                        case 19:
+                            $rcb += 1;
+                            break;
+                        case 20:
+                            $lcb += 1;
                             break;
                         default:
                             break;
@@ -136,6 +144,9 @@ class MakeTf extends Command
                 if($dl === 4 && $lb === 3) $formation_id = config('const.Formationid.4-3');
                 if($dl === 4 && $lb === 4) $formation_id = config('const.Formationid.4-4');
                 if($dl === 5 && $lb === 2) $formation_id = config('const.Formationid.5-2');
+                if($dl === 4 && $lb === 2 && $rcb === 3) $formation_id = config('const.Formationid.Nickel_LCB');
+                if($dl === 4 && $lb === 2 && $lcb === 3) $formation_id = config('const.Formationid.Nickel_RCB');
+                if($dl === 4 && $lb === 1) $formation_id = config('const.Formationid.Dime');
                 if($formation_id === 0) $formation_id = config('const.Formationid.4-3');
 
                 $exists = $tfModel->leftJoin('formations', 'formations.id', '=', 'tf_relations.formation_id')

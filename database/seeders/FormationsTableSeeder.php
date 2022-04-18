@@ -119,5 +119,20 @@ class FormationsTableSeeder extends Seeder
             'odflg' => config('const.ODflg.defence'),
             'name' => '5-2'
         ]);
+        // Nickel(ニッケル) ※LCBが多い場合
+        Formation::create([
+            'odflg' => config('const.ODflg.defence'),
+            'name' => 'Nickel(LCB)'
+        ]);
+        // Nickel(ニッケル) ※RCBが多い場合
+        Formation::create([
+            'odflg' => config('const.ODflg.defence'),
+            'name' => 'Nickel(LCB)'
+        ]);
+        // Dime(ダイム)
+        Formation::create([
+            'odflg' => config('const.ODflg.defence'),
+            'name' => 'Dime'
+        ]);
     }
 }
