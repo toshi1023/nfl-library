@@ -15,6 +15,7 @@ class CreatePositionsTable extends Migration
     {
         Schema::create('positions', function (Blueprint $table) {
             $table->increments('id')->comment('ID');
+            $table->integer('abstract_category')->comment('抽象カテゴリー');
             $table->integer('category')->comment('カテゴリー');
             $table->string('name')->comment('名前');
             $table->timestamps();

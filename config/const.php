@@ -51,6 +51,13 @@ return [
         'K' => 23, 'P' => 24, 'LS' => 25,                                                                                               // Special Category
         'NOTHING' => 99
     ],
+    // positionsテーブルの抽象カテゴリ
+    'AbstCate' => [
+        'QB' => 1, 'RB' => 2, 'WR' => 3, 'TE' => 4, 'OL' => 5,          // Offence Category
+        'DL' => 6, 'LB' => 7, 'DB' => 8,                                // Deffece Category
+        'K' => 9, 'LS' => 10,                                           // Special Category
+        'NOTHING' => 99
+    ],
     // formationsテーブルのodflg
     'ODflg' => [
         'offence' => true,
