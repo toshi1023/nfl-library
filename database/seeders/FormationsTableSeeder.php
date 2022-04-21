@@ -134,5 +134,10 @@ class FormationsTableSeeder extends Seeder
             'odflg' => config('const.ODflg.defence'),
             'name' => 'Dime'
         ]);
+        // 46(フォーシックス)
+        Formation::create([
+            'odflg' => config('const.ODflg.defence'),
+            'name' => '46'
+        ]);
     }
 }

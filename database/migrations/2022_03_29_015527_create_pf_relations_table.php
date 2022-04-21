@@ -17,6 +17,7 @@ class CreatePfRelationsTable extends Migration
             $table->increments('id')->comment('ID');
             $table->integer('formation_id')->comment('formationsのID');
             $table->integer('position_category')->comment('positionsのcategory');
+            $table->integer('abstract_category')->comment('positionsのabstract_category');
             $table->timestamps();
         });
     }

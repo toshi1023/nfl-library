@@ -21,608 +21,751 @@ class PfRelationsTableSeeder extends Seeder
         // Tフォーメーション
         PfRelation::create([
             'formation_id'      => config('const.Formationid.T'),
-            'position_category' => config('const.Category.QB')
+            'position_category' => config('const.Category.QB'),
+            'abstract_category' => config('const.AbstCate.QB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.T'),
-            'position_category' => config('const.Category.HB')
+            'position_category' => config('const.Category.HB'),
+            'abstract_category' => config('const.AbstCate.RB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.T'),
-            'position_category' => config('const.Category.HB')
+            'position_category' => config('const.Category.HB'),
+            'abstract_category' => config('const.AbstCate.RB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.T'),
-            'position_category' => config('const.Category.FB')
+            'position_category' => config('const.Category.FB'),
+            'abstract_category' => config('const.AbstCate.RB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.T'),
-            'position_category' => config('const.Category.TE')
+            'position_category' => config('const.Category.TE'),
+            'abstract_category' => config('const.AbstCate.TE')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.T'),
-            'position_category' => config('const.Category.TE')
+            'position_category' => config('const.Category.TE'),
+            'abstract_category' => config('const.AbstCate.TE')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.T'),
-            'position_category' => config('const.Category.ROT')
+            'position_category' => config('const.Category.ROT'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.T'),
-            'position_category' => config('const.Category.LOT')
+            'position_category' => config('const.Category.LOT'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.T'),
-            'position_category' => config('const.Category.RG')
+            'position_category' => config('const.Category.RG'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.T'),
-            'position_category' => config('const.Category.LG')
+            'position_category' => config('const.Category.LG'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.T'),
-            'position_category' => config('const.Category.C')
+            'position_category' => config('const.Category.C'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
 
 
         // Iフォーメーション
         PfRelation::create([
             'formation_id'      => config('const.Formationid.I'),
-            'position_category' => config('const.Category.QB')
+            'position_category' => config('const.Category.QB'),
+            'abstract_category' => config('const.AbstCate.QB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.I'),
-            'position_category' => config('const.Category.HB')
+            'position_category' => config('const.Category.HB'),
+            'abstract_category' => config('const.AbstCate.RB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.I'),
-            'position_category' => config('const.Category.FB')
+            'position_category' => config('const.Category.FB'),
+            'abstract_category' => config('const.AbstCate.RB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.I'),
-            'position_category' => config('const.Category.WR')
+            'position_category' => config('const.Category.WR'),
+            'abstract_category' => config('const.AbstCate.WR')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.I'),
-            'position_category' => config('const.Category.WR')
+            'position_category' => config('const.Category.WR'),
+            'abstract_category' => config('const.AbstCate.WR')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.I'),
-            'position_category' => config('const.Category.TE')
+            'position_category' => config('const.Category.TE'),
+            'abstract_category' => config('const.AbstCate.TE')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.I'),
-            'position_category' => config('const.Category.ROT')
+            'position_category' => config('const.Category.ROT'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.I'),
-            'position_category' => config('const.Category.LOT')
+            'position_category' => config('const.Category.LOT'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.I'),
-            'position_category' => config('const.Category.RG')
+            'position_category' => config('const.Category.RG'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.I'),
-            'position_category' => config('const.Category.LG')
+            'position_category' => config('const.Category.LG'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.I'),
-            'position_category' => config('const.Category.C')
+            'position_category' => config('const.Category.C'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
 
 
         // シングルバック
         PfRelation::create([
             'formation_id'      => config('const.Formationid.SSB'),
-            'position_category' => config('const.Category.QB')
+            'position_category' => config('const.Category.QB'),
+            'abstract_category' => config('const.AbstCate.QB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.SSB'),
-            'position_category' => config('const.Category.HB')
+            'position_category' => config('const.Category.HB'),
+            'abstract_category' => config('const.AbstCate.RB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.SSB'),
-            'position_category' => config('const.Category.WR')
+            'position_category' => config('const.Category.WR'),
+            'abstract_category' => config('const.AbstCate.WR')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.SSB'),
-            'position_category' => config('const.Category.WR')
+            'position_category' => config('const.Category.WR'),
+            'abstract_category' => config('const.AbstCate.WR')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.SSB'),
-            'position_category' => config('const.Category.WR')
+            'position_category' => config('const.Category.WR'),
+            'abstract_category' => config('const.AbstCate.WR')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.SSB'),
-            'position_category' => config('const.Category.TE')
+            'position_category' => config('const.Category.TE'),
+            'abstract_category' => config('const.AbstCate.TE')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.SSB'),
-            'position_category' => config('const.Category.ROT')
+            'position_category' => config('const.Category.ROT'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.SSB'),
-            'position_category' => config('const.Category.LOT')
+            'position_category' => config('const.Category.LOT'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.SSB'),
-            'position_category' => config('const.Category.RG')
+            'position_category' => config('const.Category.RG'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.SSB'),
-            'position_category' => config('const.Category.LG')
+            'position_category' => config('const.Category.LG'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.SSB'),
-            'position_category' => config('const.Category.C')
+            'position_category' => config('const.Category.C'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
 
 
         // スプレッドフォーメーション
         PfRelation::create([
             'formation_id'      => config('const.Formationid.SF'),
-            'position_category' => config('const.Category.QB')
+            'position_category' => config('const.Category.QB'),
+            'abstract_category' => config('const.AbstCate.QB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.SF'),
-            'position_category' => config('const.Category.HB')
+            'position_category' => config('const.Category.HB'),
+            'abstract_category' => config('const.AbstCate.RB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.SF'),
-            'position_category' => config('const.Category.WR')
+            'position_category' => config('const.Category.WR'),
+            'abstract_category' => config('const.AbstCate.WR')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.SF'),
-            'position_category' => config('const.Category.WR')
+            'position_category' => config('const.Category.WR'),
+            'abstract_category' => config('const.AbstCate.WR')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.SF'),
-            'position_category' => config('const.Category.WR')
+            'position_category' => config('const.Category.WR'),
+            'abstract_category' => config('const.AbstCate.WR')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.SF'),
-            'position_category' => config('const.Category.WR')
+            'position_category' => config('const.Category.WR'),
+            'abstract_category' => config('const.AbstCate.WR')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.SF'),
-            'position_category' => config('const.Category.ROT')
+            'position_category' => config('const.Category.ROT'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.SF'),
-            'position_category' => config('const.Category.LOT')
+            'position_category' => config('const.Category.LOT'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.SF'),
-            'position_category' => config('const.Category.RG')
+            'position_category' => config('const.Category.RG'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.SF'),
-            'position_category' => config('const.Category.LG')
+            'position_category' => config('const.Category.LG'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.SF'),
-            'position_category' => config('const.Category.C')
+            'position_category' => config('const.Category.C'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
 
 
         // プロセット(スプリットバック) FB & HB
         PfRelation::create([
             'formation_id'      => config('const.Formationid.PSFH'),
-            'position_category' => config('const.Category.QB')
+            'position_category' => config('const.Category.QB'),
+            'abstract_category' => config('const.AbstCate.QB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.PSFH'),
-            'position_category' => config('const.Category.HB')
+            'position_category' => config('const.Category.HB'),
+            'abstract_category' => config('const.AbstCate.RB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.PSFH'),
-            'position_category' => config('const.Category.FB')
+            'position_category' => config('const.Category.FB'),
+            'abstract_category' => config('const.AbstCate.RB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.PSFH'),
-            'position_category' => config('const.Category.WR')
+            'position_category' => config('const.Category.WR'),
+            'abstract_category' => config('const.AbstCate.WR')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.PSFH'),
-            'position_category' => config('const.Category.WR')
+            'position_category' => config('const.Category.WR'),
+            'abstract_category' => config('const.AbstCate.WR')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.PSFH'),
-            'position_category' => config('const.Category.TE')
+            'position_category' => config('const.Category.TE'),
+            'abstract_category' => config('const.AbstCate.TE')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.PSFH'),
-            'position_category' => config('const.Category.ROT')
+            'position_category' => config('const.Category.ROT'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.PSFH'),
-            'position_category' => config('const.Category.LOT')
+            'position_category' => config('const.Category.LOT'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.PSFH'),
-            'position_category' => config('const.Category.RG')
+            'position_category' => config('const.Category.RG'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.PSFH'),
-            'position_category' => config('const.Category.LG')
+            'position_category' => config('const.Category.LG'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.PSFH'),
-            'position_category' => config('const.Category.C')
+            'position_category' => config('const.Category.C'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
 
         // プロセット(スプリットバック) HB & HB
         PfRelation::create([
             'formation_id'      => config('const.Formationid.PSHH'),
-            'position_category' => config('const.Category.QB')
+            'position_category' => config('const.Category.QB'),
+            'abstract_category' => config('const.AbstCate.QB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.PSHH'),
-            'position_category' => config('const.Category.HB')
+            'position_category' => config('const.Category.HB'),
+            'abstract_category' => config('const.AbstCate.RB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.PSHH'),
-            'position_category' => config('const.Category.HB')
+            'position_category' => config('const.Category.HB'),
+            'abstract_category' => config('const.AbstCate.RB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.PSHH'),
-            'position_category' => config('const.Category.WR')
+            'position_category' => config('const.Category.WR'),
+            'abstract_category' => config('const.AbstCate.WR')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.PSHH'),
-            'position_category' => config('const.Category.WR')
+            'position_category' => config('const.Category.WR'),
+            'abstract_category' => config('const.AbstCate.WR')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.PSHH'),
-            'position_category' => config('const.Category.TE')
+            'position_category' => config('const.Category.TE'),
+            'abstract_category' => config('const.AbstCate.TE')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.PSHH'),
-            'position_category' => config('const.Category.ROT')
+            'position_category' => config('const.Category.ROT'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.PSHH'),
-            'position_category' => config('const.Category.LOT')
+            'position_category' => config('const.Category.LOT'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.PSHH'),
-            'position_category' => config('const.Category.RG')
+            'position_category' => config('const.Category.RG'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.PSHH'),
-            'position_category' => config('const.Category.LG')
+            'position_category' => config('const.Category.LG'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.PSHH'),
-            'position_category' => config('const.Category.C')
+            'position_category' => config('const.Category.C'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
 
         // ショットガン
         PfRelation::create([
-            'formation_id'      => config('const.Formationid.PSHH'),
-            'position_category' => config('const.Category.QB')
+            'formation_id'      => config('const.Formationid.SG'),
+            'position_category' => config('const.Category.QB'),
+            'abstract_category' => config('const.AbstCate.QB')
         ]);
         PfRelation::create([
-            'formation_id'      => config('const.Formationid.PSHH'),
-            'position_category' => config('const.Category.HB')
+            'formation_id'      => config('const.Formationid.SG'),
+            'position_category' => config('const.Category.HB'),
+            'abstract_category' => config('const.AbstCate.RB')
         ]);
         PfRelation::create([
-            'formation_id'      => config('const.Formationid.PSHH'),
-            'position_category' => config('const.Category.WR')
+            'formation_id'      => config('const.Formationid.SG'),
+            'position_category' => config('const.Category.WR'),
+            'abstract_category' => config('const.AbstCate.WR')
         ]);
         PfRelation::create([
-            'formation_id'      => config('const.Formationid.PSHH'),
-            'position_category' => config('const.Category.WR')
+            'formation_id'      => config('const.Formationid.SG'),
+            'position_category' => config('const.Category.WR'),
+            'abstract_category' => config('const.AbstCate.WR')
         ]);
         PfRelation::create([
-            'formation_id'      => config('const.Formationid.PSHH'),
-            'position_category' => config('const.Category.WR')
+            'formation_id'      => config('const.Formationid.SG'),
+            'position_category' => config('const.Category.WR'),
+            'abstract_category' => config('const.AbstCate.WR')
         ]);
         PfRelation::create([
-            'formation_id'      => config('const.Formationid.PSHH'),
-            'position_category' => config('const.Category.TE')
+            'formation_id'      => config('const.Formationid.SG'),
+            'position_category' => config('const.Category.TE'),
+            'abstract_category' => config('const.AbstCate.TE')
         ]);
         PfRelation::create([
-            'formation_id'      => config('const.Formationid.PSHH'),
-            'position_category' => config('const.Category.ROT')
+            'formation_id'      => config('const.Formationid.SG'),
+            'position_category' => config('const.Category.ROT'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
         PfRelation::create([
-            'formation_id'      => config('const.Formationid.PSHH'),
-            'position_category' => config('const.Category.LOT')
+            'formation_id'      => config('const.Formationid.SG'),
+            'position_category' => config('const.Category.LOT'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
         PfRelation::create([
-            'formation_id'      => config('const.Formationid.PSHH'),
-            'position_category' => config('const.Category.RG')
+            'formation_id'      => config('const.Formationid.SG'),
+            'position_category' => config('const.Category.RG'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
         PfRelation::create([
-            'formation_id'      => config('const.Formationid.PSHH'),
-            'position_category' => config('const.Category.LG')
+            'formation_id'      => config('const.Formationid.SG'),
+            'position_category' => config('const.Category.LG'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
         PfRelation::create([
-            'formation_id'      => config('const.Formationid.PSHH'),
-            'position_category' => config('const.Category.C')
+            'formation_id'      => config('const.Formationid.SG'),
+            'position_category' => config('const.Category.C'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
 
 
         // ピストルフォーメーション
         PfRelation::create([
             'formation_id'      => config('const.Formationid.PF'),
-            'position_category' => config('const.Category.QB')
+            'position_category' => config('const.Category.QB'),
+            'abstract_category' => config('const.AbstCate.QB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.PF'),
-            'position_category' => config('const.Category.HB')
+            'position_category' => config('const.Category.HB'),
+            'abstract_category' => config('const.AbstCate.RB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.PF'),
-            'position_category' => config('const.Category.WR')
+            'position_category' => config('const.Category.WR'),
+            'abstract_category' => config('const.AbstCate.WR')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.PF'),
-            'position_category' => config('const.Category.WR')
+            'position_category' => config('const.Category.WR'),
+            'abstract_category' => config('const.AbstCate.WR')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.PF'),
-            'position_category' => config('const.Category.WR')
+            'position_category' => config('const.Category.WR'),
+            'abstract_category' => config('const.AbstCate.WR')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.PF'),
-            'position_category' => config('const.Category.TE')
+            'position_category' => config('const.Category.TE'),
+            'abstract_category' => config('const.AbstCate.TE')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.PF'),
-            'position_category' => config('const.Category.ROT')
+            'position_category' => config('const.Category.ROT'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.PF'),
-            'position_category' => config('const.Category.LOT')
+            'position_category' => config('const.Category.LOT'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.PF'),
-            'position_category' => config('const.Category.RG')
+            'position_category' => config('const.Category.RG'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.PF'),
-            'position_category' => config('const.Category.LG')
+            'position_category' => config('const.Category.LG'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.PF'),
-            'position_category' => config('const.Category.C')
+            'position_category' => config('const.Category.C'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
 
 
         // ウィッシュボーン
         PfRelation::create([
             'formation_id'      => config('const.Formationid.WB'),
-            'position_category' => config('const.Category.QB')
+            'position_category' => config('const.Category.QB'),
+            'abstract_category' => config('const.AbstCate.QB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.WB'),
-            'position_category' => config('const.Category.HB')
+            'position_category' => config('const.Category.HB'),
+            'abstract_category' => config('const.AbstCate.RB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.WB'),
-            'position_category' => config('const.Category.HB')
+            'position_category' => config('const.Category.HB'),
+            'abstract_category' => config('const.AbstCate.RB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.WB'),
-            'position_category' => config('const.Category.FB')
+            'position_category' => config('const.Category.FB'),
+            'abstract_category' => config('const.AbstCate.RB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.WB'),
-            'position_category' => config('const.Category.TE')
+            'position_category' => config('const.Category.TE'),
+            'abstract_category' => config('const.AbstCate.TE')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.WB'),
-            'position_category' => config('const.Category.TE')
+            'position_category' => config('const.Category.TE'),
+            'abstract_category' => config('const.AbstCate.TE')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.WB'),
-            'position_category' => config('const.Category.ROT')
+            'position_category' => config('const.Category.ROT'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.WB'),
-            'position_category' => config('const.Category.LOT')
+            'position_category' => config('const.Category.LOT'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.WB'),
-            'position_category' => config('const.Category.RG')
+            'position_category' => config('const.Category.RG'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.WB'),
-            'position_category' => config('const.Category.LG')
+            'position_category' => config('const.Category.LG'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.WB'),
-            'position_category' => config('const.Category.C')
+            'position_category' => config('const.Category.C'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
 
 
         // フレックスボーン(WRが4人バージョン)
         PfRelation::create([
             'formation_id'      => config('const.Formationid.FBW4'),
-            'position_category' => config('const.Category.QB')
+            'position_category' => config('const.Category.QB'),
+            'abstract_category' => config('const.AbstCate.QB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.FBW4'),
-            'position_category' => config('const.Category.FB')
+            'position_category' => config('const.Category.FB'),
+            'abstract_category' => config('const.AbstCate.RB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.FBW4'),
-            'position_category' => config('const.Category.WR')
+            'position_category' => config('const.Category.WR'),
+            'abstract_category' => config('const.AbstCate.WR')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.FBW4'),
-            'position_category' => config('const.Category.WR')
+            'position_category' => config('const.Category.WR'),
+            'abstract_category' => config('const.AbstCate.WR')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.FBW4'),
-            'position_category' => config('const.Category.WR')
+            'position_category' => config('const.Category.WR'),
+            'abstract_category' => config('const.AbstCate.WR')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.FBW4'),
-            'position_category' => config('const.Category.WR')
+            'position_category' => config('const.Category.WR'),
+            'abstract_category' => config('const.AbstCate.WR')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.FBW4'),
-            'position_category' => config('const.Category.ROT')
+            'position_category' => config('const.Category.ROT'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.FBW4'),
-            'position_category' => config('const.Category.LOT')
+            'position_category' => config('const.Category.LOT'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.FBW4'),
-            'position_category' => config('const.Category.RG')
+            'position_category' => config('const.Category.RG'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.FBW4'),
-            'position_category' => config('const.Category.LG')
+            'position_category' => config('const.Category.LG'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.FBW4'),
-            'position_category' => config('const.Category.C')
+            'position_category' => config('const.Category.C'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
 
         // フレックスボーン(WRが2人・TEが2人バージョン)
         PfRelation::create([
             'formation_id'      => config('const.Formationid.FBWT'),
-            'position_category' => config('const.Category.QB')
+            'position_category' => config('const.Category.QB'),
+            'abstract_category' => config('const.AbstCate.QB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.FBWT'),
-            'position_category' => config('const.Category.FB')
+            'position_category' => config('const.Category.FB'),
+            'abstract_category' => config('const.AbstCate.RB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.FBWT'),
-            'position_category' => config('const.Category.WR')
+            'position_category' => config('const.Category.WR'),
+            'abstract_category' => config('const.AbstCate.WR')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.FBWT'),
-            'position_category' => config('const.Category.WR')
+            'position_category' => config('const.Category.WR'),
+            'abstract_category' => config('const.AbstCate.WR')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.FBWT'),
-            'position_category' => config('const.Category.WR')
+            'position_category' => config('const.Category.WR'),
+            'abstract_category' => config('const.AbstCate.WR')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.FBWT'),
-            'position_category' => config('const.Category.WR')
+            'position_category' => config('const.Category.WR'),
+            'abstract_category' => config('const.AbstCate.WR')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.FBWT'),
-            'position_category' => config('const.Category.ROT')
+            'position_category' => config('const.Category.ROT'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.FBWT'),
-            'position_category' => config('const.Category.LOT')
+            'position_category' => config('const.Category.LOT'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.FBWT'),
-            'position_category' => config('const.Category.RG')
+            'position_category' => config('const.Category.RG'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.FBWT'),
-            'position_category' => config('const.Category.LG')
+            'position_category' => config('const.Category.LG'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.FBWT'),
-            'position_category' => config('const.Category.C')
+            'position_category' => config('const.Category.C'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
 
 
         // ウィングT
         PfRelation::create([
             'formation_id'      => config('const.Formationid.WT'),
-            'position_category' => config('const.Category.QB')
+            'position_category' => config('const.Category.QB'),
+            'abstract_category' => config('const.AbstCate.QB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.WT'),
-            'position_category' => config('const.Category.HB')
+            'position_category' => config('const.Category.HB'),
+            'abstract_category' => config('const.AbstCate.RB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.WT'),
-            'position_category' => config('const.Category.FB')
+            'position_category' => config('const.Category.FB'),
+            'abstract_category' => config('const.AbstCate.RB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.WT'),
-            'position_category' => config('const.Category.WR')
+            'position_category' => config('const.Category.WR'),
+            'abstract_category' => config('const.AbstCate.WR')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.WT'),
-            'position_category' => config('const.Category.WR')
+            'position_category' => config('const.Category.WR'),
+            'abstract_category' => config('const.AbstCate.WR')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.WT'),
-            'position_category' => config('const.Category.TE')
+            'position_category' => config('const.Category.TE'),
+            'abstract_category' => config('const.AbstCate.TE')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.WT'),
-            'position_category' => config('const.Category.ROT')
+            'position_category' => config('const.Category.ROT'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.WT'),
-            'position_category' => config('const.Category.LOT')
+            'position_category' => config('const.Category.LOT'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.WT'),
-            'position_category' => config('const.Category.RG')
+            'position_category' => config('const.Category.RG'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.WT'),
-            'position_category' => config('const.Category.LG')
+            'position_category' => config('const.Category.LG'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.WT'),
-            'position_category' => config('const.Category.C')
+            'position_category' => config('const.Category.C'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
 
 
         // エンプティバックフィールド
         PfRelation::create([
             'formation_id'      => config('const.Formationid.EB'),
-            'position_category' => config('const.Category.QB')
+            'position_category' => config('const.Category.QB'),
+            'abstract_category' => config('const.AbstCate.QB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.EB'),
-            'position_category' => config('const.Category.WR')
+            'position_category' => config('const.Category.WR'),
+            'abstract_category' => config('const.AbstCate.WR')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.EB'),
-            'position_category' => config('const.Category.WR')
+            'position_category' => config('const.Category.WR'),
+            'abstract_category' => config('const.AbstCate.WR')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.EB'),
-            'position_category' => config('const.Category.WR')
+            'position_category' => config('const.Category.WR'),
+            'abstract_category' => config('const.AbstCate.WR')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.EB'),
-            'position_category' => config('const.Category.WR')
+            'position_category' => config('const.Category.WR'),
+            'abstract_category' => config('const.AbstCate.WR')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.EB'),
-            'position_category' => config('const.Category.WR')
+            'position_category' => config('const.Category.WR'),
+            'abstract_category' => config('const.AbstCate.WR')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.EB'),
-            'position_category' => config('const.Category.ROT')
+            'position_category' => config('const.Category.ROT'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.EB'),
-            'position_category' => config('const.Category.LOT')
+            'position_category' => config('const.Category.LOT'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.EB'),
-            'position_category' => config('const.Category.RG')
+            'position_category' => config('const.Category.RG'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.EB'),
-            'position_category' => config('const.Category.LG')
+            'position_category' => config('const.Category.LG'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.EB'),
-            'position_category' => config('const.Category.C')
+            'position_category' => config('const.Category.C'),
+            'abstract_category' => config('const.AbstCate.OL')
         ]);
 
 
@@ -633,326 +776,1452 @@ class PfRelationsTableSeeder extends Seeder
         // 3-4
         PfRelation::create([
             'formation_id'      => config('const.Formationid.3-4'),
-            'position_category' => config('const.Category.NT')
+            'position_category' => config('const.Category.NT'),
+            'abstract_category' => config('const.AbstCate.DL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.3-4'),
-            'position_category' => config('const.Category.RDE')
+            'position_category' => config('const.Category.RDE'),
+            'abstract_category' => config('const.AbstCate.DL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.3-4'),
-            'position_category' => config('const.Category.LDE')
+            'position_category' => config('const.Category.LDE'),
+            'abstract_category' => config('const.AbstCate.DL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.3-4'),
-            'position_category' => config('const.Category.MLB')
+            'position_category' => config('const.Category.MLB'),
+            'abstract_category' => config('const.AbstCate.LB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.3-4'),
-            'position_category' => config('const.Category.MLB')
+            'position_category' => config('const.Category.MLB'),
+            'abstract_category' => config('const.AbstCate.LB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.3-4'),
-            'position_category' => config('const.Category.RLB')
+            'position_category' => config('const.Category.RLB'),
+            'abstract_category' => config('const.AbstCate.LB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.3-4'),
-            'position_category' => config('const.Category.LLB')
+            'position_category' => config('const.Category.LLB'),
+            'abstract_category' => config('const.AbstCate.LB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.3-4'),
-            'position_category' => config('const.Category.RCB')
+            'position_category' => config('const.Category.RCB'),
+            'abstract_category' => config('const.AbstCate.DB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.3-4'),
-            'position_category' => config('const.Category.LCB')
+            'position_category' => config('const.Category.LCB'),
+            'abstract_category' => config('const.AbstCate.DB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.3-4'),
-            'position_category' => config('const.Category.SS')
+            'position_category' => config('const.Category.SS'),
+            'abstract_category' => config('const.AbstCate.DB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.3-4'),
-            'position_category' => config('const.Category.FS')
+            'position_category' => config('const.Category.FS'),
+            'abstract_category' => config('const.AbstCate.DB')
         ]);
 
 
         // 4-3
         PfRelation::create([
             'formation_id'      => config('const.Formationid.4-3'),
-            'position_category' => config('const.Category.RDT')
+            'position_category' => config('const.Category.RDT'),
+            'abstract_category' => config('const.AbstCate.DL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.4-3'),
-            'position_category' => config('const.Category.LDT')
+            'position_category' => config('const.Category.LDT'),
+            'abstract_category' => config('const.AbstCate.DL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.4-3'),
-            'position_category' => config('const.Category.RDE')
+            'position_category' => config('const.Category.RDE'),
+            'abstract_category' => config('const.AbstCate.DL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.4-3'),
-            'position_category' => config('const.Category.LDE')
+            'position_category' => config('const.Category.LDE'),
+            'abstract_category' => config('const.AbstCate.DL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.4-3'),
-            'position_category' => config('const.Category.MLB')
+            'position_category' => config('const.Category.MLB'),
+            'abstract_category' => config('const.AbstCate.LB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.4-3'),
-            'position_category' => config('const.Category.RLB')
+            'position_category' => config('const.Category.RLB'),
+            'abstract_category' => config('const.AbstCate.LB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.4-3'),
-            'position_category' => config('const.Category.LLB')
+            'position_category' => config('const.Category.LLB'),
+            'abstract_category' => config('const.AbstCate.LB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.4-3'),
-            'position_category' => config('const.Category.RCB')
+            'position_category' => config('const.Category.RCB'),
+            'abstract_category' => config('const.AbstCate.DB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.4-3'),
-            'position_category' => config('const.Category.LCB')
+            'position_category' => config('const.Category.LCB'),
+            'abstract_category' => config('const.AbstCate.DB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.4-3'),
-            'position_category' => config('const.Category.SS')
+            'position_category' => config('const.Category.SS'),
+            'abstract_category' => config('const.AbstCate.DB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.4-3'),
-            'position_category' => config('const.Category.FS')
+            'position_category' => config('const.Category.FS'),
+            'abstract_category' => config('const.AbstCate.DB')
         ]);
 
 
         // 4-4
         PfRelation::create([
             'formation_id'      => config('const.Formationid.4-4'),
-            'position_category' => config('const.Category.RDT')
+            'position_category' => config('const.Category.RDT'),
+            'abstract_category' => config('const.AbstCate.DL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.4-4'),
-            'position_category' => config('const.Category.LDT')
+            'position_category' => config('const.Category.LDT'),
+            'abstract_category' => config('const.AbstCate.DL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.4-4'),
-            'position_category' => config('const.Category.RDE')
+            'position_category' => config('const.Category.RDE'),
+            'abstract_category' => config('const.AbstCate.DL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.4-4'),
-            'position_category' => config('const.Category.LDE')
+            'position_category' => config('const.Category.LDE'),
+            'abstract_category' => config('const.AbstCate.DL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.4-4'),
-            'position_category' => config('const.Category.MLB')
+            'position_category' => config('const.Category.MLB'),
+            'abstract_category' => config('const.AbstCate.LB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.4-4'),
-            'position_category' => config('const.Category.MLB')
+            'position_category' => config('const.Category.MLB'),
+            'abstract_category' => config('const.AbstCate.LB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.4-4'),
-            'position_category' => config('const.Category.RLB')
+            'position_category' => config('const.Category.RLB'),
+            'abstract_category' => config('const.AbstCate.LB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.4-4'),
-            'position_category' => config('const.Category.LLB')
+            'position_category' => config('const.Category.LLB'),
+            'abstract_category' => config('const.AbstCate.LB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.4-4'),
-            'position_category' => config('const.Category.RCB')
+            'position_category' => config('const.Category.RCB'),
+            'abstract_category' => config('const.AbstCate.DB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.4-4'),
-            'position_category' => config('const.Category.LCB')
+            'position_category' => config('const.Category.LCB'),
+            'abstract_category' => config('const.AbstCate.DB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.4-4'),
-            'position_category' => config('const.Category.SS')
+            'position_category' => config('const.Category.SS'),
+            'abstract_category' => config('const.AbstCate.DB')
         ]);
 
 
         // 5-2
         PfRelation::create([
             'formation_id'      => config('const.Formationid.5-2'),
-            'position_category' => config('const.Category.NT')
+            'position_category' => config('const.Category.NT'),
+            'abstract_category' => config('const.AbstCate.DL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.5-2'),
-            'position_category' => config('const.Category.RDT')
+            'position_category' => config('const.Category.RDT'),
+            'abstract_category' => config('const.AbstCate.DL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.5-2'),
-            'position_category' => config('const.Category.LDT')
+            'position_category' => config('const.Category.LDT'),
+            'abstract_category' => config('const.AbstCate.DL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.5-2'),
-            'position_category' => config('const.Category.RDE')
+            'position_category' => config('const.Category.RDE'),
+            'abstract_category' => config('const.AbstCate.DL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.5-2'),
-            'position_category' => config('const.Category.LDE')
+            'position_category' => config('const.Category.LDE'),
+            'abstract_category' => config('const.AbstCate.DL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.5-2'),
-            'position_category' => config('const.Category.MLB')
+            'position_category' => config('const.Category.MLB'),
+            'abstract_category' => config('const.AbstCate.LB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.5-2'),
-            'position_category' => config('const.Category.MLB')
+            'position_category' => config('const.Category.MLB'),
+            'abstract_category' => config('const.AbstCate.LB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.5-2'),
-            'position_category' => config('const.Category.RCB')
+            'position_category' => config('const.Category.RCB'),
+            'abstract_category' => config('const.AbstCate.DB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.5-2'),
-            'position_category' => config('const.Category.LCB')
+            'position_category' => config('const.Category.LCB'),
+            'abstract_category' => config('const.AbstCate.DB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.5-2'),
-            'position_category' => config('const.Category.SS')
+            'position_category' => config('const.Category.SS'),
+            'abstract_category' => config('const.AbstCate.DB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.5-2'),
-            'position_category' => config('const.Category.FS')
+            'position_category' => config('const.Category.FS'),
+            'abstract_category' => config('const.AbstCate.DB')
         ]);
 
         // Nickel(LCB)
         PfRelation::create([
             'formation_id'      => config('const.Formationid.Nickel_LCB'),
-            'position_category' => config('const.Category.RDT')
+            'position_category' => config('const.Category.RDT'),
+            'abstract_category' => config('const.AbstCate.DL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.Nickel_LCB'),
-            'position_category' => config('const.Category.LDT')
+            'position_category' => config('const.Category.LDT'),
+            'abstract_category' => config('const.AbstCate.DL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.Nickel_LCB'),
-            'position_category' => config('const.Category.RDE')
+            'position_category' => config('const.Category.RDE'),
+            'abstract_category' => config('const.AbstCate.DL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.Nickel_LCB'),
-            'position_category' => config('const.Category.LDE')
+            'position_category' => config('const.Category.LDE'),
+            'abstract_category' => config('const.AbstCate.DL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.Nickel_LCB'),
-            'position_category' => config('const.Category.RLB')
+            'position_category' => config('const.Category.RLB'),
+            'abstract_category' => config('const.AbstCate.LB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.Nickel_LCB'),
-            'position_category' => config('const.Category.LLB')
+            'position_category' => config('const.Category.LLB'),
+            'abstract_category' => config('const.AbstCate.LB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.Nickel_LCB'),
-            'position_category' => config('const.Category.RCB')
+            'position_category' => config('const.Category.RCB'),
+            'abstract_category' => config('const.AbstCate.DB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.Nickel_LCB'),
-            'position_category' => config('const.Category.LCB')
+            'position_category' => config('const.Category.LCB'),
+            'abstract_category' => config('const.AbstCate.DB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.Nickel_LCB'),
-            'position_category' => config('const.Category.LCB')
+            'position_category' => config('const.Category.LCB'),
+            'abstract_category' => config('const.AbstCate.DB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.Nickel_LCB'),
-            'position_category' => config('const.Category.SS')
+            'position_category' => config('const.Category.SS'),
+            'abstract_category' => config('const.AbstCate.DB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.Nickel_LCB'),
-            'position_category' => config('const.Category.FS')
+            'position_category' => config('const.Category.FS'),
+            'abstract_category' => config('const.AbstCate.DB')
         ]);
 
         // Nickel(RCB)
         PfRelation::create([
             'formation_id'      => config('const.Formationid.Nickel_RCB'),
-            'position_category' => config('const.Category.RDT')
+            'position_category' => config('const.Category.RDT'),
+            'abstract_category' => config('const.AbstCate.DL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.Nickel_RCB'),
-            'position_category' => config('const.Category.LDT')
+            'position_category' => config('const.Category.LDT'),
+            'abstract_category' => config('const.AbstCate.DL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.Nickel_RCB'),
-            'position_category' => config('const.Category.RDE')
+            'position_category' => config('const.Category.RDE'),
+            'abstract_category' => config('const.AbstCate.DL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.Nickel_RCB'),
-            'position_category' => config('const.Category.LDE')
+            'position_category' => config('const.Category.LDE'),
+            'abstract_category' => config('const.AbstCate.DL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.Nickel_RCB'),
-            'position_category' => config('const.Category.RLB')
+            'position_category' => config('const.Category.RLB'),
+            'abstract_category' => config('const.AbstCate.LB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.Nickel_RCB'),
-            'position_category' => config('const.Category.LLB')
+            'position_category' => config('const.Category.LLB'),
+            'abstract_category' => config('const.AbstCate.LB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.Nickel_RCB'),
-            'position_category' => config('const.Category.RCB')
+            'position_category' => config('const.Category.RCB'),
+            'abstract_category' => config('const.AbstCate.DB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.Nickel_RCB'),
-            'position_category' => config('const.Category.RCB')
+            'position_category' => config('const.Category.RCB'),
+            'abstract_category' => config('const.AbstCate.DB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.Nickel_RCB'),
-            'position_category' => config('const.Category.LCB')
+            'position_category' => config('const.Category.LCB'),
+            'abstract_category' => config('const.AbstCate.DB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.Nickel_RCB'),
-            'position_category' => config('const.Category.SS')
+            'position_category' => config('const.Category.SS'),
+            'abstract_category' => config('const.AbstCate.DB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.Nickel_RCB'),
-            'position_category' => config('const.Category.FS')
+            'position_category' => config('const.Category.FS'),
+            'abstract_category' => config('const.AbstCate.DB')
         ]);
 
         // Dime
         PfRelation::create([
             'formation_id'      => config('const.Formationid.Dime'),
-            'position_category' => config('const.Category.RDT')
+            'position_category' => config('const.Category.RDT'),
+            'abstract_category' => config('const.AbstCate.DL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.Dime'),
-            'position_category' => config('const.Category.LDT')
+            'position_category' => config('const.Category.LDT'),
+            'abstract_category' => config('const.AbstCate.DL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.Dime'),
-            'position_category' => config('const.Category.RDE')
+            'position_category' => config('const.Category.RDE'),
+            'abstract_category' => config('const.AbstCate.DL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.Dime'),
-            'position_category' => config('const.Category.LDE')
+            'position_category' => config('const.Category.LDE'),
+            'abstract_category' => config('const.AbstCate.DL')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.Dime'),
-            'position_category' => config('const.Category.MLB')
+            'position_category' => config('const.Category.MLB'),
+            'abstract_category' => config('const.AbstCate.LB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.Dime'),
-            'position_category' => config('const.Category.RCB')
+            'position_category' => config('const.Category.RCB'),
+            'abstract_category' => config('const.AbstCate.DB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.Dime'),
-            'position_category' => config('const.Category.RCB')
+            'position_category' => config('const.Category.RCB'),
+            'abstract_category' => config('const.AbstCate.DB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.Dime'),
-            'position_category' => config('const.Category.LCB')
+            'position_category' => config('const.Category.LCB'),
+            'abstract_category' => config('const.AbstCate.DB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.Dime'),
-            'position_category' => config('const.Category.LCB')
+            'position_category' => config('const.Category.LCB'),
+            'abstract_category' => config('const.AbstCate.DB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.Dime'),
-            'position_category' => config('const.Category.SS')
+            'position_category' => config('const.Category.SS'),
+            'abstract_category' => config('const.AbstCate.DB')
         ]);
         PfRelation::create([
             'formation_id'      => config('const.Formationid.Dime'),
-            'position_category' => config('const.Category.FS')
+            'position_category' => config('const.Category.FS'),
+            'abstract_category' => config('const.AbstCate.DB')
         ]);
+
+        // 46
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.46'),
+            'position_category' => config('const.Category.RDT'),
+            'abstract_category' => config('const.AbstCate.DL')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.46'),
+            'position_category' => config('const.Category.RDT'),
+            'abstract_category' => config('const.AbstCate.DL')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.46'),
+            'position_category' => config('const.Category.LDT'),
+            'abstract_category' => config('const.AbstCate.DL')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.46'),
+            'position_category' => config('const.Category.LDT'),
+            'abstract_category' => config('const.AbstCate.DL')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.46'),
+            'position_category' => config('const.Category.RDE'),
+            'abstract_category' => config('const.AbstCate.DL')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.46'),
+            'position_category' => config('const.Category.LDE'),
+            'abstract_category' => config('const.AbstCate.DL')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.46'),
+            'position_category' => config('const.Category.MLB'),
+            'abstract_category' => config('const.AbstCate.LB')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.46'),
+            'position_category' => config('const.Category.RCB'),
+            'abstract_category' => config('const.AbstCate.DB')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.46'),
+            'position_category' => config('const.Category.LCB'),
+            'abstract_category' => config('const.AbstCate.DB')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.46'),
+            'position_category' => config('const.Category.SS'),
+            'abstract_category' => config('const.AbstCate.DB')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.46'),
+            'position_category' => config('const.Category.FS'),
+            'abstract_category' => config('const.AbstCate.DB')
+        ]);
+
+
+
+
+        // 旧データ
+
+        // /** 
+        //  *  Offence Category
+        //  **/
+
+        // // Tフォーメーション
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.T'),
+        //     'position_category' => config('const.Category.QB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.T'),
+        //     'position_category' => config('const.Category.HB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.T'),
+        //     'position_category' => config('const.Category.HB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.T'),
+        //     'position_category' => config('const.Category.FB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.T'),
+        //     'position_category' => config('const.Category.TE')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.T'),
+        //     'position_category' => config('const.Category.TE')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.T'),
+        //     'position_category' => config('const.Category.ROT')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.T'),
+        //     'position_category' => config('const.Category.LOT')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.T'),
+        //     'position_category' => config('const.Category.RG')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.T'),
+        //     'position_category' => config('const.Category.LG')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.T'),
+        //     'position_category' => config('const.Category.C')
+        // ]);
+
+
+        // // Iフォーメーション
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.I'),
+        //     'position_category' => config('const.Category.QB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.I'),
+        //     'position_category' => config('const.Category.HB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.I'),
+        //     'position_category' => config('const.Category.FB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.I'),
+        //     'position_category' => config('const.Category.WR')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.I'),
+        //     'position_category' => config('const.Category.WR')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.I'),
+        //     'position_category' => config('const.Category.TE')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.I'),
+        //     'position_category' => config('const.Category.ROT')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.I'),
+        //     'position_category' => config('const.Category.LOT')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.I'),
+        //     'position_category' => config('const.Category.RG')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.I'),
+        //     'position_category' => config('const.Category.LG')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.I'),
+        //     'position_category' => config('const.Category.C')
+        // ]);
+
+
+        // // シングルバック
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.SSB'),
+        //     'position_category' => config('const.Category.QB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.SSB'),
+        //     'position_category' => config('const.Category.HB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.SSB'),
+        //     'position_category' => config('const.Category.WR')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.SSB'),
+        //     'position_category' => config('const.Category.WR')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.SSB'),
+        //     'position_category' => config('const.Category.WR')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.SSB'),
+        //     'position_category' => config('const.Category.TE')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.SSB'),
+        //     'position_category' => config('const.Category.ROT')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.SSB'),
+        //     'position_category' => config('const.Category.LOT')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.SSB'),
+        //     'position_category' => config('const.Category.RG')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.SSB'),
+        //     'position_category' => config('const.Category.LG')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.SSB'),
+        //     'position_category' => config('const.Category.C')
+        // ]);
+
+
+        // // スプレッドフォーメーション
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.SF'),
+        //     'position_category' => config('const.Category.QB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.SF'),
+        //     'position_category' => config('const.Category.HB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.SF'),
+        //     'position_category' => config('const.Category.WR')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.SF'),
+        //     'position_category' => config('const.Category.WR')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.SF'),
+        //     'position_category' => config('const.Category.WR')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.SF'),
+        //     'position_category' => config('const.Category.WR')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.SF'),
+        //     'position_category' => config('const.Category.ROT')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.SF'),
+        //     'position_category' => config('const.Category.LOT')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.SF'),
+        //     'position_category' => config('const.Category.RG')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.SF'),
+        //     'position_category' => config('const.Category.LG')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.SF'),
+        //     'position_category' => config('const.Category.C')
+        // ]);
+
+
+        // // プロセット(スプリットバック) FB & HB
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.PSFH'),
+        //     'position_category' => config('const.Category.QB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.PSFH'),
+        //     'position_category' => config('const.Category.HB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.PSFH'),
+        //     'position_category' => config('const.Category.FB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.PSFH'),
+        //     'position_category' => config('const.Category.WR')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.PSFH'),
+        //     'position_category' => config('const.Category.WR')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.PSFH'),
+        //     'position_category' => config('const.Category.TE')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.PSFH'),
+        //     'position_category' => config('const.Category.ROT')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.PSFH'),
+        //     'position_category' => config('const.Category.LOT')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.PSFH'),
+        //     'position_category' => config('const.Category.RG')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.PSFH'),
+        //     'position_category' => config('const.Category.LG')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.PSFH'),
+        //     'position_category' => config('const.Category.C')
+        // ]);
+
+        // // プロセット(スプリットバック) HB & HB
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.PSHH'),
+        //     'position_category' => config('const.Category.QB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.PSHH'),
+        //     'position_category' => config('const.Category.HB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.PSHH'),
+        //     'position_category' => config('const.Category.HB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.PSHH'),
+        //     'position_category' => config('const.Category.WR')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.PSHH'),
+        //     'position_category' => config('const.Category.WR')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.PSHH'),
+        //     'position_category' => config('const.Category.TE')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.PSHH'),
+        //     'position_category' => config('const.Category.ROT')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.PSHH'),
+        //     'position_category' => config('const.Category.LOT')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.PSHH'),
+        //     'position_category' => config('const.Category.RG')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.PSHH'),
+        //     'position_category' => config('const.Category.LG')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.PSHH'),
+        //     'position_category' => config('const.Category.C')
+        // ]);
+
+        // // ショットガン
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.PSHH'),
+        //     'position_category' => config('const.Category.QB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.PSHH'),
+        //     'position_category' => config('const.Category.HB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.PSHH'),
+        //     'position_category' => config('const.Category.WR')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.PSHH'),
+        //     'position_category' => config('const.Category.WR')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.PSHH'),
+        //     'position_category' => config('const.Category.WR')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.PSHH'),
+        //     'position_category' => config('const.Category.TE')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.PSHH'),
+        //     'position_category' => config('const.Category.ROT')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.PSHH'),
+        //     'position_category' => config('const.Category.LOT')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.PSHH'),
+        //     'position_category' => config('const.Category.RG')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.PSHH'),
+        //     'position_category' => config('const.Category.LG')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.PSHH'),
+        //     'position_category' => config('const.Category.C')
+        // ]);
+
+
+        // // ピストルフォーメーション
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.PF'),
+        //     'position_category' => config('const.Category.QB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.PF'),
+        //     'position_category' => config('const.Category.HB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.PF'),
+        //     'position_category' => config('const.Category.WR')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.PF'),
+        //     'position_category' => config('const.Category.WR')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.PF'),
+        //     'position_category' => config('const.Category.WR')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.PF'),
+        //     'position_category' => config('const.Category.TE')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.PF'),
+        //     'position_category' => config('const.Category.ROT')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.PF'),
+        //     'position_category' => config('const.Category.LOT')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.PF'),
+        //     'position_category' => config('const.Category.RG')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.PF'),
+        //     'position_category' => config('const.Category.LG')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.PF'),
+        //     'position_category' => config('const.Category.C')
+        // ]);
+
+
+        // // ウィッシュボーン
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.WB'),
+        //     'position_category' => config('const.Category.QB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.WB'),
+        //     'position_category' => config('const.Category.HB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.WB'),
+        //     'position_category' => config('const.Category.HB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.WB'),
+        //     'position_category' => config('const.Category.FB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.WB'),
+        //     'position_category' => config('const.Category.TE')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.WB'),
+        //     'position_category' => config('const.Category.TE')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.WB'),
+        //     'position_category' => config('const.Category.ROT')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.WB'),
+        //     'position_category' => config('const.Category.LOT')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.WB'),
+        //     'position_category' => config('const.Category.RG')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.WB'),
+        //     'position_category' => config('const.Category.LG')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.WB'),
+        //     'position_category' => config('const.Category.C')
+        // ]);
+
+
+        // // フレックスボーン(WRが4人バージョン)
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.FBW4'),
+        //     'position_category' => config('const.Category.QB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.FBW4'),
+        //     'position_category' => config('const.Category.FB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.FBW4'),
+        //     'position_category' => config('const.Category.WR')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.FBW4'),
+        //     'position_category' => config('const.Category.WR')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.FBW4'),
+        //     'position_category' => config('const.Category.WR')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.FBW4'),
+        //     'position_category' => config('const.Category.WR')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.FBW4'),
+        //     'position_category' => config('const.Category.ROT')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.FBW4'),
+        //     'position_category' => config('const.Category.LOT')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.FBW4'),
+        //     'position_category' => config('const.Category.RG')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.FBW4'),
+        //     'position_category' => config('const.Category.LG')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.FBW4'),
+        //     'position_category' => config('const.Category.C')
+        // ]);
+
+        // // フレックスボーン(WRが2人・TEが2人バージョン)
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.FBWT'),
+        //     'position_category' => config('const.Category.QB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.FBWT'),
+        //     'position_category' => config('const.Category.FB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.FBWT'),
+        //     'position_category' => config('const.Category.WR')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.FBWT'),
+        //     'position_category' => config('const.Category.WR')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.FBWT'),
+        //     'position_category' => config('const.Category.WR')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.FBWT'),
+        //     'position_category' => config('const.Category.WR')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.FBWT'),
+        //     'position_category' => config('const.Category.ROT')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.FBWT'),
+        //     'position_category' => config('const.Category.LOT')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.FBWT'),
+        //     'position_category' => config('const.Category.RG')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.FBWT'),
+        //     'position_category' => config('const.Category.LG')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.FBWT'),
+        //     'position_category' => config('const.Category.C')
+        // ]);
+
+
+        // // ウィングT
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.WT'),
+        //     'position_category' => config('const.Category.QB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.WT'),
+        //     'position_category' => config('const.Category.HB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.WT'),
+        //     'position_category' => config('const.Category.FB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.WT'),
+        //     'position_category' => config('const.Category.WR')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.WT'),
+        //     'position_category' => config('const.Category.WR')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.WT'),
+        //     'position_category' => config('const.Category.TE')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.WT'),
+        //     'position_category' => config('const.Category.ROT')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.WT'),
+        //     'position_category' => config('const.Category.LOT')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.WT'),
+        //     'position_category' => config('const.Category.RG')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.WT'),
+        //     'position_category' => config('const.Category.LG')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.WT'),
+        //     'position_category' => config('const.Category.C')
+        // ]);
+
+
+        // // エンプティバックフィールド
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.EB'),
+        //     'position_category' => config('const.Category.QB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.EB'),
+        //     'position_category' => config('const.Category.WR')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.EB'),
+        //     'position_category' => config('const.Category.WR')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.EB'),
+        //     'position_category' => config('const.Category.WR')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.EB'),
+        //     'position_category' => config('const.Category.WR')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.EB'),
+        //     'position_category' => config('const.Category.WR')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.EB'),
+        //     'position_category' => config('const.Category.ROT')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.EB'),
+        //     'position_category' => config('const.Category.LOT')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.EB'),
+        //     'position_category' => config('const.Category.RG')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.EB'),
+        //     'position_category' => config('const.Category.LG')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.EB'),
+        //     'position_category' => config('const.Category.C')
+        // ]);
+
+
+        // /** 
+        //  *  Defence Category
+        //  **/
+
+        // // 3-4
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.3-4'),
+        //     'position_category' => config('const.Category.NT')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.3-4'),
+        //     'position_category' => config('const.Category.RDE')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.3-4'),
+        //     'position_category' => config('const.Category.LDE')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.3-4'),
+        //     'position_category' => config('const.Category.MLB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.3-4'),
+        //     'position_category' => config('const.Category.MLB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.3-4'),
+        //     'position_category' => config('const.Category.RLB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.3-4'),
+        //     'position_category' => config('const.Category.LLB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.3-4'),
+        //     'position_category' => config('const.Category.RCB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.3-4'),
+        //     'position_category' => config('const.Category.LCB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.3-4'),
+        //     'position_category' => config('const.Category.SS')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.3-4'),
+        //     'position_category' => config('const.Category.FS')
+        // ]);
+
+
+        // // 4-3
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.4-3'),
+        //     'position_category' => config('const.Category.RDT')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.4-3'),
+        //     'position_category' => config('const.Category.LDT')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.4-3'),
+        //     'position_category' => config('const.Category.RDE')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.4-3'),
+        //     'position_category' => config('const.Category.LDE')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.4-3'),
+        //     'position_category' => config('const.Category.MLB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.4-3'),
+        //     'position_category' => config('const.Category.RLB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.4-3'),
+        //     'position_category' => config('const.Category.LLB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.4-3'),
+        //     'position_category' => config('const.Category.RCB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.4-3'),
+        //     'position_category' => config('const.Category.LCB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.4-3'),
+        //     'position_category' => config('const.Category.SS')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.4-3'),
+        //     'position_category' => config('const.Category.FS')
+        // ]);
+
+
+        // // 4-4
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.4-4'),
+        //     'position_category' => config('const.Category.RDT')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.4-4'),
+        //     'position_category' => config('const.Category.LDT')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.4-4'),
+        //     'position_category' => config('const.Category.RDE')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.4-4'),
+        //     'position_category' => config('const.Category.LDE')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.4-4'),
+        //     'position_category' => config('const.Category.MLB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.4-4'),
+        //     'position_category' => config('const.Category.MLB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.4-4'),
+        //     'position_category' => config('const.Category.RLB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.4-4'),
+        //     'position_category' => config('const.Category.LLB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.4-4'),
+        //     'position_category' => config('const.Category.RCB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.4-4'),
+        //     'position_category' => config('const.Category.LCB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.4-4'),
+        //     'position_category' => config('const.Category.SS')
+        // ]);
+
+
+        // // 5-2
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.5-2'),
+        //     'position_category' => config('const.Category.NT')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.5-2'),
+        //     'position_category' => config('const.Category.RDT')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.5-2'),
+        //     'position_category' => config('const.Category.LDT')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.5-2'),
+        //     'position_category' => config('const.Category.RDE')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.5-2'),
+        //     'position_category' => config('const.Category.LDE')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.5-2'),
+        //     'position_category' => config('const.Category.MLB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.5-2'),
+        //     'position_category' => config('const.Category.MLB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.5-2'),
+        //     'position_category' => config('const.Category.RCB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.5-2'),
+        //     'position_category' => config('const.Category.LCB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.5-2'),
+        //     'position_category' => config('const.Category.SS')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.5-2'),
+        //     'position_category' => config('const.Category.FS')
+        // ]);
+
+        // // Nickel(LCB)
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.Nickel_LCB'),
+        //     'position_category' => config('const.Category.RDT')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.Nickel_LCB'),
+        //     'position_category' => config('const.Category.LDT')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.Nickel_LCB'),
+        //     'position_category' => config('const.Category.RDE')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.Nickel_LCB'),
+        //     'position_category' => config('const.Category.LDE')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.Nickel_LCB'),
+        //     'position_category' => config('const.Category.RLB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.Nickel_LCB'),
+        //     'position_category' => config('const.Category.LLB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.Nickel_LCB'),
+        //     'position_category' => config('const.Category.RCB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.Nickel_LCB'),
+        //     'position_category' => config('const.Category.LCB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.Nickel_LCB'),
+        //     'position_category' => config('const.Category.LCB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.Nickel_LCB'),
+        //     'position_category' => config('const.Category.SS')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.Nickel_LCB'),
+        //     'position_category' => config('const.Category.FS')
+        // ]);
+
+        // // Nickel(RCB)
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.Nickel_RCB'),
+        //     'position_category' => config('const.Category.RDT')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.Nickel_RCB'),
+        //     'position_category' => config('const.Category.LDT')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.Nickel_RCB'),
+        //     'position_category' => config('const.Category.RDE')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.Nickel_RCB'),
+        //     'position_category' => config('const.Category.LDE')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.Nickel_RCB'),
+        //     'position_category' => config('const.Category.RLB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.Nickel_RCB'),
+        //     'position_category' => config('const.Category.LLB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.Nickel_RCB'),
+        //     'position_category' => config('const.Category.RCB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.Nickel_RCB'),
+        //     'position_category' => config('const.Category.RCB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.Nickel_RCB'),
+        //     'position_category' => config('const.Category.LCB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.Nickel_RCB'),
+        //     'position_category' => config('const.Category.SS')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.Nickel_RCB'),
+        //     'position_category' => config('const.Category.FS')
+        // ]);
+
+        // // Dime
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.Dime'),
+        //     'position_category' => config('const.Category.RDT')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.Dime'),
+        //     'position_category' => config('const.Category.LDT')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.Dime'),
+        //     'position_category' => config('const.Category.RDE')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.Dime'),
+        //     'position_category' => config('const.Category.LDE')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.Dime'),
+        //     'position_category' => config('const.Category.MLB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.Dime'),
+        //     'position_category' => config('const.Category.RCB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.Dime'),
+        //     'position_category' => config('const.Category.RCB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.Dime'),
+        //     'position_category' => config('const.Category.LCB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.Dime'),
+        //     'position_category' => config('const.Category.LCB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.Dime'),
+        //     'position_category' => config('const.Category.SS')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.Dime'),
+        //     'position_category' => config('const.Category.FS')
+        // ]);
+
+        // // 46
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.46'),
+        //     'position_category' => config('const.Category.RDT')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.46'),
+        //     'position_category' => config('const.Category.RDT')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.46'),
+        //     'position_category' => config('const.Category.LDT')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.46'),
+        //     'position_category' => config('const.Category.LDT')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.46'),
+        //     'position_category' => config('const.Category.RDE')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.46'),
+        //     'position_category' => config('const.Category.LDE')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.46'),
+        //     'position_category' => config('const.Category.MLB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.46'),
+        //     'position_category' => config('const.Category.RCB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.46'),
+        //     'position_category' => config('const.Category.LCB')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.46'),
+        //     'position_category' => config('const.Category.SS')
+        // ]);
+        // PfRelation::create([
+        //     'formation_id'      => config('const.Formationid.46'),
+        //     'position_category' => config('const.Category.FS')
+        // ]);
     }
 }
