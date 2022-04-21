@@ -106,6 +106,12 @@ class ScrapeStarters extends Command
                         ]);
                     }
 
+                    // rostersテーブルのポジションデータを更新
+                    if(!is_null($position_model)) {
+                        $roster->position_id = $position_model->id;
+                        $roster->save();
+                    }
+
                     // 例) sfo : FB , Kyle Juszczyk
                     dump($team.' : '.$data[$team]['position'][$i].' , '.$data[$team]['firstname'][$i].' '.$data[$team]['lastname'][$i]);
                 }

@@ -61,10 +61,16 @@ class MakeTf extends Command
                                      ->get();
                 
                 // offence
+                $qb = 0;
                 $hb = 0;
                 $fb = 0;
                 $wr = 0;
                 $te = 0;
+                $rg = 0;
+                $lg = 0;
+                $rot = 0;
+                $lot = 0;
+                $c = 0;
 
                 $acrb = 0;
                 $acwr = 0;
@@ -72,8 +78,14 @@ class MakeTf extends Command
                 $acol = 0;
 
                 // defence
-                $dl = 0;
-                $lb = 0;
+                $rdt = 0;
+                $ldt = 0;
+                $nt = 0;
+                $rde = 0;
+                $lde = 0;
+                $mlb = 0;
+                $lolb = 0;
+                $rolb = 0;
                 $lcb = 0;
                 $rcb = 0;
                 $ss = 0;
@@ -82,10 +94,17 @@ class MakeTf extends Command
                 $acdl = 0;
                 $aclb = 0;
                 $acdb = 0;
+
+                // (dump出力時用に使用)
+                $dl = 0;
+                $lb = 0;
                 
                 foreach($subdata as $val) {
                     dump($team.'('.$val->team_id.') : '.$val->name.'('.$val->category.')');
                     switch($val->category) {
+                        case 1:
+                            $qb += 1;
+                            break;
                         case 2:
                             $hb += 1;
                             $acrb += 1;
@@ -103,23 +122,62 @@ class MakeTf extends Command
                             $acte += 1;
                             break;
                         case 6:
+                            $rg += 1;
+                            $acol += 1;
+                            break;
                         case 7:
+                            $lg += 1;
+                            $acol += 1;
+                            break;
                         case 8:
+                            $rot += 1;
+                            $acol += 1;
+                            break;
                         case 9:
+                            $lot += 1;
+                            $acol += 1;
+                            break;
                         case 10:
+                            $c += 1;
                             $acol += 1;
                             break;
                         case 11:
+                            $rdt += 1;
+                            $dl += 1;
+                            $acdl += 1;
+                            break;
                         case 12:
+                            $ldt += 1;
+                            $dl += 1;
+                            $acdl += 1;
+                            break;
                         case 13:
+                            $nt += 1;
+                            $dl += 1;
+                            $acdl += 1;
+                            break;
                         case 14:
+                            $rde += 1;
+                            $dl += 1;
+                            $acdl += 1;
+                            break;
                         case 15:
+                            $lde += 1;
                             $dl += 1;
                             $acdl += 1;
                             break;
                         case 16:
+                            $mlb += 1;
+                            $lb += 1;
+                            $aclb += 1;
+                            break;
                         case 17:
+                            $rolb += 1;
+                            $lb += 1;
+                            $aclb += 1;
+                            break;
                         case 18:
+                            $lolb += 1;
                             $lb += 1;
                             $aclb += 1;
                             break;
@@ -148,15 +206,15 @@ class MakeTf extends Command
                 // offence
                 $abstractflg = false;
                 $formation_id = 0;
-                if($fb === 1 && $hb === 2 && $wr === 0 && $te === 2) $formation_id = config('const.Formationid.T');
-                if($fb === 1 && $hb === 1 && $wr >= 2 && $te === 1) $formation_id = config('const.Formationid.I');
-                if($fb === 0 && $hb === 1 && $wr >= 3 && $te === 1) $formation_id = config('const.Formationid.SSB');
-                if($fb === 0 && $hb === 1 && $wr >= 4 && $te === 0) $formation_id = config('const.Formationid.SF');
-                if($fb === 1 && $hb === 2 && $wr === 0 && $te === 2) $formation_id = config('const.Formationid.WB');
-                if($fb === 1 && $hb === 0 && $wr >= 4 && $te === 0) $formation_id = config('const.Formationid.FBW4');
-                if($fb === 0 && $hb === 1 && $wr >= 2 && $te === 2) $formation_id = config('const.Formationid.FBWT');
-                if($fb === 0 && $hb === 0 && $wr >= 5 && $te === 0) $formation_id = config('const.Formationid.EB');
-                if($fb === 0 && $hb === 2 && $wr >= 2 && $te === 1) $formation_id = config('const.Formationid.PSHH');
+                if($qb === 1 && $fb === 1 && $hb === 2 && $wr === 0 && $te === 2 && $rg === 1 && $lg === 1 && $rot === 1 && $lot === 1 && $c === 1) $formation_id = config('const.Formationid.T');
+                if($qb === 1 && $fb === 1 && $hb === 1 && $wr >= 2 && $te === 1 && $rg === 1 && $lg === 1 && $rot === 1 && $lot === 1 && $c === 1) $formation_id = config('const.Formationid.I');
+                if($qb === 1 && $fb === 0 && $hb === 1 && $wr >= 3 && $te === 1 && $rg === 1 && $lg === 1 && $rot === 1 && $lot === 1 && $c === 1) $formation_id = config('const.Formationid.SSB');
+                if($qb === 1 && $fb === 0 && $hb === 1 && $wr >= 4 && $te === 0 && $rg === 1 && $lg === 1 && $rot === 1 && $lot === 1 && $c === 1) $formation_id = config('const.Formationid.SF');
+                if($qb === 1 && $fb === 1 && $hb === 2 && $wr === 0 && $te === 2 && $rg === 1 && $lg === 1 && $rot === 1 && $lot === 1 && $c === 1) $formation_id = config('const.Formationid.WB');
+                if($qb === 1 && $fb === 1 && $hb === 0 && $wr >= 4 && $te === 0 && $rg === 1 && $lg === 1 && $rot === 1 && $lot === 1 && $c === 1) $formation_id = config('const.Formationid.FBW4');
+                if($qb === 1 && $fb === 0 && $hb === 1 && $wr >= 2 && $te === 2 && $rg === 1 && $lg === 1 && $rot === 1 && $lot === 1 && $c === 1) $formation_id = config('const.Formationid.FBWT');
+                if($qb === 1 && $fb === 0 && $hb === 0 && $wr >= 5 && $te === 0 && $rg === 1 && $lg === 1 && $rot === 1 && $lot === 1 && $c === 1) $formation_id = config('const.Formationid.EB');
+                if($qb === 1 && $fb === 0 && $hb === 2 && $wr >= 2 && $te === 1 && $rg === 1 && $lg === 1 && $rot === 1 && $lot === 1 && $c === 1) $formation_id = config('const.Formationid.PSHH');
                 if($formation_id === 0) {
                     // ショットガン
                     if($acrb === 1 && $acwr >= 3 && $acte === 1 && $acol >= 5) {
@@ -204,23 +262,26 @@ class MakeTf extends Command
                     ]);
                 }
 
-                // 例) 2020 sfo (offence) : 3
-                dump($season.' '.$team.' (offence) : '.'fb: '.$fb.', hb:'.$hb.', wr:'.$wr.', te:'.$te.', formation:'.$formation_id);
+                $str_abstractflg = $abstractflg ? 'true' : 'false';
+                if($abstractflg) {
+                    // 例) 【abstract_flg: true】 2020 sfo (offence) : fb: 1, hb: 1, wr: 2, te: 1, formation: 2
+                    dump('【abstract_flg: '.$str_abstractflg.'】'.$season.' '.$team.' (offence) : '.'acrb: '.$acrb.', acwr:'.$acwr.', acte:'.$acte.', ol:'.$acol.', formation:'.$formation_id);
+                } else {
+                    // 例) 【abstract_flg: false】2020 sfo (offence) : fb: 1, hb: 1, wr: 2, te: 1, formation: 2
+                    dump('【abstract_flg: '.$str_abstractflg.'】'.$season.' '.$team.' (offence) : '.'fb: '.$fb.', hb:'.$hb.', wr:'.$wr.', te:'.$te.', formation:'.$formation_id);
+                }
 
                 // defence
                 $abstractflg = false;
                 $formation_id = 0;
-                if($dl === 3 && $lb === 4) $formation_id = config('const.Formationid.3-4');
-                if($dl === 4 && $lb === 3) $formation_id = config('const.Formationid.4-3');
-                if($dl === 4 && $lb === 4) $formation_id = config('const.Formationid.4-4');
-                if($dl === 5 && $lb === 2) $formation_id = config('const.Formationid.5-2');
-                if($dl === 4 && $lb === 2 && $rcb === 3) $formation_id = config('const.Formationid.Nickel_LCB');
-                if($dl === 4 && $lb === 2 && $lcb === 3) $formation_id = config('const.Formationid.Nickel_RCB');
-                if($dl === 4 && $lb === 1) $formation_id = config('const.Formationid.Dime');
+                if($rde === 1 && $lde === 1 && $nt === 1 && $rolb === 1 && $mlb === 2 && $lolb === 1 && $rcb === 1 && $lcb === 1 && $ss === 1 && $fs === 1) $formation_id = config('const.Formationid.3-4');
+                if($rdt === 1 && $ldt === 1 && $rde === 1 && $lde === 1 && $rolb === 1 && $mlb === 1 && $lolb === 1 && $rcb === 1 && $lcb === 1 && $ss === 1 && $fs === 1) $formation_id = config('const.Formationid.4-3');
+                if($rdt === 1 && $ldt === 1 && $rde === 1 && $lde === 1 && $rolb === 1 && $mlb === 2 && $lolb === 1 && $rcb === 1 && $lcb === 1 && $ss === 1) $formation_id = config('const.Formationid.4-4');
+                if($rdt === 1 && $ldt === 1 && $rde === 1 && $lde === 1 && $nt === 1 && $mlb === 2 && $rcb === 1 && $lcb === 1 && $ss === 1 && $fs === 1) $formation_id = config('const.Formationid.5-2');
+                if($rdt === 1 && $ldt === 1 && $rde === 1 && $lde === 1 && $rolb === 1 && $lolb === 1 && $rcb === 1 && $lcb === 2 && $ss === 1 && $fs === 1) $formation_id = config('const.Formationid.Nickel_LCB');
+                if($rdt === 1 && $ldt === 1 && $rde === 1 && $lde === 1 && $rolb === 1 && $lolb === 1 && $rcb === 2 && $lcb === 1 && $ss === 1 && $fs === 1) $formation_id = config('const.Formationid.Nickel_RCB');
+                if($rdt === 1 && $ldt === 1 && $rde === 1 && $lde === 1 && $mlb === 1 && $rcb === 2 && $lcb === 2 && $ss === 1 && $fs === 1) $formation_id = config('const.Formationid.Dime');
                 if($formation_id === 0) {
-                    $acdl = 0;
-                    $aclb = 0;
-                    $acdb = 0;
                     // 3-4
                     if($acdl === 3 && $aclb >= 4 && $acdb >= 4) {
                         $formation_id = config('const.Formationid.3-4');
@@ -271,9 +332,15 @@ class MakeTf extends Command
                         'abstract_flg'  => $abstractflg
                     ]);
                 }
-    
-                // 例) 2020 sfo (defence) : 15
-                dump($season.' '.$team.' (defence) : '.'dl: '.$dl.', lb:'.$lb.', formation:'.$formation_id);
+
+                $str_abstractflg = $abstractflg ? 'true' : 'false';
+                if($abstractflg) {
+                    // 例) 【abstract_flg: true】 2020 sfo (defence) : acdl: 4, aclb: 3, acdb: 4, formation: 15
+                    dump('【abstract_flg: '.$str_abstractflg.'】'.$season.' '.$team.' (defence) : '.'acdl: '.$acdl.', aclb:'.$aclb.', acdb:'.$acdb.', formation:'.$formation_id);
+                } else {
+                    // 例) abstract_flg: false】 2020 sfo (defence) : dl: 4, lb: 3, rcb: 1, lcb: 1, formation: 15
+                    dump('【abstract_flg: '.$str_abstractflg.'】'.$season.' '.$team.' (defence) : '.'dl: '.$dl.', lb:'.$lb.', rcb: '.$rcb.', lcb: '.$lcb.', formation:'.$formation_id);
+                }
                 // dump($season.' '.$team.' (defence) : '.'dl: '.$dl.', lb:'.$lb);
                 // dump($season.' '.$team.' (defence) : '.'formation_id: '.$formation_id);
 
