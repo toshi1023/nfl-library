@@ -15,9 +15,10 @@ class CreateTeamsTable extends Migration
     {
         Schema::create('teams', function (Blueprint $table) {
             $table->increments('id')->comment('ID');
-            $table->string('city')->comment('拠点名');                      // 例) SanFrancisco
-            $table->string('name')->comment('チーム名');                    // 例) 49ers
-            $table->string('image_file')->nullable()->comment('画像名');
+            $table->string('city')->comment('拠点名');                                  // 例) SanFrancisco
+            $table->string('name')->comment('チーム名');                                // 例) 49ers
+            $table->string('image_file')->nullable()->comment('画像名');                // サムネ画像
+            $table->string('back_image_file')->nullable()->comment('背景用画像名');      // 背景用画像
             $table->timestamps();
         });
     }
