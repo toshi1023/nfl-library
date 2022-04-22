@@ -291,6 +291,7 @@ class MakeTf extends Command
                 if($rdt === 1 && $ldt === 1 && $nt === 1 && $rde === 1 && $lde === 1 && $mlb === 2 && $rolb === 1 && $lolb === 1 && $rcb === 0 && $lcb === 0 && $ss === 1 && $fs === 1) $formation_id = config('const.Formationid.5-4-2');
                 if($rdt === 2 && $ldt === 2 && $nt === 0 && $rde === 1 && $lde === 1 && $mlb === 2 && $rolb === 1 && $lolb === 1 && $rcb === 0 && $lcb === 0 && $ss === 1 && $fs === 0) $formation_id = config('const.Formationid.6-4-1');
                 if($rdt === 2 && $ldt === 2 && $nt === 0 && $rde === 1 && $lde === 1 && $mlb === 1 && $rolb === 1 && $lolb === 1 && $rcb === 0 && $lcb === 0 && $ss === 1 && $fs === 1) $formation_id = config('const.Formationid.6-3-2');
+                if($rdt === 0 && $ldt === 0 && $nt === 1 && $rde === 1 && $lde === 1 && $mlb === 1 && $rolb === 1 && $lolb === 1 && $rcb === 1 && $lcb === 1 && $ss === 2 && $fs === 1) $formation_id = config('const.Formationid.3-3-5');
                 if($formation_id === 0) {
                     // 3-4
                     if($acdl === 3 && $aclb >= 4 && $acdb >= 4) {
@@ -370,6 +371,11 @@ class MakeTf extends Command
                     // 6-3-2
                     if($acdl === 6 && $aclb >= 3 && $acdb === 2) {
                         $formation_id = config('const.Formationid.6-3-2');
+                        $abstractflg = true;
+                    }
+                    // 3-3-5
+                    if($acdl === 3 && $aclb >= 3 && $acdb >= 5) {
+                        $formation_id = config('const.Formationid.3-3-5');
                         $abstractflg = true;
                     }
 

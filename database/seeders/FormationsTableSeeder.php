@@ -189,5 +189,10 @@ class FormationsTableSeeder extends Seeder
             'odflg' => config('const.ODflg.defence'),
             'name' => '6-3-2'
         ]);
+        // 3-3-5
+        Formation::create([
+            'odflg' => config('const.ODflg.defence'),
+            'name' => '3-3-5'
+        ]);
     }
 }

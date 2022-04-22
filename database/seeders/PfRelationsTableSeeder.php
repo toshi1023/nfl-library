@@ -1801,5 +1801,62 @@ class PfRelationsTableSeeder extends Seeder
             'position_category' => config('const.Category.FS'),
             'abstract_category' => config('const.AbstCate.DB')
         ]);
+
+        // 3-3-5
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.3-3-5'),
+            'position_category' => config('const.Category.NT'),
+            'abstract_category' => config('const.AbstCate.DL')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.3-3-5'),
+            'position_category' => config('const.Category.RDE'),
+            'abstract_category' => config('const.AbstCate.DL')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.3-3-5'),
+            'position_category' => config('const.Category.LDE'),
+            'abstract_category' => config('const.AbstCate.DL')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.3-3-5'),
+            'position_category' => config('const.Category.RLB'),
+            'abstract_category' => config('const.AbstCate.LB')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.3-3-5'),
+            'position_category' => config('const.Category.MLB'),
+            'abstract_category' => config('const.AbstCate.LB')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.3-3-5'),
+            'position_category' => config('const.Category.LLB'),
+            'abstract_category' => config('const.AbstCate.LB')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.3-3-5'),
+            'position_category' => config('const.Category.RCB'),
+            'abstract_category' => config('const.AbstCate.DB')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.3-3-5'),
+            'position_category' => config('const.Category.LCB'),
+            'abstract_category' => config('const.AbstCate.DB')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.3-3-5'),
+            'position_category' => config('const.Category.SS'),
+            'abstract_category' => config('const.AbstCate.DB')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.3-3-5'),
+            'position_category' => config('const.Category.SS'),
+            'abstract_category' => config('const.AbstCate.DB')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.3-3-5'),
+            'position_category' => config('const.Category.FS'),
+            'abstract_category' => config('const.AbstCate.DB')
+        ]);
     }
 }
