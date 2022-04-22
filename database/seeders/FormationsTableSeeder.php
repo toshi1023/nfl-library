@@ -139,5 +139,55 @@ class FormationsTableSeeder extends Seeder
             'odflg' => config('const.ODflg.defence'),
             'name' => '46'
         ]);
+        // 1-6-4
+        Formation::create([
+            'odflg' => config('const.ODflg.defence'),
+            'name' => '1-6-4'
+        ]);
+        // 2-4-5
+        Formation::create([
+            'odflg' => config('const.ODflg.defence'),
+            'name' => '2-4-5'
+        ]);
+        // 3-7-1
+        Formation::create([
+            'odflg' => config('const.ODflg.defence'),
+            'name' => '3-7-1'
+        ]);
+        // 3-6-2
+        Formation::create([
+            'odflg' => config('const.ODflg.defence'),
+            'name' => '3-6-2'
+        ]);
+        // 4-6-1
+        Formation::create([
+            'odflg' => config('const.ODflg.defence'),
+            'name' => '4-6-1'
+        ]);
+        // 4-5-2
+        Formation::create([
+            'odflg' => config('const.ODflg.defence'),
+            'name' => '4-5-2'
+        ]);
+        // 5-5-1
+        Formation::create([
+            'odflg' => config('const.ODflg.defence'),
+            'name' => '5-5-1'
+        ]);
+        // 5-4-2
+        Formation::create([
+            'odflg' => config('const.ODflg.defence'),
+            'name' => '5-4-2'
+        ]);
+        // 6-4-1
+        Formation::create([
+            'odflg' => config('const.ODflg.defence'),
+            'name' => '6-4-1'
+        ]);
+        // 6-3-2
+        Formation::create([
+            'odflg' => config('const.ODflg.defence'),
+            'name' => '6-3-2'
+        ]);
     }
 }

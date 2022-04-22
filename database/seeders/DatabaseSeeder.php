@@ -18,5 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PositionsTableSeeder::class);
         $this->call(FormationsTableSeeder::class);
         $this->call(PfRelationsTableSeeder::class);
+        $this->call(UsersTableSeeder::class);
+        $this->call(SettingsTableSeeder::class);
     }
 }
