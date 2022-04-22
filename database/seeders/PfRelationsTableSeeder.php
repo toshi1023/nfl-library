@@ -1858,5 +1858,119 @@ class PfRelationsTableSeeder extends Seeder
             'position_category' => config('const.Category.FS'),
             'abstract_category' => config('const.AbstCate.DB')
         ]);
+
+        // シングルバック TE
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.SSB_TE'),
+            'position_category' => config('const.Category.QB'),
+            'abstract_category' => config('const.AbstCate.QB')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.SSB_TE'),
+            'position_category' => config('const.Category.HB'),
+            'abstract_category' => config('const.AbstCate.RB')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.SSB_TE'),
+            'position_category' => config('const.Category.WR'),
+            'abstract_category' => config('const.AbstCate.WR')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.SSB_TE'),
+            'position_category' => config('const.Category.TE'),
+            'abstract_category' => config('const.AbstCate.TE')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.SSB_TE'),
+            'position_category' => config('const.Category.TE'),
+            'abstract_category' => config('const.AbstCate.TE')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.SSB_TE'),
+            'position_category' => config('const.Category.TE'),
+            'abstract_category' => config('const.AbstCate.TE')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.SSB_TE'),
+            'position_category' => config('const.Category.ROT'),
+            'abstract_category' => config('const.AbstCate.OL')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.SSB_TE'),
+            'position_category' => config('const.Category.LOT'),
+            'abstract_category' => config('const.AbstCate.OL')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.SSB_TE'),
+            'position_category' => config('const.Category.RG'),
+            'abstract_category' => config('const.AbstCate.OL')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.SSB_TE'),
+            'position_category' => config('const.Category.LG'),
+            'abstract_category' => config('const.AbstCate.OL')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.SSB_TE'),
+            'position_category' => config('const.Category.C'),
+            'abstract_category' => config('const.AbstCate.OL')
+        ]);
+
+        // Iフォーメーション TE
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.I_TE'),
+            'position_category' => config('const.Category.QB'),
+            'abstract_category' => config('const.AbstCate.QB')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.I_TE'),
+            'position_category' => config('const.Category.HB'),
+            'abstract_category' => config('const.AbstCate.RB')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.I_TE'),
+            'position_category' => config('const.Category.FB'),
+            'abstract_category' => config('const.AbstCate.RB')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.I_TE'),
+            'position_category' => config('const.Category.WR'),
+            'abstract_category' => config('const.AbstCate.WR')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.I_TE'),
+            'position_category' => config('const.Category.TE'),
+            'abstract_category' => config('const.AbstCate.TE')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.I_TE'),
+            'position_category' => config('const.Category.TE'),
+            'abstract_category' => config('const.AbstCate.TE')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.I_TE'),
+            'position_category' => config('const.Category.ROT'),
+            'abstract_category' => config('const.AbstCate.OL')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.I_TE'),
+            'position_category' => config('const.Category.LOT'),
+            'abstract_category' => config('const.AbstCate.OL')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.I_TE'),
+            'position_category' => config('const.Category.RG'),
+            'abstract_category' => config('const.AbstCate.OL')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.I_TE'),
+            'position_category' => config('const.Category.LG'),
+            'abstract_category' => config('const.AbstCate.OL')
+        ]);
+        PfRelation::create([
+            'formation_id'      => config('const.Formationid.I_TE'),
+            'position_category' => config('const.Category.C'),
+            'abstract_category' => config('const.AbstCate.OL')
+        ]);
     }
 }

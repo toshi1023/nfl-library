@@ -215,6 +215,8 @@ class MakeTf extends Command
                 if($qb === 1 && $fb === 0 && $hb === 1 && $wr >= 2 && $te === 2 && $rg === 1 && $lg === 1 && $rot === 1 && $lot === 1 && $c === 1) $formation_id = config('const.Formationid.FBWT');
                 if($qb === 1 && $fb === 0 && $hb === 0 && $wr >= 5 && $te === 0 && $rg === 1 && $lg === 1 && $rot === 1 && $lot === 1 && $c === 1) $formation_id = config('const.Formationid.EB');
                 if($qb === 1 && $fb === 0 && $hb === 2 && $wr >= 2 && $te === 1 && $rg === 1 && $lg === 1 && $rot === 1 && $lot === 1 && $c === 1) $formation_id = config('const.Formationid.PSHH');
+                if($qb === 1 && $fb === 0 && $hb === 1 && $wr === 1 && $te >= 3 && $rg === 1 && $lg === 1 && $rot === 1 && $lot === 1 && $c === 1) $formation_id = config('const.Formationid.SSB_TE');
+                if($qb === 1 && $fb === 1 && $hb === 1 && $wr === 1 && $te >= 2 && $rg === 1 && $lg === 1 && $rot === 1 && $lot === 1 && $c === 1) $formation_id = config('const.Formationid.I_TE');
                 if($formation_id === 0) {
                     // ショットガン
                     if($acrb === 1 && $acwr >= 3 && $acte === 1 && $acol >= 5) {
@@ -239,6 +241,16 @@ class MakeTf extends Command
                     // プロセット(スプリットバック) HB & HB
                     if($acrb >= 2 && $acwr >= 2 && $acte === 1 && $acol >= 5) {
                         $formation_id = config('const.Formationid.PSHH');
+                        $abstractflg = true;
+                    }
+                    // シングルバック TE
+                    if($acrb === 1 && $acwr === 1 && $acte >= 2 && $acol >= 5) {
+                        $formation_id = config('const.Formationid.SSB_TE');
+                        $abstractflg = true;
+                    }
+                    // Iフォーメーション TE
+                    if($acrb === 2 && $acwr === 1 && $acte >= 2 && $acol >= 5) {
+                        $formation_id = config('const.Formationid.I_TE');
                         $abstractflg = true;
                     }
 

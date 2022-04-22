@@ -194,5 +194,16 @@ class FormationsTableSeeder extends Seeder
             'odflg' => config('const.ODflg.defence'),
             'name' => '3-3-5'
         ]);
+
+        // シングルバック TE
+        Formation::create([
+            'odflg' => config('const.ODflg.offence'),
+            'name' => 'Single set back TE'
+        ]);
+        // Iフォーメーション TE
+        Formation::create([
+            'odflg' => config('const.ODflg.offence'),
+            'name' => 'I formation TE'
+        ]);
     }
 }
