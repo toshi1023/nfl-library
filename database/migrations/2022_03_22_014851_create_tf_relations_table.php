@@ -17,6 +17,7 @@ class CreateTfRelationsTable extends Migration
             $table->increments('id')->comment('ID');
             $table->integer('season')->comment('シーズン');
             $table->integer('team_id')->comment('teamsのID');
+            $table->boolean('odflg')->comment('攻守フラグ');   // true: Offence, false: Deffence
             $table->integer('formation_id')->comment('formationsのID');
             $table->boolean('abstract_flg')->default(false)->comment('結合フラグ');     // pf_relationsとpositionsをabstract_categoryで結合するかどうかのフラグ
             $table->timestamps();

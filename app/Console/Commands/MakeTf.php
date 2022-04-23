@@ -269,6 +269,7 @@ class MakeTf extends Command
                     TfRelation::create([
                         'season'        => $season,
                         'team_id'       => $team_id,
+                        'odflg'         => true,
                         'formation_id'  => $formation_id,
                         'abstract_flg'  => $abstractflg
                     ]);
@@ -406,6 +407,7 @@ class MakeTf extends Command
                     TfRelation::create([
                         'season'        => $season,
                         'team_id'       => $team_id,
+                        'odflg'         => false,
                         'formation_id'  => $formation_id,
                         'abstract_flg'  => $abstractflg
                     ]);
