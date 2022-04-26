@@ -81,5 +81,13 @@ return [
     // メールアドレス
     'RootMailAddress' => env('ROOT_MAIL_ADDRESS'),
     // パスワード
-    'RootPassword'    => env('ROOT_PASSWORD')
+    'RootPassword'    => env('ROOT_PASSWORD'),
+
+    // AWS S3バケット
+    'Url'           => env('AWS_BUCKET_URL'),
+    // AWS S3フォルダ
+    'Player'        => 'Player',
+    'Team'          => 'Team',
+    'Logo'          => 'Logo',          // teamsのimage_file
+    'Background'    => 'Background'     // teamsのback_image_file
 ];

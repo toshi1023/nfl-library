@@ -10,7 +10,11 @@ class Player extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
-    protected $appends = ['birthday_date'];
+
+    /**
+     * アクセサ許可リスト
+     */
+    protected $appends = ['birthday_date', 'image_url'];
     
     /**
      * 生年月日を取得
@@ -22,5 +26,25 @@ class Player extends Model
             return mb_substr($this->birthday, 0, 4).'年'.mb_substr($this->birthday, 4, 2).'月'.mb_substr($this->birthday, 6, 2).'日';
         }
         return false;
+    }
+
+    /**
+     * 画像のパスを取得
+     */
+    public function getImageUrlAttribute()
+    {
+        // 画像パスを設定
+        if($this->image_file) {
+            return config('const.Aws.Url').'/'.config('const.Aws.Player').'/'.$this->id.'/'.$this->image_file;
+        }
+        return config('const.Aws.Url').'/no-image.jpg';
+    }
+
+    /**
+     * rostersテーブルと1対多のリレーション構築(1側の設定)
+     */
+    public function playRosters()
+    {
+        return $this->hasMany('App\Models\Roster');
     }
 }

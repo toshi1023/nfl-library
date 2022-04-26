@@ -10,4 +10,20 @@ class Position extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
+
+    /**
+     * rostersテーブルと1対多のリレーション構築(1側の設定)
+     */
+    public function posRosters()
+    {
+        return $this->hasMany('App\Models\Roster');
+    }
+
+    /**
+     * pf_relationsテーブルと1対多のリレーション構築(1側の設定)
+     */
+    public function posPfRelations()
+    {
+        return $this->hasMany('App\Models\PfRelation');
+    }
 }

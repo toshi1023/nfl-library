@@ -10,4 +10,12 @@ class Starter extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
+
+    /**
+     * rostersテーブルと1対1のリレーション構築
+     */
+    public function starterRoster()
+    {
+       return $this->hasOne('App\Models\Roster');
+    }
 }
