@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call(PfRelationsTableSeeder::class);
         $this->call(UsersTableSeeder::class);
         $this->call(SettingsTableSeeder::class);
+        $this->call(FoulRulesTableSeeder::class);
     }
 }

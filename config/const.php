@@ -77,6 +77,12 @@ return [
         '2012' => 13, '2013' => 25, '2014' => 15, '2015' => 16, '2016' => 17, 
         '2017' => 18, '2018' => 19, '2019' => 20, '2020' => 21, '2021' => 22
     ],
+    // foul_rulesのstatus_type
+    'FoulRules' => [
+        'offence' => 1,
+        'defence' => 2,
+        'kick'    => 3
+    ],
 
     // メールアドレス
     'RootMailAddress' => env('ROOT_MAIL_ADDRESS'),
