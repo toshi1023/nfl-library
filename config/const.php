@@ -79,6 +79,7 @@ return [
     ],
     // foul_rulesのstatus_type
     'FoulRules' => [
+        'common'  => 0,
         'offence' => 1,
         'defence' => 2,
         'kick'    => 3
