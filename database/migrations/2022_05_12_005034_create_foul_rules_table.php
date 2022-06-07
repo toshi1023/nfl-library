@@ -13,7 +13,7 @@ class CreateFoulRulesTable extends Migration
      */
     public function up()
     {
-        Schema::create('foul_rules_tables', function (Blueprint $table) {
+        Schema::create('foul_rules', function (Blueprint $table) {
             $table->increments('id')->comment('ID');
             $table->string('english_name')->comment('英語表記');
             $table->string('japanese_name')->comment('日本語表記');
