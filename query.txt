@@ -1,0 +1,8 @@
+●ロスター情報クエリ
+
+SELECT r.season, t.city, t.name, po.name as position, r.number, p.firstname, p.lastname, r.rating, p.birthday, p.height, p.weight 
+FROM rosters r 
+LEFT JOIN players p ON p.id = r.player_id
+LEFT JOIN teams t ON t.id = r.team_id
+LEFT JOIN positions po ON po.id = r.position_id
+WHERE r.season = 2013;

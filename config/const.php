@@ -96,5 +96,43 @@ return [
     'Player'        => 'Player',
     'Team'          => 'Team',
     'Logo'          => 'Logo',          // teamsのimage_file
-    'Background'    => 'Background'     // teamsのback_image_file
+    'Background'    => 'Background',    // teamsのback_image_file
+
+
+    // User関連で使用する定数
+    'User' => [
+        'ADMIN_ID'      => 1,
+        'MEMBER'        => 1,
+        'UNSUBSCRIBE'   => 2,
+        'ADMIN'         => 3,
+        'STOP'          => 4,
+        'MEMBER_WORD'        => '会員',
+        'UNSUBSCRIBE_WORD'   => '退会済み',
+        'ADMIN_WORD'         => '管理者',
+        'STOP_WORD'          => 'アカウント停止中',
+        'MAN'           => 0,
+        'WOMAN'         => 1,
+        'GET_ERR'            => 'ユーザ情報を取得出来ませんでした',
+        'SEARCH_ERR'         => '指定したユーザは存在しません',
+        'REGISTER_INFO'      => 'ユーザ情報を登録しました',
+        'REGISTER_ERR'       => 'ユーザ情報の登録に失敗しました',
+        'DELETE_INFO'        => '退会が完了しました',
+        'DELETE_ERR'         => 'サーバーエラーにより退会に失敗しました。管理者にお問い合わせください'
+    ],
+
+    // システムメッセージで使用する定数
+    'SystemMessage' => [
+        'LOGIN_INFO'         => 'ログインに成功しました',
+        'LOGOUT_INFO'        => 'ログアウトしました',
+        'SYSTEM_ERR'         => 'システム障害が発生しました。内容は次の通りです。 → ',
+        'UNAUTHORIZATION'    => 'ログイン権限がありません',
+        'LOGIN_ERR'          => 'メールアドレスもしくはパスワードが一致しません',
+        'UNEXPECTED_ERR'     => '予期しないエラーが発生しました。管理者にお問い合わせください',
+        'VALIDATE_STATUS'    => 'OK',
+        'SEND_EMAIL_INFO'    => 'パスワード再設定メールを送信しました',
+        'SEND_EMAIL_ERR'     => 'パスワード再設定メールを送信できませんでした',
+        'RESET_PASSWORD_INFO'   => 'パスワードの再設定が完了しました',
+        'RESET_PASSWORD_ERR'    => 'パスワードの再設定に失敗しました',
+        'SLACK_LOG_WARN'        => 'LOGにエラー内容が出力されました。内容: '
+    ],
 ];

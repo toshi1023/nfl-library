@@ -13,6 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+/************************************************
+ *  アプリ側ルーティング(非ログイン)
+ ************************************************/
+Route::group(['middleware' => 'cors'], function() {
+    /********** ユーザ管理(auth) **********/
+    Route::post('/auth/validate',                        'Api\AuthController@validate')->name('auth.validate');
+    Route::post('/auth/register',                        'Api\AuthController@store')->name('auth.register');
+    
+    /********** ログイン管理(auth) **********/
+    Route::post('/auth/login',                           'Api\AuthController@login')->name('auth.login');
+    Route::post('/auth/forgot-password',                 'Api\AuthController@forgotPassword')->name('auth.forgotPassword');
+    Route::post('/auth/reset-password/{email}/{token}',  'Api\AuthController@passwordReset')->name('auth.passwordReset');
+    Route::post('/auth/logout',                          'Api\AuthController@logout')->name('auth.logout');
 });
