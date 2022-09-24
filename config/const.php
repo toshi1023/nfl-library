@@ -120,6 +120,15 @@ return [
         'DELETE_ERR'         => 'サーバーエラーにより退会に失敗しました。管理者にお問い合わせください'
     ],
 
+    // Player関連で使用する定数
+    'Player' => [
+        'GET_ERR'            => '選手情報を取得出来ませんでした',
+        'SEARCH_ERR_SEASON'  => '指定したシーズンは存在しません',
+        'SEARCH_ERR_TEAM'    => '指定したチームは存在しません',
+        'REGISTER_INFO'      => '選手情報を登録しました',
+        'REGISTER_ERR'       => '選手情報の登録に失敗しました'
+    ],
+
     // システムメッセージで使用する定数
     'SystemMessage' => [
         'LOGIN_INFO'         => 'ログインに成功しました',

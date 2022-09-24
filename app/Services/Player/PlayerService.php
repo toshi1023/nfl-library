@@ -3,19 +3,22 @@
 namespace App\Services\Player;
 
 use App\Lib\Common;
+use App\Repositories\Player\PlayerRepositoryInterface;
 use App\Services\Player\PlayerServiceInterface;
 use Exception;
 
-class PlayerService
+class PlayerService implements PlayerServiceInterface
 {
+    public function __construct(private PlayerRepositoryInterface $repository) {}
+
     /**
      * ロスターやスターター情報を取得
      */
-    public function getPlayerInfo(int $season, string $teamnm) : array
+    public function getPlayerInfo(int $season, int $team_id) : array
     {
         try {
             $data = [
-                'rosters'       => '',
+                'rosters'       => $this->repository->queryRosterStarterInfo($season, $team_id),
                 'starters'      => '',
                 'message'       => '',
                 'status'        => 200
@@ -27,7 +30,7 @@ class PlayerService
 
             // 取得に失敗した場合
             return [
-                "message" => config('const.SystemMessage.LOGIN_ERR'),
+                "message" => config('const.SystemMessage.UNEXPECTED_ERR'),
                 "status"  => 401
             ];
         }
