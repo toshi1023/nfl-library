@@ -4,6 +4,7 @@ namespace App\Repositories\Player;
 
 use App\Models\Roster;
 use App\Models\Starter;
+use Illuminate\Database\Eloquent\Collection;
 
 interface PlayerRepositoryInterface
 {
@@ -12,12 +13,12 @@ interface PlayerRepositoryInterface
      * from: rosters
      * join: [players, teams, positions, starters]
      */
-    public function queryRosterStarterInfo(int $season, int $team_id) : Roster;
+    public function queryRosterStarterInfo(int $season, int $team_id) : Collection;
 
     /**
      * フォーメーション情報をDBから取得
      * from: starters
      * join: [rosters, players, teams, positions, tf_relations, formations, pf_relations]
      */
-    public function queryFormationInfo(int $season, int $team_id) : Starter;
+    public function queryFormationInfo(int $season, int $team_id) : Collection;
 }

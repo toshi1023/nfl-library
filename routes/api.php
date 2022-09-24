@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\PlayerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,11 +20,11 @@ use Illuminate\Support\Facades\Route;
  ************************************************/
 Route::middleware('auth:sanctum')->group(function () {
     /********** 初期値管理(initials) **********/
-    Route::get('/initials/{user_id}/info',          'Api\InitialController@info')->name('initials.info');
+    // Route::get('/initials/{user_id}/info',          'Api\InitialController@info')->name('initials.info');
     
     /********** ユーザ管理(users) **********/
-    Route::post('/users/validate',                  'Api\UserController@validate')->name('users.validate');
-    Route::post('/users/update',                    'Api\UserController@update')->name('users.update');
+    // Route::post('/users/validate',                  'Api\UserController@validate')->name('users.validate');
+    // Route::post('/users/update',                    'Api\UserController@update')->name('users.update');
 });
 
 
@@ -32,8 +33,7 @@ Route::middleware('auth:sanctum')->group(function () {
  ************************************************/
 
 /********** プレイヤー管理(players) **********/
-Route::get('/players/info',                     'Api\PlayerController@info')->name('players.info');
-Route::get('/players/{player_id}/update',       'Api\PlayerController@update')->name('players.update');
+Route::get('/players/info',                     [PlayerController::class, 'info'])->name('players.info');
 
 /********** 反則管理(rules) **********/
-Route::get('/rules/info',                     'Api\PlayerController@info')->name('players.info');
+// Route::get('/rules/info',                     'Api\PlayerController@info')->name('players.info');

@@ -98,6 +98,11 @@ return [
     'Logo'          => 'Logo',          // teamsのimage_file
     'Background'    => 'Background',    // teamsのback_image_file
 
+    // httpステータス
+    'Success'       => 200,
+    'ServerError'   => 500,
+    'Unauthorized'  => 401,
+
 
     // User関連で使用する定数
     'User' => [

@@ -19,9 +19,8 @@ class PlayerService implements PlayerServiceInterface
         try {
             $data = [
                 'rosters'       => $this->repository->queryRosterStarterInfo($season, $team_id),
-                'starters'      => '',
                 'message'       => '',
-                'status'        => 200
+                'status'        => config('const.Success')
             ];
     
             return $data;
@@ -31,7 +30,7 @@ class PlayerService implements PlayerServiceInterface
             // 取得に失敗した場合
             return [
                 "message" => config('const.SystemMessage.UNEXPECTED_ERR'),
-                "status"  => 401
+                "status"  => config('const.ServerError')
             ];
         }
     }

@@ -9,7 +9,7 @@ use Exception;
 
 class AuthService implements AuthServiceInterface
 {
-    public function __construct(private UserRepositoryInterface $db) {}
+    // public function __construct(private UserRepositoryInterface $db) {}
 
     /**
      * ログイン処理を実行
@@ -22,7 +22,7 @@ class AuthService implements AuthServiceInterface
                 // エラーを返す
                 return [
                     "message" => config('const.SystemMessage.UNAUTHORIZATION'),
-                    "status"  => 401
+                    "status"  => config('const.Unauthorized')
                 ];
             }
             
@@ -50,22 +50,22 @@ class AuthService implements AuthServiceInterface
 
                 return [
                     "message" => config('const.SystemMessage.LOGIN_INFO'),
-                    "status"  => 200
+                    "status"  => config('const.Success')
                 ];
             }
 
             // 認証に失敗した場合
             return [
                 "message" => config('const.SystemMessage.LOGIN_ERR'),
-                "status"  => 401
+                "status"  => config('const.Unauthorized')
             ];
         } catch (Exception $e) {
             Common::getErrorLog($e, get_class($this), __FUNCTION__);
 
-            // 認証に失敗した場合
+            // サーバーエラーが発生した場合
             return [
                 "message" => config('const.SystemMessage.LOGIN_ERR'),
-                "status"  => 401
+                "status"  => config('const.ServerError')
             ];
         }
     }
