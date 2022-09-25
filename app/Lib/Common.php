@@ -214,4 +214,15 @@ class Common {
         // Slackに通知
         // SlackFacade::send(config('const.SystemMessage.SLACK_LOG_WARN').$msg.' , '.$msg2);
     }
+
+    /**
+     * サーバーエラー発生時のレスポンスを設定
+     */
+    public static function setServerErrorMessage() : array
+    {
+        return [
+            'message'   => config('const.SystemMessage.UNEXPECTED_ERR'),
+            'status'    => config('const.ServerError')
+        ];
+    }
 }

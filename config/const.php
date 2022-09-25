@@ -99,9 +99,10 @@ return [
     'Background'    => 'Background',    // teamsのback_image_file
 
     // httpステータス
-    'Success'       => 200,
-    'ServerError'   => 500,
-    'Unauthorized'  => 401,
+    'Success'           => 200,
+    'ServerError'       => 500,
+    'ValidationError'   => 400,
+    'Unauthorized'      => 401,
 
 
     // User関連で使用する定数

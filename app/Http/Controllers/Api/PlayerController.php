@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PlayerRequest;
 use App\Services\Player\PlayerServiceInterface;
 use Illuminate\Http\Request;
 use App\Lib\Common;
@@ -16,13 +17,9 @@ class PlayerController extends Controller
     /**
      * ロスター・スターター・フォーメーションのデータをリターン
      */
-    public function info(Request $request)
+    public function info(PlayerRequest $request)
     {
         try {
-            // 検索条件が正しく設定されているかチェック
-            if(is_null($request->season)) throw new InvalidArgumentException('シーズンがnullのため検索に失敗しました');
-            if(is_null($request->team_id)) throw new InvalidArgumentException('シーズンがnullのため検索に失敗しました');
-
             // ロスター、スターター情報を取得
             $result = $this->service->getPlayerInfo($request->season, $request->team_id);
 
@@ -33,7 +30,8 @@ class PlayerController extends Controller
         } catch (Exception $e) {
             Common::getErrorLog($e, get_class($this), __FUNCTION__);
 
-            // resultをどうするか。。。
+            // resultに値をセット
+            $result = Common::setServerErrorMessage();
             return response()->json(["error_message" => $result["message"]], $result["status"], [], JSON_UNESCAPED_UNICODE);
         }
     }

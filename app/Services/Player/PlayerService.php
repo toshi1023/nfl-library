@@ -16,22 +16,12 @@ class PlayerService implements PlayerServiceInterface
      */
     public function getPlayerInfo(int $season, int $team_id) : array
     {
-        try {
-            $data = [
-                'rosters'       => $this->repository->queryRosterStarterInfo($season, $team_id),
-                'message'       => '',
-                'status'        => config('const.Success')
-            ];
-    
-            return $data;
-        } catch (Exception $e) {
-            Common::getErrorLog($e, get_class($this), __FUNCTION__);
+        $data = [
+            'rosters'       => $this->repository->queryRosterStarterInfo($season, $team_id),
+            'message'       => '',
+            'status'        => config('const.Success')
+        ];
 
-            // 取得に失敗した場合
-            return [
-                "message" => config('const.SystemMessage.UNEXPECTED_ERR'),
-                "status"  => config('const.ServerError')
-            ];
-        }
+        return $data;
     }
 }

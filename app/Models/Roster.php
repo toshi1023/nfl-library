@@ -53,7 +53,8 @@ class Roster extends Model
      */
     public function position()
     {
-        return $this->belongsTo('App\Models\Position', 'position_id', 'id')->select('id', 'abstract_category', 'category', 'name');
+        return $this->belongsTo('App\Models\Position', 'position_id', 'id')
+                    ->select('id', 'abstract_category', 'category', 'name');
     }
 
     /**
