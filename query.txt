@@ -11,18 +11,15 @@ WHERE r.season = 2013 AND r.team_id = 1;
 
 ●スターター情報クエリ
 
-SELECT s.id, s.season, t.city, t.name, po.name as position, po.category as cat, po.abstract_category as abscat, r.number, p.firstname, p.lastname, r.rating, p.birthday, p.height, p.weight, s.odflg as starter, f.name as formation 
+SELECT DISTINCT r.id, r.season, r.team_id, r.player_id, p.id, p.name, p.category, p.abstract_category, tf.team_id, tf.odflg, tf.formation_id, tf.abstract_flg, pf.formation_id, pf.position_category, pf.abstract_category 
 FROM starters s 
-LEFT JOIN rosters r ON r.id = s.roster_id
-LEFT JOIN players p ON p.id = r.player_id
-LEFT JOIN teams t ON t.id = r.team_id
-LEFT JOIN positions po ON po.id = r.position_id
-LEFT JOIN tf_relations tf ON tf.season = r.season AND tf.team_id = r.team_id AND tf.odflg = s.odflg 
-LEFT JOIN formations f ON f.id = tf.formation_id
-WHERE s.season = 2013 AND r.team_id = 1;
+LEFT JOIN rosters r ON s.roster_id = r.id 
+LEFT JOIN positions p ON r.position_id = p.id 
+LEFT JOIN tf_relations tf ON r.team_id = tf.team_id AND s.season = tf.season AND s.odflg = tf.odflg 
+LEFT JOIN pf_relations pf ON tf.formation_id = pf.formation_id AND p.abstract_category = pf.abstract_category AND p.category = pf.position_category
+WHERE r.season = 2012 AND r.team_id = 3;
 
-
-SELECT s.id, s.season, t.city, t.name, po.name as position, r.number, p.firstname, p.lastname, r.rating, p.birthday, p.height, p.weight, s.odflg as starter, f.name, pf.position_category as poscat, pf.abstract_category as abscat 
+SELECT DISTINCT s.id, s.season, t.city, t.name, po.name as position, r.number, p.firstname, p.lastname, r.rating, p.birthday, p.height, p.weight, s.odflg as starter, f.name, pf.position_category as poscat, pf.abstract_category as abscat 
 FROM starters s 
 LEFT JOIN rosters r ON r.id = s.roster_id
 LEFT JOIN players p ON p.id = r.player_id
