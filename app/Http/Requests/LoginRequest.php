@@ -7,7 +7,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class PlayerRequest extends FormRequest
+class LoginRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,20 +27,9 @@ class PlayerRequest extends FormRequest
     public function rules()
     {
         return [
-            // ロスター・スターター・フォーメーションのリクエスト用バリデーションチェック
-            'season'                  => 'required',
-            'team_id'                 => 'required'
-        ];
-    }
-
-    /**
-     * メッセージをカスタマイズ
-     */
-    public function messages()
-    {
-        return [
-            "season.required"       => "シーズンの検索値が設定されていません",
-            "team_id.required"      => "チームの検索値が設定されていません"
+            // ログインのリクエスト用バリデーションチェック
+            'email'    => 'required|email',
+            'password' => 'required'
         ];
     }
 

@@ -7,5 +7,5 @@ interface AuthServiceInterface
     /**
      * ログイン処理を実行
      */
-    public function login(string $status, array $validation) : array;
+    public function login(array $credentials) : array;
 }

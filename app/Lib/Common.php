@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Exception;
+use Illuminate\Http\JsonResponse;
+use Illuminate\contracts\Validation\Validator;
 
 /**
  * 共通処理クラス
@@ -224,5 +226,16 @@ class Common {
             'message'   => config('const.SystemMessage.UNEXPECTED_ERR'),
             'status'    => config('const.ServerError')
         ];
+    }
+
+    /**
+     * バリデーション時のJsonResponseを生成
+     */
+    public static function setValidationJsonResponse(Validator $validator) : JsonResponse
+    {
+        return response()->json([
+            'status'            => config('const.ValidationError'),
+            'error_messages'    => $validator->errors(),
+        ], config('const.ValidationError'), [], JSON_UNESCAPED_UNICODE);
     }
 }
