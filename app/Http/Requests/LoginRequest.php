@@ -28,8 +28,8 @@ class LoginRequest extends FormRequest
     {
         return [
             // ログインのリクエスト用バリデーションチェック
-            'email'    => 'required|email',
-            'password' => 'required'
+            'email'         => 'required|email',
+            'password'      => 'required'
         ];
     }
 

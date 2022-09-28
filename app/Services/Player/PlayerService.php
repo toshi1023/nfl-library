@@ -16,12 +16,10 @@ class PlayerService implements PlayerServiceInterface
      */
     public function getPlayerInfo(int $season, int $team_id) : array
     {
-        $data = [
+        return [
             'rosters'       => $this->repository->queryRosterStarterInfo($season, $team_id),
             'message'       => '',
             'status'        => config('const.Success')
         ];
-
-        return $data;
     }
 }

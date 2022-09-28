@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\PlayerController;
+use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\InitialController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,17 +22,23 @@ use App\Http\Controllers\Api\PlayerController;
  ************************************************/
 Route::middleware('auth:sanctum')->group(function () {
     /********** 初期値管理(initials) **********/
-    // Route::get('/initials/{user_id}/info',          'Api\InitialController@info')->name('initials.info');
+    Route::get('/initials/{user_id}/info',          [InitialController::class, 'info'])->name('initials.info');
     
     /********** ユーザ管理(users) **********/
-    // Route::post('/users/validate',                  'Api\UserController@validate')->name('users.validate');
     // Route::post('/users/update',                    'Api\UserController@update')->name('users.update');
+
+    /********** ログイン管理(auth) **********/
+    Route::post('/auth/logout',                     [AuthController::class, 'logout'])->name('logout');
 });
 
 
 /************************************************
  *  アプリ側ルーティング(非ログイン)
  ************************************************/
+
+/********** ログイン管理(auth) **********/
+Route::post('/auth/login',                      [AuthController::class, 'login'])->name('login');
+// Route::post('/auth/logout',                     [AuthController::class, 'logout'])->name('logout');
 
 /********** プレイヤー管理(players) **********/
 Route::get('/players/info',                     [PlayerController::class, 'info'])->name('players.info');

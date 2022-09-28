@@ -41,4 +41,32 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * メールアドレスで絞り込み
+     */
+    public function scopeEmail($query, string $email)
+    {
+        if(is_null($email)) throw new InvalidArgumentException('メールアドレスがnullのため検索に失敗しました');
+
+        $query->where('email', $email)
+              ->select('id', 'name', 'email', 'favorite_season', 'favorite_team', 'created_at', 'updated_at');
+    }
+
+    /**
+     * teamsテーブルと1対多のリレーション構築(1側の設定)
+     */
+    public function team()
+    {
+        return $this->belongsTo('App\Models\Team', 'favorite_team', 'id')
+                    ->select('id', 'city', 'name', 'image_file', 'back_image_file');
+    }
+
+    /**
+     * settingsテーブルと1対多のリレーション構築(多側の設定)
+     */
+    public function setting()
+    {
+        return $this->hasMany('App\Models\Setting', 'user_id', 'id');
+    }
 }

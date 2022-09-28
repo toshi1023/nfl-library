@@ -7,8 +7,12 @@ use App\Services\Auth\AuthServiceInterface;
 use App\Services\Auth\AuthService;
 use App\Services\Player\PlayerServiceInterface;
 use App\Services\Player\PlayerService;
+use App\Services\Initial\InitialServiceInterface;
+use App\Services\Initial\InitialService;
 use App\Repositories\Player\PlayerRepositoryInterface;
 use App\Repositories\Player\PlayerRepository;
+use App\Repositories\User\UserRepositoryInterface;
+use App\Repositories\User\UserRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,11 +28,13 @@ class AppServiceProvider extends ServiceProvider
          ************************************************/
         $this->app->singleton(AuthServiceInterface::class,      AuthService::class);
         $this->app->singleton(PlayerServiceInterface::class,    PlayerService::class);
+        $this->app->singleton(InitialServiceInterface::class,   InitialService::class);
 
         /************************************************
          *  リポジトリ層
          ************************************************/
         $this->app->singleton(PlayerRepositoryInterface::class, PlayerRepository::class);
+        $this->app->singleton(UserRepositoryInterface::class, UserRepository::class);
     }
 
     /**
