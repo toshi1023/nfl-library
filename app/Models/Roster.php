@@ -62,6 +62,6 @@ class Roster extends Model
      */
     public function rosterStarter()
     {
-        return $this->belongsTo('App\Models\Starter')->select('id', 'odflg');
+        return $this->belongsTo('App\Models\Starter', 'id', 'roster_id')->select('id', 'odflg', 'roster_id');
     }
 }
