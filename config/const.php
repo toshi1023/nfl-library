@@ -82,7 +82,8 @@ return [
         'common'  => 0,
         'offence' => 1,
         'defence' => 2,
-        'kick'    => 3
+        'kick'    => 3,
+        'all'     => 99
     ],
 
     // メールアドレス

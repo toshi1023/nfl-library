@@ -3,8 +3,6 @@
 namespace App\Repositories\User;
 
 use App\Models\User;
-use Illuminate\Database\Eloquent\Collection;
-use Laravel\Sanctum\NewAccessToken;
 
 interface UserRepositoryInterface
 {

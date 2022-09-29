@@ -5,7 +5,6 @@ namespace App\Repositories\Player;
 use App\Repositories\Player\PlayerRepositoryInterface;
 use App\Models\Roster;
 use App\Models\Starter;
-use Exception;
 use Illuminate\Database\Eloquent\Collection;
 
 class PlayerRepository implements PlayerRepositoryInterface

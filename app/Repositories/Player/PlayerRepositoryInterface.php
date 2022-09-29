@@ -2,8 +2,6 @@
 
 namespace App\Repositories\Player;
 
-use App\Models\Roster;
-use App\Models\Starter;
 use Illuminate\Database\Eloquent\Collection;
 
 interface PlayerRepositoryInterface

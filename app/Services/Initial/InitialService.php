@@ -2,8 +2,6 @@
 
 namespace App\Services\Initial;
 
-use App\Lib\Common;
-use App\Models\User;
 use App\Repositories\User\UserRepositoryInterface;
 use App\Services\Initial\InitialServiceInterface;
 

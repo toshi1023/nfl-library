@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\PlayerController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\InitialController;
+use App\Http\Controllers\Api\FoulRuleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,5 +44,5 @@ Route::post('/auth/login',                      [AuthController::class, 'login']
 /********** プレイヤー管理(players) **********/
 Route::get('/players/info',                     [PlayerController::class, 'info'])->name('players.info');
 
-/********** 反則管理(rules) **********/
-// Route::get('/rules/info',                     'Api\PlayerController@info')->name('players.info');
+/********** 反則管理(foul_rules) **********/
+Route::get('/foul_rules/info',                  [FoulRuleController::class, 'info'])->name('foul_rules.info');
