@@ -195,7 +195,7 @@ class Common {
      */
     public static function getErrorLog(Exception $e, string $class, string $function)
     {
-        $msg = config('const.SystemMessage.SYSTEM_ERR').$class.'::'.$function.' : '.$e->getMessage(). Common::getUserInfo();
+        $msg = config('const.SystemMessage.SYSTEM_ERR').$class.'::'.$function.' (File : '.$e->getFile().' ('. $e->getLine().')) : '.$e->getMessage(). Common::getUserInfo();
         $msg2 = '';
 
         // 標準メッセージをLogに出力

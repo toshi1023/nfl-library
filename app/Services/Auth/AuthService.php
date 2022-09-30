@@ -8,6 +8,7 @@ use App\Repositories\User\UserRepositoryInterface;
 use App\Services\Auth\AuthServiceInterface;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use InvalidArgumentException;
 
 class AuthService implements AuthServiceInterface
 {
@@ -18,6 +19,10 @@ class AuthService implements AuthServiceInterface
      */
     public function login(array $credentials) : array
     {   
+        // 値チェック
+        if(!array_key_exists('email', $credentials) || !$credentials['email']) throw new InvalidArgumentException('メールアドレスが無効な値のため検索に失敗しました');
+        if(!array_key_exists('password', $credentials) || !$credentials['password']) throw new InvalidArgumentException('パスワードが無効な値のため検索に失敗しました');
+        
         // 認証処理
         $user = $this->repository->queryUserSingle($credentials['email']);
 

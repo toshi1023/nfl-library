@@ -16,7 +16,7 @@ class FoulRuleService implements FoulRuleServiceInterface
     {
         return [
             'penalties'     => $this->repository->queryFoulRuleInfo($status_type, $yard_info),
-            'message'       => '',
+            'message'       => null,
             'status'        => config('const.Success')
         ];
     }

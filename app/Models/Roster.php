@@ -18,7 +18,7 @@ class Roster extends Model
      */
     public function scopeSeason($query, int $season)
     {
-        if(is_null($season)) throw new InvalidArgumentException('シーズンがnullのため検索に失敗しました');
+        if(!$season) throw new InvalidArgumentException('シーズンが無効な値のため検索に失敗しました');
 
         $query->where('season', $season);
     }
@@ -27,7 +27,7 @@ class Roster extends Model
      */
     public function scopeTeam($query, int $team_id)
     {
-        if(is_null($team_id)) throw new InvalidArgumentException('チームがnullのため検索に失敗しました');
+        if(!$team_id) throw new InvalidArgumentException('チームが無効な値のため検索に失敗しました');
 
         $query->where('team_id', $team_id);
     }
