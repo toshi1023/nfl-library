@@ -36,7 +36,6 @@ Route::middleware('auth:sanctum')->group(function () {
 /************************************************
  *  アプリ側ルーティング(非ログイン)
  ************************************************/
-Route::get('/initials/{user_id}/info',          [InitialController::class, 'info'])->name('initials.info');
 
 /********** ログイン管理(auth) **********/
 Route::post('/auth/login',                      [AuthController::class, 'login'])->name('login');
