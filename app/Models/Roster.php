@@ -37,24 +37,21 @@ class Roster extends Model
      */
     public function team()
     {
-        return $this->belongsTo('App\Models\Team', 'team_id', 'id')
-                    ->select('id', 'city', 'name', 'image_file', 'back_image_file');
+        return $this->belongsTo('App\Models\Team', 'team_id', 'id');
     }
     /**
      * playersテーブルと1対多のリレーション構築(多側の設定)
      */
     public function player()
     {
-        return $this->belongsTo('App\Models\Player', 'player_id', 'id')
-                    ->select('id', 'firstname', 'lastname', 'birthday', 'height', 'weight');
+        return $this->belongsTo('App\Models\Player', 'player_id', 'id');
     }
     /**
      * positionsテーブルと1対多のリレーション構築(多側の設定)
      */
     public function position()
     {
-        return $this->belongsTo('App\Models\Position', 'position_id', 'id')
-                    ->select('id', 'abstract_category', 'category', 'name');
+        return $this->belongsTo('App\Models\Position', 'position_id', 'id');
     }
 
     /**
@@ -62,6 +59,6 @@ class Roster extends Model
      */
     public function rosterStarter()
     {
-        return $this->belongsTo('App\Models\Starter', 'id', 'roster_id')->select('id', 'odflg', 'roster_id');
+        return $this->belongsTo('App\Models\Starter', 'id', 'roster_id');
     }
 }

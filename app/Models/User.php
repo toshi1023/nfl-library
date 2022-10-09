@@ -21,6 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'favorite_season',
+        'favorite_team'
     ];
 
     /**
@@ -49,8 +51,7 @@ class User extends Authenticatable
     {
         if(is_null($email)) throw new InvalidArgumentException('メールアドレスがnullのため検索に失敗しました');
 
-        $query->where('email', $email)
-              ->select('id', 'name', 'email', 'favorite_season', 'favorite_team', 'created_at', 'updated_at');
+        $query->where('email', $email);
     }
 
     /**

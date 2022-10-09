@@ -11,6 +11,11 @@ class Team extends Model
     
     protected $guarded = ['id'];
 
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+    ];
+
     /**
      * formationsテーブルと多対多のリレーション構築
      */

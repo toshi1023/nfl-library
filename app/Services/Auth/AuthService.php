@@ -25,8 +25,8 @@ class AuthService implements AuthServiceInterface
         
         // 認証処理
         $user = $this->repository->queryUserSingle($credentials['email']);
-
-        if (! $user || ! Hash::check($credentials['password'], $user->password)) {
+        
+        if (!$user || !Hash::check($credentials['password'], $user->password)) {
             // 認証に失敗した場合
             return [
                 "message" => config('const.SystemMessage.LOGIN_ERR'),
@@ -50,14 +50,12 @@ class AuthService implements AuthServiceInterface
      */
     public function logout() : array
     {
-        var_dump(Auth::user());
-        return [];
         // ログインチェック
         if(!Auth::check()) return ["message" => config('const.SystemMessage.CHECK_ERR'), "status"  => config('const.Success')];
 
         // ログアウト処理を実行
+        Auth::guard('web')->logout();
         $this->repository->deleteUserToken(Auth::user());
-        Auth::guard(config('auth.defaults.guard'))->logout();
         return [
             "message" => config('const.SystemMessage.LOGOUT_INFO'),
             "status"  => config('const.Success')
