@@ -11,6 +11,11 @@ class Formation extends Model
 
     protected $guarded = ['id'];
 
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+    ];
+
     /**
      * pf_relationsテーブルと1対多のリレーション構築(1側の設定)
      */

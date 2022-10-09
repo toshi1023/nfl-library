@@ -11,6 +11,11 @@ class PfRelation extends Model
 
     protected $guarded = ['id'];
 
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+    ];
+
     /**
      * formationsテーブルと1対多のリレーション構築(多側の設定)
      */

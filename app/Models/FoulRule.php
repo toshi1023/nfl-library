@@ -10,6 +10,11 @@ class FoulRule extends Model
 {
     use HasFactory;
 
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+    ];
+
     /**
      * 攻守ステータスで絞り込み
      */

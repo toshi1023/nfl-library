@@ -13,6 +13,11 @@ class Roster extends Model
 
     protected $guarded = ['id'];
 
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+    ];
+
     /**
      * シーズンで絞り込み
      */
