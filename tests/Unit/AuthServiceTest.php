@@ -49,13 +49,13 @@ class AuthServiceTest extends TestCase
         // 引数の例外処理を予測
         $this->expectException(InvalidArgumentException::class);
 
-        // DBに存在しないユーザの情報でログインを実施
+        // メールアドレスが欠けた状態でログインを実施
         $credentials = [
             "password"  => 'test'
         ];
         $this->service->login($credentials);
 
-        // DBに存在しないユーザの情報でログインを実施
+        // パスワードが欠けた状態でログインを実施
         $credentials = [
             "email"     => 'test@xxx.co.jp'
         ];
