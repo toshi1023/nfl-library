@@ -79,9 +79,32 @@ class AuthTest extends TestCase
             ->assertJson([
                 'id'            => $user->id,
                 'name'          => $user->name,
-                'message'       => config('const.SystemMessage.LOGIN_INFO')
+                'message'       => config('const.SystemMessage.LOGIN_INFO'),
+                'status'        => config('const.Success')
             ]);
 
         $this->assertAuthenticatedAs($user);
+    }
+
+    /**
+     * @test
+     *
+     * @return void
+     */
+    public function ログアウト成功()
+    {
+        // ログイン処理
+        $user = User::find($this->id);
+        $this->actingAs($user);
+
+        $response = $this->post('/api/auth/logout');
+
+        // 正しいレスポンスが返ることを確認
+        $response
+            ->assertStatus(config('const.Success'))
+            ->assertJson([
+                'message'       => config('const.SystemMessage.LOGOUT_INFO'),
+                'status'        => config('const.Success')
+            ]);
     }
 }
