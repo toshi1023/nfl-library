@@ -54,8 +54,8 @@ class AuthService implements AuthServiceInterface
         if(!Auth::check()) return ["message" => config('const.SystemMessage.CHECK_ERR'), "status"  => config('const.Success')];
 
         // ログアウト処理を実行
-        Auth::guard('web')->logout();
         $this->repository->deleteUserToken(Auth::user());
+        Auth::guard('web')->logout();
         return [
             "message" => config('const.SystemMessage.LOGOUT_INFO'),
             "status"  => config('const.Success')
