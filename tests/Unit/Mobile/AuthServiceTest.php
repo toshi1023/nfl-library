@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit;
+namespace Tests\Unit\Mobile;
 
 use Tests\TestCase;
 use App\Services\Mobile\Auth\AuthServiceInterface;
