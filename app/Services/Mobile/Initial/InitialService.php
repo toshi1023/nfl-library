@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Services\Initial;
+namespace App\Services\Mobile\Initial;
 
-use App\Repositories\User\UserRepositoryInterface;
-use App\Services\Initial\InitialServiceInterface;
+use App\Repositories\Mobile\User\UserRepositoryInterface;
+use App\Services\Mobile\Initial\InitialServiceInterface;
 use InvalidArgumentException;
 
 class InitialService implements InitialServiceInterface

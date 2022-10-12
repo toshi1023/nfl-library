@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Services\Auth;
+namespace App\Services\Mobile\Auth;
 
 use App\Lib\Common;
 use App\Models\User;
-use App\Repositories\User\UserRepositoryInterface;
-use App\Services\Auth\AuthServiceInterface;
+use App\Repositories\Mobile\User\UserRepositoryInterface;
+use App\Services\Mobile\Auth\AuthServiceInterface;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use InvalidArgumentException;

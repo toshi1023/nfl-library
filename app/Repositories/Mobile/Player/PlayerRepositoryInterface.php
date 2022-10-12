@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Player;
+namespace App\Repositories\Mobile\Player;
 
 use Illuminate\Database\Eloquent\Collection;
 

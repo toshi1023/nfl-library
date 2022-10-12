@@ -2,10 +2,10 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\PlayerController;
-use App\Http\Controllers\Api\AuthController;
-use App\Http\Controllers\Api\InitialController;
-use App\Http\Controllers\Api\FoulRuleController;
+use App\Http\Controllers\Api\Mobile\PlayerController;
+use App\Http\Controllers\Api\Mobile\AuthController;
+use App\Http\Controllers\Api\Mobile\InitialController;
+use App\Http\Controllers\Api\Mobile\FoulRuleController;
 
 /*
 |--------------------------------------------------------------------------

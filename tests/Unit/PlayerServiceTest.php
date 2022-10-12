@@ -4,9 +4,9 @@ namespace Tests\Unit;
 
 use Tests\TestCase;
 use Illuminate\Database\Eloquent\Collection;
-use App\Services\Player\PlayerServiceInterface;
-use App\Services\Player\PlayerService;
-use App\Repositories\Player\PlayerRepository;
+use App\Services\Mobile\Player\PlayerServiceInterface;
+use App\Services\Mobile\Player\PlayerService;
+use App\Repositories\Mobile\Player\PlayerRepository;
 use App\Models\Roster;
 use InvalidArgumentException;
 

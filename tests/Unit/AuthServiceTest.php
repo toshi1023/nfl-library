@@ -3,9 +3,9 @@
 namespace Tests\Unit;
 
 use Tests\TestCase;
-use App\Services\Auth\AuthServiceInterface;
-use App\Services\Auth\AuthService;
-use App\Repositories\User\UserRepository;
+use App\Services\Mobile\Auth\AuthServiceInterface;
+use App\Services\Mobile\Auth\AuthService;
+use App\Repositories\Mobile\User\UserRepository;
 use App\Models\User;
 use InvalidArgumentException;
 

@@ -1,25 +1,25 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\Mobile;
 
 use App\Http\Controllers\Controller;
-use App\Services\FoulRule\FoulRuleServiceInterface;
+use App\Services\Mobile\Initial\InitialServiceInterface;
 use Illuminate\Http\Request;
 use App\Lib\Common;
 use Exception;
 
-class FoulRuleController extends Controller
+class InitialController extends Controller
 {
-    public function __construct(private FoulRuleServiceInterface $service) {}
+    public function __construct(private InitialServiceInterface $service) {}
 
     /**
-     * ペナルティのデータをリターン
+     * ログインユーザの設定情報をリターン
      */
     public function info(Request $request)
     {
         try {
-            // ペナルティ情報を取得
-            $result = $this->service->getFoulRuleInfo($request->status_type, $request->yard_info);
+            // ログインユーザの設定情報を取得
+            $result = $this->service->getAccountInfo($request->user_id);
 
             // 取得に成功した場合
             return $this->jsonResponse($result);

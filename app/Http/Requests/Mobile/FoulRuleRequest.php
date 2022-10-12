@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Mobile;
 
-use App\Lib\Common;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class PlayerRequest extends FormRequest
+class FoulRuleRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,15 +20,16 @@ class PlayerRequest extends FormRequest
 
     /**
      * Get the validation rules that apply to the request.
+     * 必要ないかもだが、一応削除せずに残しておく
      *
      * @return array
      */
     public function rules()
     {
         return [
-            // ロスター・スターター・フォーメーションのリクエスト用バリデーションチェック
-            'season'                  => 'required',
-            'team_id'                 => 'required'
+            // ペナルティのリクエスト用バリデーションチェック
+            'status_type'             => 'required',
+            'yard_info'               => 'required'
         ];
     }
 
@@ -39,8 +39,8 @@ class PlayerRequest extends FormRequest
     public function messages()
     {
         return [
-            "season.required"       => "シーズンの検索値が設定されていません",
-            "team_id.required"      => "チームの検索値が設定されていません"
+            "status_type.required"    => "攻守ステータスの検索値が設定されていません",
+            "yard_info.required"      => "罰則ヤードの検索値が設定されていません"
         ];
     }
 

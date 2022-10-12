@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Services\FoulRule;
+namespace App\Services\Mobile\FoulRule;
 
-use App\Repositories\FoulRule\FoulRuleRepositoryInterface;
-use App\Services\FoulRule\FoulRuleServiceInterface;
+use App\Repositories\Mobile\FoulRule\FoulRuleRepositoryInterface;
+use App\Services\Mobile\FoulRule\FoulRuleServiceInterface;
 
 class FoulRuleService implements FoulRuleServiceInterface
 {

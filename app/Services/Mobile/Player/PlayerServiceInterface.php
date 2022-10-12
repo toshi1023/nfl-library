@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Player;
+namespace App\Services\Mobile\Player;
 
 interface PlayerServiceInterface
 {

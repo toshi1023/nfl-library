@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\Mobile;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\LoginRequest;
-use App\Services\Auth\AuthServiceInterface;
+use App\Http\Requests\Mobile\LoginRequest;
+use App\Services\Mobile\Auth\AuthServiceInterface;
 use App\Lib\Common;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

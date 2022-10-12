@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\FoulRule;
+namespace App\Services\Mobile\FoulRule;
 
 interface FoulRuleServiceInterface
 {

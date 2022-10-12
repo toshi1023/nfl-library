@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Initial;
+namespace App\Services\Mobile\Initial;
 
 interface InitialServiceInterface
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Services\Player;
+namespace App\Services\Mobile\Player;
 
 use App\Lib\Common;
-use App\Repositories\Player\PlayerRepositoryInterface;
-use App\Services\Player\PlayerServiceInterface;
+use App\Repositories\Mobile\Player\PlayerRepositoryInterface;
+use App\Services\Mobile\Player\PlayerServiceInterface;
 use Exception;
 use InvalidArgumentException;
 

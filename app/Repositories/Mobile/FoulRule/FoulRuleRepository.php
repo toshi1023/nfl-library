@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repositories\FoulRule;
+namespace App\Repositories\Mobile\FoulRule;
 
-use App\Repositories\FoulRule\FoulRuleRepositoryInterface;
+use App\Repositories\Mobile\FoulRule\FoulRuleRepositoryInterface;
 use App\Models\FoulRule;
 use Illuminate\Database\Eloquent\Collection;
 
