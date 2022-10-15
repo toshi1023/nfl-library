@@ -38,8 +38,12 @@ class InitialServiceTest extends TestCase
     /**
      * @test
      */
-    public function getAccountInfoの成功動作()
+    public function infoの成功動作()
     {
+        // ログイン処理
+        $user = User::find($this->id);
+        $this->actingAs($user);
+        
         // DBに存在する検索条件を渡す
         $data = $this->service->getAccountInfo($this->id);
         // statusは成功ステータスを返す

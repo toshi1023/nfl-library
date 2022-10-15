@@ -41,7 +41,7 @@ class AuthService implements AuthServiceInterface
             $this->repository->deleteUserToken($user);
             $token = $this->repository->setUserToken($user);
             return [
-                "id"      => Auth::user()->id,
+                "id"      => Auth::id(),
                 "name"    => Auth::user()->name,
                 "message" => config('const.SystemMessage.LOGIN_INFO'),
                 "status"  => config('const.Success'),
