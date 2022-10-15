@@ -8,7 +8,6 @@ use App\Services\Mobile\Player\PlayerServiceInterface;
 use App\Services\Mobile\Player\PlayerService;
 use App\Repositories\Mobile\Player\PlayerRepository;
 use App\Models\Roster;
-use InvalidArgumentException;
 
 class PlayerServiceTest extends TestCase
 {
@@ -45,7 +44,7 @@ class PlayerServiceTest extends TestCase
     /**
      * @test
      */
-    public function getPlayerInfoの失敗動作_例外処理なし()
+    public function getPlayerInfoの失敗動作_存在しない検索値の場合()
     {
         // DBに存在しない検索条件を渡す
         $data = $this->service->getPlayerInfo(9999, 1);
@@ -58,14 +57,16 @@ class PlayerServiceTest extends TestCase
     /**
      * @test
      */
-    public function getPlayerInfoの失敗動作_例外処理あり()
+    public function getPlayerInfoの失敗動作_検索値が無効な場合()
     {
-        // 引数の例外処理を予測
-        $this->expectException(InvalidArgumentException::class);
-
         // 検索条件が無効な値の場合
         $season = 0;
         $team_id = 0;
-        $this->service->getPlayerInfo($season, $team_id);
+        $data = $this->service->getPlayerInfo($season, $team_id);
+
+        // statusは成功ステータスを返す
+        $this->assertEquals($data['status'], config('const.ServerError'));
+        // メッセージはシステムエラーメッセージを返す
+        $this->assertEquals($data['message'], config('const.SystemMessage.UNEXPECTED_ERR'));
     }
 }

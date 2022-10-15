@@ -17,18 +17,7 @@ class FoulRuleController extends Controller
      */
     public function info(Request $request)
     {
-        try {
-            // ペナルティ情報を取得
-            $result = $this->service->getFoulRuleInfo($request->status_type, $request->yard_info);
-
-            // 取得に成功した場合
-            return $this->jsonResponse($result);
-        } catch (Exception $e) {
-            Common::getErrorLog($e, get_class($this), __FUNCTION__);
-
-            // resultに値をセット
-            $result = Common::setServerErrorMessage();
-            return $this->jsonResponse($result);
-        }
+        // ペナルティ情報を取得
+        return $this->jsonResponse($this->service->getFoulRuleInfo($request->status_type, $request->yard_info));
     }
 }

@@ -17,14 +17,21 @@ class PlayerService implements PlayerServiceInterface
      */
     public function getPlayerInfo(int $season, int $team_id) : array
     {
-        // 値チェック
-        if(!$season) throw new InvalidArgumentException('シーズンが無効な値のため検索に失敗しました');
-        if(!$team_id) throw new InvalidArgumentException('チームが無効な値のため検索に失敗しました');
+        try {
+            // 値チェック
+            if(!$season) throw new InvalidArgumentException('シーズンが無効な値のため検索に失敗しました');
+            if(!$team_id) throw new InvalidArgumentException('チームが無効な値のため検索に失敗しました');
+            // ロスター、スターター情報を取得
+            return [
+                'rosters'       => $this->repository->queryRosterStarterInfo($season, $team_id),
+                'message'       => null,
+                'status'        => config('const.Success')
+            ];
+        } catch (Exception $e) {
+            Common::getErrorLog($e, get_class($this), __FUNCTION__);
 
-        return [
-            'rosters'       => $this->repository->queryRosterStarterInfo($season, $team_id),
-            'message'       => null,
-            'status'        => config('const.Success')
-        ];
+            return Common::setServerErrorMessage();
+        }
+        
     }
 }

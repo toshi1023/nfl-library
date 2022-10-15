@@ -17,18 +17,7 @@ class InitialController extends Controller
      */
     public function info(Request $request)
     {
-        try {
-            // ログインユーザの設定情報を取得
-            $result = $this->service->getAccountInfo($request->user_id);
-
-            // 取得に成功した場合
-            return $this->jsonResponse($result);
-        } catch (Exception $e) {
-            Common::getErrorLog($e, get_class($this), __FUNCTION__);
-
-            // resultに値をセット
-            $result = Common::setServerErrorMessage();
-            return $this->jsonResponse($result);
-        }
+        // ログインユーザの設定情報を取得
+        return $this->jsonResponse($this->service->getAccountInfo($request->user_id));
     }
 }

@@ -15,13 +15,19 @@ class InitialService implements InitialServiceInterface
      */
     public function getAccountInfo(int $user_id) : array
     {
-        // 値チェック
-        if(!$user_id) throw new InvalidArgumentException('ユーザIDが無効な値のため検索に失敗しました');
+        try {
+            // ログインユーザの設定情報を取得
+            if(!$user_id) throw new InvalidArgumentException('ユーザIDが無効な値のため検索に失敗しました');
 
-        return [
-            "user"    => $this->repository->queryUserSettingSingle($user_id),
-            "message" => null,
-            "status"  => config('const.Success'),
-        ];
+            return [
+                "user"    => $this->repository->queryUserSettingSingle($user_id),
+                "message" => null,
+                "status"  => config('const.Success'),
+            ];
+        } catch (Exception $e) {
+            Common::getErrorLog($e, get_class($this), __FUNCTION__);
+
+            return Common::setServerErrorMessage();
+        }
     }
 }

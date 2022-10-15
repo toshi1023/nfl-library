@@ -14,10 +14,17 @@ class FoulRuleService implements FoulRuleServiceInterface
      */
     public function getFoulRuleInfo(?int $status_type, ?int $yard_info) : array
     {
-        return [
-            'penalties'     => $this->repository->queryFoulRuleInfo($status_type, $yard_info),
-            'message'       => null,
-            'status'        => config('const.Success')
-        ];
+        try {
+            // ペナルティ情報を取得
+            return [
+                'penalties'     => $this->repository->queryFoulRuleInfo($status_type, $yard_info),
+                'message'       => null,
+                'status'        => config('const.Success')
+            ];
+        } catch (Exception $e) {
+            Common::getErrorLog($e, get_class($this), __FUNCTION__);
+
+            return Common::setServerErrorMessage();
+        }
     }
 }

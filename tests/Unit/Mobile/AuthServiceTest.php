@@ -7,7 +7,6 @@ use App\Services\Mobile\Auth\AuthServiceInterface;
 use App\Services\Mobile\Auth\AuthService;
 use App\Repositories\Mobile\User\UserRepository;
 use App\Models\User;
-use InvalidArgumentException;
 
 class AuthServiceTest extends TestCase
 {
@@ -46,20 +45,27 @@ class AuthServiceTest extends TestCase
      */
     public function loginメソッドの失敗処理を確認_パラメーターの欠如()
     {
-        // 引数の例外処理を予測
-        $this->expectException(InvalidArgumentException::class);
-
         // メールアドレスが欠けた状態でログインを実施
         $credentials = [
             "password"  => 'test'
         ];
-        $this->service->login($credentials);
+        $data = $this->service->login($credentials);
+
+        // statusは成功ステータスを返す
+        $this->assertEquals($data['status'], config('const.ServerError'));
+        // メッセージはシステムエラーメッセージを返す
+        $this->assertEquals($data['message'], config('const.SystemMessage.UNEXPECTED_ERR'));
 
         // パスワードが欠けた状態でログインを実施
         $credentials = [
             "email"     => 'test@xxx.co.jp'
         ];
-        $this->service->login($credentials);
+        $data = $this->service->login($credentials);
+
+        // statusは成功ステータスを返す
+        $this->assertEquals($data['status'], config('const.ServerError'));
+        // メッセージはシステムエラーメッセージを返す
+        $this->assertEquals($data['message'], config('const.SystemMessage.UNEXPECTED_ERR'));
     }
 
     /**
