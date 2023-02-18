@@ -85,6 +85,18 @@ return [
         'kick'    => 3,
         'all'     => 99
     ],
+    // 所属カンファレンス
+    'Conference' => [
+        'afc' => 1,     // AFC
+        'nfc' => 2      // NFC
+    ],
+    // 所属地区
+    'Area' => [
+        'e' => 1,       // 東地区
+        'n' => 2,       // 北地区
+        's' => 3,       // 南地区
+        'w' => 4        // 西地区
+    ],
 
     // メールアドレス
     'RootMailAddress' => env('ROOT_MAIL_ADDRESS'),
