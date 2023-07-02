@@ -5,10 +5,7 @@ namespace App\Http\Controllers\Api\Mobile;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Mobile\LoginRequest;
 use App\Services\Mobile\Auth\AuthServiceInterface;
-use App\Lib\Common;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Exception;
+use Illuminate\Http\JsonResponse;
 
 class AuthController extends Controller
 {
@@ -17,7 +14,7 @@ class AuthController extends Controller
     /**
      * ログイン管理
      */
-    public function login(LoginRequest $request) 
+    public function login(LoginRequest $request) : JsonResponse
     {
         // 認証処理
         return $this->jsonResponse($this->service->login($request->all()));
@@ -26,7 +23,7 @@ class AuthController extends Controller
     /**
      * ログアウト処理
      */
-    public function logout()
+    public function logout() : JsonResponse
     {
         // ログアウト処理の実行
         return $this->jsonResponse($this->service->logout());

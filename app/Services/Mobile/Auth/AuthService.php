@@ -50,7 +50,7 @@ class AuthService implements AuthServiceInterface
         } catch (Exception $e) {
             Common::getErrorLog($e, get_class($this), __FUNCTION__);
 
-            return Common::setServerErrorMessage();
+            return Common::setServerErrorMessage($e);
         }
     }
 
@@ -73,7 +73,7 @@ class AuthService implements AuthServiceInterface
         } catch (Exception $e) {
             Common::getErrorLog($e, get_class($this), __FUNCTION__);
 
-            return Common::setServerErrorMessage();
+            return Common::setServerErrorMessage($e);
         }
     }
 }

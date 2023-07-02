@@ -220,11 +220,16 @@ class Common {
     /**
      * サーバーエラー発生時のレスポンスを設定
      */
-    public static function setServerErrorMessage() : array
+    public static function setServerErrorMessage(Exception $e) : array
     {
         return [
-            'message'   => config('const.SystemMessage.UNEXPECTED_ERR'),
-            'status'    => config('const.ServerError')
+            'error_messages'  => [config('const.SystemMessage.UNEXPECTED_ERR')],
+            'status'          => config('const.ServerError'),
+            'details'         => [
+                'message'  => $e->getMessage(),
+                'file'     => $e->getFile(),
+                'line'     => $e->getLine()
+            ]
         ];
     }
 

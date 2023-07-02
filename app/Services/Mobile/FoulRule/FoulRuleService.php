@@ -24,7 +24,7 @@ class FoulRuleService implements FoulRuleServiceInterface
         } catch (Exception $e) {
             Common::getErrorLog($e, get_class($this), __FUNCTION__);
 
-            return Common::setServerErrorMessage();
+            return Common::setServerErrorMessage($e);
         }
     }
 }

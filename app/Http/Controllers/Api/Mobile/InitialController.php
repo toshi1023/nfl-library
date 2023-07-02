@@ -5,8 +5,7 @@ namespace App\Http\Controllers\Api\Mobile;
 use App\Http\Controllers\Controller;
 use App\Services\Mobile\Initial\InitialServiceInterface;
 use Illuminate\Http\Request;
-use App\Lib\Common;
-use Exception;
+use Illuminate\Http\JsonResponse;
 
 class InitialController extends Controller
 {
@@ -15,7 +14,7 @@ class InitialController extends Controller
     /**
      * ログインユーザの設定情報をリターン
      */
-    public function info(Request $request)
+    public function info(Request $request) : JsonResponse
     {
         // ログインユーザの設定情報を取得
         return $this->jsonResponse($this->service->getAccountInfo($request->user_id));
