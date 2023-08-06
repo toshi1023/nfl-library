@@ -73,7 +73,7 @@ class FoulRuleServiceTest extends TestCase
     public function getFoulRuleInfoの失敗動作_検索値が無効な場合()
     {
         // 攻守ステータスの検索条件が無効な値の場合
-        $status_type = 2;
+        $status_type = 3;
         $yard_info = 5;
         $data = $this->service->getFoulRuleInfo($status_type, $yard_info);
 

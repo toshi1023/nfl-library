@@ -19,7 +19,7 @@ class FoulRuleService implements FoulRuleServiceInterface
     {
         try {
             // 値チェック
-            if($status_type && $status_type > 1) throw new InvalidArgumentException('攻守ステータスの検索値が無効な値のため検索に失敗しました');
+            if($status_type && $status_type > 2) throw new InvalidArgumentException('攻守ステータスの検索値が無効な値のため検索に失敗しました');
             if(!is_null($yard_info) && !$yard_info) throw new InvalidArgumentException('罰則ヤード情報の検索値が無効な値のため検索に失敗しました');
             // ペナルティ情報を取得
             return [
