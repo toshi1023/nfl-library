@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Mobile;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Mobile\FoulRuleRequest;
 use App\Services\Mobile\FoulRule\FoulRuleServiceInterface;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
@@ -14,7 +15,7 @@ class FoulRuleController extends Controller
     /**
      * ペナルティのデータをリターン
      */
-    public function info(Request $request) : JsonResponse
+    public function info(FoulRuleRequest $request) : JsonResponse
     {
         // ペナルティ情報を取得
         return $this->jsonResponse($this->service->getFoulRuleInfo($request->status_type, $request->yard_info));

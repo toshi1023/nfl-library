@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Mobile;
 
+use App\Lib\Common;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
@@ -28,8 +29,8 @@ class FoulRuleRequest extends FormRequest
     {
         return [
             // ペナルティのリクエスト用バリデーションチェック
-            'status_type'             => 'required',
-            'yard_info'               => 'required'
+            'status_type'             => 'nullable|integer',
+            'yard_info'               => 'nullable|integer'
         ];
     }
 
@@ -39,8 +40,8 @@ class FoulRuleRequest extends FormRequest
     public function messages()
     {
         return [
-            "status_type.required"    => "攻守ステータスの検索値が設定されていません",
-            "yard_info.required"      => "罰則ヤードの検索値が設定されていません"
+            "status_type.integer"    => "攻守ステータスの検索値が無効な値を設定されています",
+            "yard_info.integer"      => "罰則ヤードの検索値が無効な値を設定されています"
         ];
     }
 
