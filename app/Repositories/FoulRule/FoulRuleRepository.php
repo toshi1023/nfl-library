@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Repositories\Mobile\FoulRule;
+namespace App\Repositories\FoulRule;
 
-use App\Repositories\Mobile\FoulRule\FoulRuleRepositoryInterface;
+use App\Repositories\FoulRule\FoulRuleRepositoryInterface;
 use App\Models\FoulRule;
+use App\Repositories\BaseRepository;
 use Illuminate\Database\Eloquent\Collection;
 
-class FoulRuleRepository implements FoulRuleRepositoryInterface
+class FoulRuleRepository extends BaseRepository implements FoulRuleRepositoryInterface
 {
     /**
      * ペナルティ情報をDBから取得
@@ -14,7 +15,8 @@ class FoulRuleRepository implements FoulRuleRepositoryInterface
      */
     public function queryFoulRuleInfo(?int $status_type, ?int $yard_info) : Collection
     {
-        return FoulRule::statusType($status_type)
+        $foulRule = $this->foulRule();
+        return $foulRule->statusType($status_type)
                        ->yardInfo($yard_info)
                        ->get();
     }

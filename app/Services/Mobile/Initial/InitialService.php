@@ -2,14 +2,14 @@
 
 namespace App\Services\Mobile\Initial;
 
-use App\Repositories\Mobile\User\UserRepositoryInterface;
+use App\Repositories\BaseRepositoryInterface;
 use App\Services\Mobile\Initial\InitialServiceInterface;
 use Illuminate\Support\Facades\Auth;
 use InvalidArgumentException;
 
 class InitialService implements InitialServiceInterface
 {
-    public function __construct(private UserRepositoryInterface $repository) {}
+    public function __construct(private BaseRepositoryInterface $repository) {}
 
     /**
      * ログインユーザの設定情報を取得
@@ -22,7 +22,7 @@ class InitialService implements InitialServiceInterface
             if($user_id !== Auth::id()) throw new InvalidArgumentException('リクエストされたユーザIDがログインユーザのIDと一致しないため検索に失敗しました');
 
             return [
-                "user"    => $this->repository->queryUserSettingSingle($user_id),
+                "user"    => $this->repository->userRepository()->queryUserSettingSingle($user_id),
                 "message" => null,
                 "status"  => config('const.Success'),
             ];

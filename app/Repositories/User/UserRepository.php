@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Repositories\Mobile\User;
+namespace App\Repositories\User;
 
 use App\Models\User;
-use App\Repositories\Mobile\User\UserRepositoryInterface;
+use App\Repositories\BaseRepository;
+use App\Repositories\User\UserRepositoryInterface;
 use InvalidArgumentException;
 
-class UserRepository implements UserRepositoryInterface
+class UserRepository extends BaseRepository implements UserRepositoryInterface
 {
     /**
      * 単一のユーザ情報をDBから取得
@@ -14,11 +15,12 @@ class UserRepository implements UserRepositoryInterface
      */
     public function queryUserSingle(string $email) : User
     {
-        $user = User::email($email)->first();
+        $user = $this->user();
+        $model = $user->email($email)->first();
 
-        if(!$user) return new User();
+        if(!$model) return new User();
 
-        return $user;
+        return $model;
     }
 
     /**
@@ -27,13 +29,14 @@ class UserRepository implements UserRepositoryInterface
      */
     public function queryUserSettingSingle(int $user_id) : User
     {
-        $user = User::find($user_id)
+        $user = $this->user();
+        $model = $user->find($user_id)
                     ->with(['team', 'setting'])
                     ->first();
 
-        if(!$user) return new User();
+        if(!$model) return new User();
 
-        return $user;
+        return $model;
     }
 
     /**

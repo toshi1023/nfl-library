@@ -5,7 +5,7 @@ namespace Tests\Unit\Mobile;
 use Tests\TestCase;
 use App\Services\Mobile\Auth\AuthServiceInterface;
 use App\Services\Mobile\Auth\AuthService;
-use App\Repositories\Mobile\User\UserRepository;
+use App\Repositories\BaseRepository;
 use App\Models\User;
 
 class AuthServiceTest extends TestCase
@@ -19,7 +19,7 @@ class AuthServiceTest extends TestCase
     public function setUp() : void
     {
         parent::setUp();
-        $this->service = new AuthService(new UserRepository());
+        $this->service = new AuthService(new BaseRepository());
     }
 
     /**
@@ -51,10 +51,11 @@ class AuthServiceTest extends TestCase
         ];
         $data = $this->service->login($credentials);
 
-        // statusは成功ステータスを返す
+        // statusはサーバーエラーステータスを返す
         $this->assertEquals($data['status'], config('const.ServerError'));
-        // メッセージはシステムエラーメッセージを返す
-        $this->assertEquals($data['message'], config('const.SystemMessage.UNEXPECTED_ERR'));
+        // メッセージはシステムエラーメッセージを配列形式で返す
+        $this->assertEquals($data['error_messages'], [config('const.SystemMessage.UNEXPECTED_ERR')]);
+        $this->assertEquals($data['details']['message'], 'メールアドレスが無効な値のため検索に失敗しました');
 
         // パスワードが欠けた状態でログインを実施
         $credentials = [
@@ -62,10 +63,11 @@ class AuthServiceTest extends TestCase
         ];
         $data = $this->service->login($credentials);
 
-        // statusは成功ステータスを返す
+        // statusはサーバーエラーステータスを返す
         $this->assertEquals($data['status'], config('const.ServerError'));
-        // メッセージはシステムエラーメッセージを返す
-        $this->assertEquals($data['message'], config('const.SystemMessage.UNEXPECTED_ERR'));
+        // メッセージはシステムエラーメッセージを配列形式で返す
+        $this->assertEquals($data['error_messages'], [config('const.SystemMessage.UNEXPECTED_ERR')]);
+        $this->assertEquals($data['details']['message'], 'パスワードが無効な値のため検索に失敗しました');
     }
 
     /**

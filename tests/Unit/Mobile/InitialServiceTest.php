@@ -5,7 +5,7 @@ namespace Tests\Unit\Mobile;
 use Tests\TestCase;
 use App\Services\Mobile\Initial\InitialServiceInterface;
 use App\Services\Mobile\Initial\InitialService;
-use App\Repositories\Mobile\User\UserRepository;
+use App\Repositories\BaseRepository;
 use App\Models\User;
 use InvalidArgumentException;
 
@@ -20,7 +20,7 @@ class InitialServiceTest extends TestCase
     public function setUp() : void
     {
         parent::setUp();
-        $this->service = new InitialService(new UserRepository());
+        $this->service = new InitialService(new BaseRepository());
     }
 
     /**

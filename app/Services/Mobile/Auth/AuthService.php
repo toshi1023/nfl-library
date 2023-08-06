@@ -3,8 +3,7 @@
 namespace App\Services\Mobile\Auth;
 
 use App\Lib\Common;
-use App\Models\User;
-use App\Repositories\Mobile\User\UserRepositoryInterface;
+use App\Repositories\BaseRepositoryInterface;
 use App\Services\Mobile\Auth\AuthServiceInterface;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -13,7 +12,7 @@ use InvalidArgumentException;
 
 class AuthService implements AuthServiceInterface
 {
-    public function __construct(private UserRepositoryInterface $repository) {}
+    public function __construct(private BaseRepositoryInterface $repository) {}
 
     /**
      * ログイン処理を実行
@@ -26,7 +25,7 @@ class AuthService implements AuthServiceInterface
             if(!array_key_exists('password', $credentials) || !$credentials['password']) throw new InvalidArgumentException('パスワードが無効な値のため検索に失敗しました');
             
             // 認証処理
-            $user = $this->repository->queryUserSingle($credentials['email']);
+            $user = $this->repository->userRepository()->queryUserSingle($credentials['email']);
             
             if (!$user || !Hash::check($credentials['password'], $user->password)) {
                 // 認証に失敗した場合
@@ -38,8 +37,8 @@ class AuthService implements AuthServiceInterface
 
             // 認証に成功した場合
             Auth::guard(config('auth.defaults.guard'))->attempt($credentials);    // 本命の認証処理
-            $this->repository->deleteUserToken($user);
-            $token = $this->repository->setUserToken($user);
+            $this->repository->userRepository()->deleteUserToken($user);
+            $token = $this->repository->userRepository()->setUserToken($user);
             return [
                 "id"      => Auth::id(),
                 "name"    => Auth::user()->name,
@@ -64,7 +63,7 @@ class AuthService implements AuthServiceInterface
             if(!Auth::check()) return ["message" => config('const.SystemMessage.CHECK_ERR'), "status"  => config('const.Success')];
 
             // ログアウト処理を実行
-            $this->repository->deleteUserToken(Auth::user());
+            $this->repository->userRepository()->deleteUserToken(Auth::user());
             Auth::guard('web')->logout();
             return [
                 "message" => config('const.SystemMessage.LOGOUT_INFO'),

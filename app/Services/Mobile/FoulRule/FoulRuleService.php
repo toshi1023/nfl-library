@@ -2,12 +2,12 @@
 
 namespace App\Services\Mobile\FoulRule;
 
-use App\Repositories\Mobile\FoulRule\FoulRuleRepositoryInterface;
+use App\Repositories\BaseRepositoryInterface;
 use App\Services\Mobile\FoulRule\FoulRuleServiceInterface;
 
 class FoulRuleService implements FoulRuleServiceInterface
 {
-    public function __construct(private FoulRuleRepositoryInterface $repository) {}
+    public function __construct(private BaseRepositoryInterface $repository) {}
 
     /**
      * ペナルティ情報を取得
@@ -17,7 +17,7 @@ class FoulRuleService implements FoulRuleServiceInterface
         try {
             // ペナルティ情報を取得
             return [
-                'penalties'     => $this->repository->queryFoulRuleInfo($status_type, $yard_info),
+                'penalties'     => $this->repository->foulRuleRepository()->queryFoulRuleInfo($status_type, $yard_info),
                 'message'       => null,
                 'status'        => config('const.Success')
             ];

@@ -3,14 +3,14 @@
 namespace App\Services\Mobile\Player;
 
 use App\Lib\Common;
-use App\Repositories\Mobile\Player\PlayerRepositoryInterface;
+use App\Repositories\BaseRepositoryInterface;
 use App\Services\Mobile\Player\PlayerServiceInterface;
 use Exception;
 use InvalidArgumentException;
 
 class PlayerService implements PlayerServiceInterface
 {
-    public function __construct(private PlayerRepositoryInterface $repository) {}
+    public function __construct(private BaseRepositoryInterface $repository) {}
 
     /**
      * ロスターやスターター情報を取得
@@ -23,7 +23,7 @@ class PlayerService implements PlayerServiceInterface
             if(!$team_id) throw new InvalidArgumentException('チームが無効な値のため検索に失敗しました');
             // ロスター、スターター情報を取得
             return [
-                'rosters'       => $this->repository->queryRosterStarterInfo($season, $team_id),
+                'rosters'       => $this->repository->playerRepository()->queryRosterStarterInfo($season, $team_id),
                 'message'       => null,
                 'status'        => config('const.Success')
             ];

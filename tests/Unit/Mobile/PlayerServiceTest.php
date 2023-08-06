@@ -6,7 +6,7 @@ use Tests\TestCase;
 use Illuminate\Database\Eloquent\Collection;
 use App\Services\Mobile\Player\PlayerServiceInterface;
 use App\Services\Mobile\Player\PlayerService;
-use App\Repositories\Mobile\Player\PlayerRepository;
+use App\Repositories\BaseRepository;
 use App\Models\Roster;
 
 class PlayerServiceTest extends TestCase
@@ -19,7 +19,7 @@ class PlayerServiceTest extends TestCase
     public function setUp() : void
     {
         parent::setUp();
-        $this->service = new PlayerService(new PlayerRepository());
+        $this->service = new PlayerService(new BaseRepository());
     }
 
     /**
@@ -59,14 +59,26 @@ class PlayerServiceTest extends TestCase
      */
     public function getPlayerInfoの失敗動作_検索値が無効な場合()
     {
-        // 検索条件が無効な値の場合
+        // シーズンの検索条件が無効な値の場合
         $season = 0;
+        $team_id = 1;
+        $data = $this->service->getPlayerInfo($season, $team_id);
+
+        // statusはサーバーエラーステータスを返す
+        $this->assertEquals($data['status'], config('const.ServerError'));
+        // メッセージはシステムエラーメッセージを配列形式で返す
+        $this->assertEquals($data['error_messages'], [config('const.SystemMessage.UNEXPECTED_ERR')]);
+        $this->assertEquals($data['details']['message'], 'シーズンが無効な値のため検索に失敗しました');
+
+        // チームの検索条件が無効な値の場合
+        $season = 2020;
         $team_id = 0;
         $data = $this->service->getPlayerInfo($season, $team_id);
 
-        // statusは成功ステータスを返す
+        // statusはサーバーエラーステータスを返す
         $this->assertEquals($data['status'], config('const.ServerError'));
-        // メッセージはシステムエラーメッセージを返す
-        $this->assertEquals($data['message'], config('const.SystemMessage.UNEXPECTED_ERR'));
+        // メッセージはシステムエラーメッセージを配列形式で返す
+        $this->assertEquals($data['error_messages'], [config('const.SystemMessage.UNEXPECTED_ERR')]);
+        $this->assertEquals($data['details']['message'], 'チームが無効な値のため検索に失敗しました');
     }
 }

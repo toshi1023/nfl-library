@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Repositories\Mobile\Player;
+namespace App\Repositories\Player;
 
-use App\Repositories\Mobile\Player\PlayerRepositoryInterface;
+use App\Repositories\Player\PlayerRepositoryInterface;
 use App\Models\Roster;
 use App\Models\Starter;
+use App\Repositories\BaseRepository;
 use Illuminate\Database\Eloquent\Collection;
 
-class PlayerRepository implements PlayerRepositoryInterface
+class PlayerRepository extends BaseRepository implements PlayerRepositoryInterface
 {
     /**
      * ロスター・スターター情報をDBから取得
@@ -16,7 +17,8 @@ class PlayerRepository implements PlayerRepositoryInterface
      */
     public function queryRosterStarterInfo(int $season, int $team_id) : Collection
     {
-        return Roster::season($season)->team($team_id)
+        $roster = $this->roster();
+        return $roster->season($season)->team($team_id)
                      ->with(['team', 'player', 'position', 'rosterStarter'])
                      ->get();
     }
@@ -28,6 +30,7 @@ class PlayerRepository implements PlayerRepositoryInterface
      */
     public function queryFormationInfo(int $season, int $team_id) : Collection
     {
-        return Starter::get();
+        $starter = $this->starter();
+        return $starter->get();
     }
 }

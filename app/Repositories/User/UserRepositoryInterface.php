@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Mobile\User;
+namespace App\Repositories\User;
 
 use App\Models\User;
 

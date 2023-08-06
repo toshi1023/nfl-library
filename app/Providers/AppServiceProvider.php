@@ -11,12 +11,14 @@ use App\Services\Mobile\Initial\InitialServiceInterface;
 use App\Services\Mobile\Initial\InitialService;
 use App\Services\Mobile\FoulRule\FoulRuleServiceInterface;
 use App\Services\Mobile\FoulRule\FoulRuleService;
-use App\Repositories\Mobile\Player\PlayerRepositoryInterface;
-use App\Repositories\Mobile\Player\PlayerRepository;
-use App\Repositories\Mobile\User\UserRepositoryInterface;
-use App\Repositories\Mobile\User\UserRepository;
-use App\Repositories\Mobile\FoulRule\FoulRuleRepositoryInterface;
-use App\Repositories\Mobile\FoulRule\FoulRuleRepository;
+use App\Repositories\BaseRepositoryInterface;
+use App\Repositories\BaseRepository;
+use App\Repositories\Player\PlayerRepositoryInterface;
+use App\Repositories\Player\PlayerRepository;
+use App\Repositories\User\UserRepositoryInterface;
+use App\Repositories\User\UserRepository;
+use App\Repositories\FoulRule\FoulRuleRepositoryInterface;
+use App\Repositories\FoulRule\FoulRuleRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -38,6 +40,7 @@ class AppServiceProvider extends ServiceProvider
         /************************************************
          *  リポジトリ層
          ************************************************/
+        $this->app->singleton(BaseRepositoryInterface::class,       BaseRepository::class);
         $this->app->singleton(PlayerRepositoryInterface::class,     PlayerRepository::class);
         $this->app->singleton(UserRepositoryInterface::class,       UserRepository::class);
         $this->app->singleton(FoulRuleRepositoryInterface::class,   FoulRuleRepository::class);
