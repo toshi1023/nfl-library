@@ -19,6 +19,12 @@ use App\Repositories\User\UserRepositoryInterface;
 use App\Repositories\User\UserRepository;
 use App\Repositories\FoulRule\FoulRuleRepositoryInterface;
 use App\Repositories\FoulRule\FoulRuleRepository;
+use App\Repositories\Roster\RosterRepository;
+use App\Repositories\Roster\RosterRepositoryInterface;
+use App\Repositories\Team\TeamRepository;
+use App\Repositories\Team\TeamRepositoryInterface;
+use App\Services\Mobile\Search\SearchService;
+use App\Services\Mobile\Search\SearchServiceInterface;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -36,6 +42,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(PlayerServiceInterface::class,        PlayerService::class);
         $this->app->singleton(InitialServiceInterface::class,       InitialService::class);
         $this->app->singleton(FoulRuleServiceInterface::class,      FoulRuleService::class);
+        $this->app->singleton(SearchServiceInterface::class,        SearchService::class);
 
         /************************************************
          *  リポジトリ層
@@ -44,6 +51,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(PlayerRepositoryInterface::class,     PlayerRepository::class);
         $this->app->singleton(UserRepositoryInterface::class,       UserRepository::class);
         $this->app->singleton(FoulRuleRepositoryInterface::class,   FoulRuleRepository::class);
+        $this->app->singleton(TeamRepositoryInterface::class,       TeamRepository::class);
+        $this->app->singleton(RosterRepositoryInterface::class,     RosterRepository::class);
     }
 
     /**

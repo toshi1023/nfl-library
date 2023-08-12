@@ -18,4 +18,14 @@ interface BaseRepositoryInterface
      * PlayerRepository
      */
     public function playerRepository();
+    
+    /**
+     * TeamRepository
+     */
+    public function teamRepository();
+
+    /**
+     * RosterRepository
+     */
+    public function rosterRepository();
 }

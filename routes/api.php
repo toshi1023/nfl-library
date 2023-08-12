@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\Mobile\PlayerController;
 use App\Http\Controllers\Api\Mobile\AuthController;
 use App\Http\Controllers\Api\Mobile\InitialController;
 use App\Http\Controllers\Api\Mobile\FoulRuleController;
+use App\Http\Controllers\Api\Mobile\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,3 +47,7 @@ Route::get('/players/info',                     [PlayerController::class, 'info'
 
 /********** 反則管理(foul_rules) **********/
 Route::get('/foul_rules/info',                  [FoulRuleController::class, 'info'])->name('foul_rules.info');
+
+/********** 検索管理 **********/
+Route::get('/search/team/index',                  [SearchController::class, 'teamIndex'])->name('search.team.index');
+Route::get('/search/season/index',                  [SearchController::class, 'seasonIndex'])->name('search.season.index');

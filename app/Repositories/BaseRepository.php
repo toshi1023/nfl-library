@@ -15,6 +15,8 @@ use App\Models\TfRelation;
 use App\Models\User;
 use App\Repositories\FoulRule\FoulRuleRepositoryInterface;
 use App\Repositories\Player\PlayerRepositoryInterface;
+use App\Repositories\Roster\RosterRepositoryInterface;
+use App\Repositories\Team\TeamRepositoryInterface;
 use App\Repositories\User\UserRepositoryInterface;
 
 class BaseRepository implements BaseRepositoryInterface
@@ -41,6 +43,22 @@ class BaseRepository implements BaseRepositoryInterface
     final public function playerRepository()
     {
         return app()->make(PlayerRepositoryInterface::class);
+    }
+
+    /**
+     * TeamRepository
+     */
+    public function teamRepository()
+    {
+        return app()->make(TeamRepositoryInterface::class);
+    }
+
+    /**
+     * RosterRepository
+     */
+    public function rosterRepository()
+    {
+        return app()->make(RosterRepositoryInterface::class);
     }
 
     /**
