@@ -16,6 +16,11 @@ class Player extends Model
         'updated_at',
     ];
 
+    protected $casts = [
+        'height' => 'double',
+        'weight' => 'double'
+    ];
+
     /**
      * アクセサ許可リスト
      */
