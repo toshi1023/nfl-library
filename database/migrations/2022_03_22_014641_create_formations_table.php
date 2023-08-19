@@ -15,7 +15,7 @@ class CreateFormationsTable extends Migration
     {
         Schema::create('formations', function (Blueprint $table) {
             $table->increments('id')->comment('ID');
-            $table->boolean('odflg')->comment('攻守フラグ');   // true: Offence, false: Deffence
+            $table->boolean('odflg')->default(true)->comment('攻守フラグ');   // true: Offence, false: Deffence
             $table->string('name')->comment('名前');
             $table->timestamps();
         });
