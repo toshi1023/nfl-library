@@ -55,10 +55,14 @@ class CsvImport extends Command
 
         $data = [];
         $file = null;
-        foreach($teams as $val) {
+        foreach($teams as $index => $val) {
             // SplFileObjectの作成
-            if($season > 2015) {
+            if($season > 2015 && $season < 2021) {
                 $file = new \SplFileObject(storage_path('app/public/'.$season.'/'.$val.'_madden_nfl_'.config('const.Madden.'.strval($season)).'_.csv'));
+            } else if($season === 2021) {
+                $file = new \SplFileObject(storage_path('app/public/'.$season.'/madden_nfl_22_final_roster.csv'));
+            } else if($season > 2021) {
+                $file = new \SplFileObject(storage_path('app/public/'.$season.'/'.mb_strtolower(str_replace(' ','_', config('const.City'))).'_'.mb_strtolower(config('const.TeamName')).'__madden_nfl_'.config('const.Madden.'.strval($season)).'.csv'));
             } else {
                 $file = new \SplFileObject(storage_path('app/public/'.$season.'/'.$val.'_madden_nfl_'.config('const.Madden.'.strval($season)).'.csv'));
             }
@@ -90,10 +94,12 @@ class CsvImport extends Command
                                 $teamIndex = $j;
                                 break;
                             case 'First Name':
+                            case 'FirstName':
                             case 'FIRST':
                                 $fnameIndex = $j;
                                 break;
                             case 'Last Name':
+                            case 'LastName':
                             case 'LAST':
                                 $lnameIndex = $j; 
                                 break;
@@ -103,12 +109,14 @@ class CsvImport extends Command
                                 break;
                             case 'Jersey':
                             case 'Jersey Number':
+                            case 'JerseyNumber':
                             case 'JERSEY':
                             case 'Jersey #':
                                 $numIndex = $j;
                                 break;
                             case 'Overall':
                             case 'Overall Rating':
+                            case 'OverallRating':
                             case 'OVR':
                             case 'OVERALL RATING':
                                 $ratIndex = $j;

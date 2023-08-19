@@ -4,7 +4,14 @@
 <p>2: 以下のコマンドでDBの初期設定を行います</p>
    <p>・php artisan migrate:fresh --seed</p>
 <br>
-<p>3: 以下の順番でコマンドを実行してください</p>
+<p>3: chromedriverのダウンロードを環境に実行してください</p>
+   <p>参考コマンド: wget https://chromedriver.storage.googleapis.com/98.0.4758.102/chromedriver_linux64.zip</p>
+   <p>参考コマンド: unzip chromedriver_linux64.zip</p>
+   <p>参考コマンド: sudo mv chromedriver /usr/local/bin/</p>
+   <p>参考コマンド: chmod 755 /usr/local/bin/chromedriver</p>
+   <p>参考コマンド: rm chromedriver_linux64.zip</p>
+<br>
+<p>4: 以下の順番でコマンドを実行してください</p>
    <p>※引数は任意です</p>
    <p>(※注意)年数は2012年以降しか設定出来ません</p>
    <p>・php artisan scrape:rosters {西暦年}</p>
