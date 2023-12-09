@@ -15,8 +15,7 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
      */
     public function queryUserSingle(string $email) : User
     {
-        $user = $this->user();
-        $model = $user->email($email)->first();
+        $model = $this->user()->email($email)->first();
 
         if(!$model) return new User();
 
@@ -29,10 +28,9 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
      */
     public function queryUserSettingSingle(int $user_id) : User
     {
-        $user = $this->user();
-        $model = $user->find($user_id)
-                    ->with(['team', 'setting'])
-                    ->first();
+        $model = $this->user()->find($user_id)
+                      ->with(['team', 'setting'])
+                      ->first();
 
         if(!$model) return new User();
 

@@ -15,9 +15,8 @@ class FoulRuleRepository extends BaseRepository implements FoulRuleRepositoryInt
      */
     public function queryFoulRuleInfo(?int $status_type, ?int $yard_info) : Collection
     {
-        $foulRule = $this->foulRule();
-        return $foulRule->statusType($status_type)
-                       ->yardInfo($yard_info)
-                       ->get();
+        return $this->foulRule()->statusType($status_type)
+                    ->yardInfo($yard_info)
+                    ->get();
     }
 }

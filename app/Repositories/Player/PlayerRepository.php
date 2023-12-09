@@ -17,8 +17,7 @@ class PlayerRepository extends BaseRepository implements PlayerRepositoryInterfa
      */
     public function queryRosterStarterInfo(int $season, int $team_id) : Collection
     {
-        $roster = $this->roster();
-        return $roster->season($season)->team($team_id)
+        return $this->roster()->season($season)->team($team_id)
                      ->with(['team', 'player', 'position', 'rosterStarter'])
                      ->get();
     }
@@ -30,7 +29,6 @@ class PlayerRepository extends BaseRepository implements PlayerRepositoryInterfa
      */
     public function queryFormationInfo(int $season, int $team_id) : Collection
     {
-        $starter = $this->starter();
-        return $starter->get();
+        return $this->starter()->get();
     }
 }

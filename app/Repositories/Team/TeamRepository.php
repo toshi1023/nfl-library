@@ -16,7 +16,6 @@ class TeamRepository extends BaseRepository implements TeamRepositoryInterface
      */
     public function queryTeams() : Collection
     {
-        $team = $this->team();
-        return $team->get();
+        return $this->team()->get();
     }
 }

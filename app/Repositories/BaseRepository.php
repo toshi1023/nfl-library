@@ -24,7 +24,7 @@ class BaseRepository implements BaseRepositoryInterface
     /**
      * UserRepository
      */
-    final public function userRepository()
+    final public function userRepository() : UserRepositoryInterface
     {
         return app()->make(UserRepositoryInterface::class);
     }
@@ -32,7 +32,7 @@ class BaseRepository implements BaseRepositoryInterface
     /**
      * FoulRuleRepository
      */
-    final public function foulRuleRepository()
+    final public function foulRuleRepository() : FoulRuleRepositoryInterface
     {
         return app()->make(FoulRuleRepositoryInterface::class);
     }
@@ -40,7 +40,7 @@ class BaseRepository implements BaseRepositoryInterface
     /**
      * PlayerRepository
      */
-    final public function playerRepository()
+    final public function playerRepository() : PlayerRepositoryInterface
     {
         return app()->make(PlayerRepositoryInterface::class);
     }
@@ -48,7 +48,7 @@ class BaseRepository implements BaseRepositoryInterface
     /**
      * TeamRepository
      */
-    public function teamRepository()
+    public function teamRepository() : TeamRepositoryInterface
     {
         return app()->make(TeamRepositoryInterface::class);
     }
@@ -56,7 +56,7 @@ class BaseRepository implements BaseRepositoryInterface
     /**
      * RosterRepository
      */
-    public function rosterRepository()
+    public function rosterRepository() : RosterRepositoryInterface
     {
         return app()->make(RosterRepositoryInterface::class);
     }
@@ -66,7 +66,7 @@ class BaseRepository implements BaseRepositoryInterface
      */
     final protected function user() : User
     {
-        return new User();
+        return app()->make(User::class);
     }
 
     /**
@@ -74,7 +74,7 @@ class BaseRepository implements BaseRepositoryInterface
      */
     final protected function formation() : Formation
     {
-        return new Formation();
+        return app()->make(Formation::class);
     }
 
     /**
@@ -82,7 +82,7 @@ class BaseRepository implements BaseRepositoryInterface
      */
     final protected function foulRule() : FoulRule
     {
-        return new FoulRule();
+        return app()->make(FoulRule::class);
     }
 
     /**
@@ -90,7 +90,7 @@ class BaseRepository implements BaseRepositoryInterface
      */
     final protected function pfRelation() : PfRelation
     {
-        return new PfRelation();
+        return app()->make(PfRelation::class);
     }
 
     /**
@@ -98,7 +98,7 @@ class BaseRepository implements BaseRepositoryInterface
      */
     final protected function player() : Player
     {
-        return new Player();
+        return app()->make(Player::class);
     }
 
     /**
@@ -106,7 +106,7 @@ class BaseRepository implements BaseRepositoryInterface
      */
     final protected function position() : Position
     {
-        return new Position();
+        return app()->make(Position::class);
     }
 
     /**
@@ -114,7 +114,7 @@ class BaseRepository implements BaseRepositoryInterface
      */
     final protected function roster() : Roster
     {
-        return new Roster();
+        return app()->make(Roster::class);
     }
 
     /**
@@ -122,7 +122,7 @@ class BaseRepository implements BaseRepositoryInterface
      */
     final protected function setting() : Setting
     {
-        return new Setting();
+        return app()->make(Setting::class);
     }
 
     /**
@@ -130,7 +130,7 @@ class BaseRepository implements BaseRepositoryInterface
      */
     final protected function starter() : Starter
     {
-        return new Starter();
+        return app()->make(Starter::class);
     }
 
     /**
@@ -138,7 +138,7 @@ class BaseRepository implements BaseRepositoryInterface
      */
     final protected function team() : Team
     {
-        return new Team();
+        return app()->make(Team::class);
     }
 
     /**
@@ -146,6 +146,6 @@ class BaseRepository implements BaseRepositoryInterface
      */
     final protected function tfRelation() : TfRelation
     {
-        return new TfRelation();
+        return app()->make(TfRelation::class);
     }
 }

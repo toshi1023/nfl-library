@@ -15,7 +15,6 @@ class RosterRepository extends BaseRepository implements RosterRepositoryInterfa
      */
     public function querySeasons() : Collection
     {
-        $roster = $this->roster();
-        return $roster->distinct()->select('season')->get();
+        return $this->roster()->distinct()->select('season')->get();
     }
 }
