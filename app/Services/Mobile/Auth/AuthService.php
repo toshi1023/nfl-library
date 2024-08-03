@@ -4,13 +4,14 @@ namespace App\Services\Mobile\Auth;
 
 use App\Lib\Common;
 use App\Repositories\BaseRepositoryInterface;
+use App\Services\BaseService;
 use App\Services\Mobile\Auth\AuthServiceInterface;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Exception;
 use InvalidArgumentException;
 
-class AuthService implements AuthServiceInterface
+class AuthService extends BaseService implements AuthServiceInterface
 {
     public function __construct(private BaseRepositoryInterface $repository) {}
 
@@ -47,9 +48,9 @@ class AuthService implements AuthServiceInterface
                 "token"   => $token
             ];
         } catch (Exception $e) {
-            Common::getErrorLog($e, get_class($this), __FUNCTION__);
+            // Common::getErrorLog($e, get_class($this), __FUNCTION__);
 
-            return Common::setServerErrorMessage($e);
+            return $this->setServerErrorMessage($e);
         }
     }
 
@@ -70,9 +71,9 @@ class AuthService implements AuthServiceInterface
                 "status"  => config('const.Success')
             ];
         } catch (Exception $e) {
-            Common::getErrorLog($e, get_class($this), __FUNCTION__);
+            // Common::getErrorLog($e, get_class($this), __FUNCTION__);
 
-            return Common::setServerErrorMessage($e);
+            return $this->setServerErrorMessage($e);
         }
     }
 }

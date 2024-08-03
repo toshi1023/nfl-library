@@ -30,8 +30,8 @@ class InitialTest extends TestCase
         $response
             ->assertStatus(config('const.ServerError'))
             ->assertJson([
-                'status'        => config('const.ServerError'),
-                'message'       => config('const.SystemMessage.UNEXPECTED_ERR')
+                'status'            => config('const.ServerError'),
+                'error_messages'    => [config('const.SystemMessage.UNEXPECTED_ERR')]
             ]);
     }
 

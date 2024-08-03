@@ -4,11 +4,12 @@ namespace App\Services\Mobile\FoulRule;
 
 use App\Lib\Common;
 use App\Repositories\BaseRepositoryInterface;
+use App\Services\BaseService;
 use App\Services\Mobile\FoulRule\FoulRuleServiceInterface;
 use Exception;
 use InvalidArgumentException;
 
-class FoulRuleService implements FoulRuleServiceInterface
+class FoulRuleService extends BaseService implements FoulRuleServiceInterface
 {
     public function __construct(private BaseRepositoryInterface $repository) {}
 
@@ -28,9 +29,9 @@ class FoulRuleService implements FoulRuleServiceInterface
                 'status'        => config('const.Success')
             ];
         } catch (Exception $e) {
-            Common::getErrorLog($e, get_class($this), __FUNCTION__);
+            // Common::getErrorLog($e, get_class($this), __FUNCTION__);
 
-            return Common::setServerErrorMessage($e);
+            return $this->setServerErrorMessage($e);
         }
     }
 }

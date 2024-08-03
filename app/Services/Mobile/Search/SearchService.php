@@ -4,11 +4,12 @@ namespace App\Services\Mobile\Search;
 
 use App\Lib\Common;
 use App\Repositories\BaseRepositoryInterface;
+use App\Services\BaseService;
 use App\Services\Mobile\Search\SearchServiceInterface;
 use Exception;
 use InvalidArgumentException;
 
-class SearchService implements SearchServiceInterface
+class SearchService extends BaseService implements SearchServiceInterface
 {
     public function __construct(private BaseRepositoryInterface $repository) {}
 
@@ -24,9 +25,9 @@ class SearchService implements SearchServiceInterface
                 'status'        => config('const.Success')
             ];
         } catch (Exception $e) {
-            Common::getErrorLog($e, get_class($this), __FUNCTION__);
+            // Common::getErrorLog($e, get_class($this), __FUNCTION__);
 
-            return Common::setServerErrorMessage($e);
+            return $this->setServerErrorMessage($e);
         }
     }
 
@@ -42,9 +43,9 @@ class SearchService implements SearchServiceInterface
                 'status'        => config('const.Success')
             ];
         } catch (Exception $e) {
-            Common::getErrorLog($e, get_class($this), __FUNCTION__);
+            // Common::getErrorLog($e, get_class($this), __FUNCTION__);
 
-            return Common::setServerErrorMessage($e);
+            return $this->setServerErrorMessage($e);
         }
     }
 }

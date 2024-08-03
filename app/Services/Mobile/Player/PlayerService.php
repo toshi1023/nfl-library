@@ -4,11 +4,12 @@ namespace App\Services\Mobile\Player;
 
 use App\Lib\Common;
 use App\Repositories\BaseRepositoryInterface;
+use App\Services\BaseService;
 use App\Services\Mobile\Player\PlayerServiceInterface;
 use Exception;
 use InvalidArgumentException;
 
-class PlayerService implements PlayerServiceInterface
+class PlayerService extends BaseService implements PlayerServiceInterface
 {
     public function __construct(private BaseRepositoryInterface $repository) {}
 
@@ -28,9 +29,9 @@ class PlayerService implements PlayerServiceInterface
                 'status'        => config('const.Success')
             ];
         } catch (Exception $e) {
-            Common::getErrorLog($e, get_class($this), __FUNCTION__);
+            // Common::getErrorLog($e, get_class($this), __FUNCTION__);
 
-            return Common::setServerErrorMessage($e);
+            return $this->setServerErrorMessage($e);
         }
         
     }

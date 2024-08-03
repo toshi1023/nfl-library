@@ -8,6 +8,7 @@ use Illuminate\Console\Command;
 use Facebook\WebDriver\Chrome\ChromeOptions;
 use Facebook\WebDriver\Chrome\ChromeDriver;
 use Facebook\WebDriver\Remote\DesiredCapabilities;
+use Facebook\WebDriver\Remote\RemoteWebDriver;
 use Facebook\WebDriver\WebDriverExpectedCondition;
 use Facebook\WebDriver\WebDriverBy;
 use Illuminate\Support\Facades\Log;
@@ -23,7 +24,7 @@ class ScrapeRosters extends Command
      *
      * @var string
      */
-    protected $signature = 'scrape:rosters {season?}';
+    protected $signature = 'scrape:rosters {season?} {teamId?}';
 
     /**
      * The console command description.
@@ -53,7 +54,9 @@ class ScrapeRosters extends Command
 
             // 変数設定
             $season = config('const.Season');
+            $team_id = 1;
             if(!is_null($this->argument('season'))) $season = $this->argument('season');
+            if(!is_null($this->argument('teamId'))) $team_id = $this->argument('teamId');
             $urlteams = config('const.UrlTeams');
 
             if($season < 2012) throw new Exception('The value is invalid. Please set the value above 2012.');
@@ -64,8 +67,8 @@ class ScrapeRosters extends Command
             $rosterModel = new Roster();
     
             // webdriveの設定
-            $driverPath = realpath("/usr/local/bin/chromedriver");
-            putenv("webdriver.chrome.driver=" . $driverPath);
+            // $driverPath = realpath("/usr/local/bin/chromedriver");
+            // putenv("webdriver.chrome.driver=" . $driverPath);
     
             // chrome option
             $options = new ChromeOptions();
@@ -79,13 +82,23 @@ class ScrapeRosters extends Command
     
             $capabilitites = DesiredCapabilities::chrome();
             $capabilitites->setCapability(ChromeOptions::CAPABILITY, $options);
-            $driver = ChromeDriver::start($capabilitites);
+            // $driver = ChromeDriver::start($capabilitites);
+            $capabilitites->setPlatform("LINUX");
 
-            $team_id = 1;
+            $host = 'http://172.18.0.7:4444/wd/hub';
+
+            $driver = retry(3, function () use ($host, $capabilitites) {
+                // chrome ドライバーの起動
+                return RemoteWebDriver::create($host, $capabilitites, 20000, 20000);
+            }, 1000);
+            // $driver = RemoteWebDriver::create($host, $capabilitites, 5000, 5000);
             foreach($urlteams as $val) {
                 // rosterのデータ存在有無を確認
                 $exist = $rosterModel->where('season', $season)->where('team_id', $team_id)->exists();
-                if($exist) continue;
+                if($exist) {
+                    $team_id += 1;
+                    continue;
+                }
 
                 // スクレイピングの設定
                 $driver->get('https://www.pro-football-reference.com/teams/'.$val.'/'.$season.'_roster.htm');
@@ -176,8 +189,8 @@ class ScrapeRosters extends Command
 
                 // playersテーブルとrostersテーブルのデータ作成
                 for($i = 0; $i < count($positions); $i++) {
-                    $exist = $playerModel->where('firstname', $firstnamelist[$i])->where('lastname', $lastnamelist[$i])->where('birthday', $birthdaylist[$i])->first();
-                    if(is_null($exist)) {
+                    $player = $playerModel->where('firstname', $firstnamelist[$i])->where('lastname', $lastnamelist[$i])->where('birthday', $birthdaylist[$i])->first();
+                    if(is_null($player)) {
                         // 身長と体重を日本式に変換
                         $weight = null;
                         $height = null;
@@ -185,7 +198,7 @@ class ScrapeRosters extends Command
                         if(!empty($heightlist[$i])) $height = round((explode('-', $heightlist[$i])[0] * config('const.Calc.Feet')) + (explode('-', $heightlist[$i])[1] * config('const.Calc.Inch')), 1);
                         
                         // playersデータを作成
-                        $exist = Player::create([
+                        $player = Player::create([
                             'firstname'     => $firstnamelist[$i],
                             'lastname'      => $lastnamelist[$i],
                             'birthday'      => $birthdaylist[$i],
@@ -206,14 +219,22 @@ class ScrapeRosters extends Command
                     if(is_null($position)) throw new Exception('position is not define. team: '.$val.', position: '.$positions[$i]);
                     if(empty($numbers[$i])) $numbers[$i] = null;
 
-                    Roster::create([
-                        'season'        => $season,
-                        'team_id'       => $team_id,
-                        'player_id'     => $exist['id'],
+                    $roster = $rosterModel->where('season', $season)->where('team_id', $team_id)->where('player_id', $player->id)->first();
+                    $rosterData = [
                         'position_id'   => $position['id'],
                         'number'        => $numbers[$i],
                         'experience'    => $explist[$i]
-                    ]);
+                    ];
+                    if($roster) {
+                        $rosterModel->fill($rosterData)->save();
+                    } else {
+                        $rosterData = [...$rosterData, ...[
+                            'season'        => $season,
+                            'team_id'       => $team_id,
+                            'player_id'     => $player['id'],
+                        ]];
+                        Roster::create($rosterData);
+                    }
                 }
 
                 // team_idを更新
@@ -228,14 +249,15 @@ class ScrapeRosters extends Command
         } catch(Exception $e) {
             Log::error($e->getMessage());
             // stack traceをLogに出力
-            $index = 1;
-            foreach($e->getTrace() as $val) {
-                // 例) StackTrace[1] :: /home/test/app/Http/Controllers/TestController.php 22行目, { class: Test , function: test }
-                $trace = 'StackTrace['.$index.'] :: '.$val["file"].' '.$val["line"].'行目 , { class: '.$val["class"].' , function: '.$val["function"].' }';
-                Log::error($trace);
+            // $index = 1;
+            // foreach($e->getTrace() as $val) {
+            //     // 例) StackTrace[1] :: /home/test/app/Http/Controllers/TestController.php 22行目, { class: Test , function: test }
+            //     $trace = 'StackTrace['.$index.'] :: '.$val["file"].' '.$val["line"].'行目 , { class: '.$val["class"].' , function: '.$val["function"].' }';
+            //     Log::error($trace);
     
-                $index += 1;
-            }
+            //     $index += 1;
+            // }
+            Log::error($e);
 
             $this->info('');
             $this->error($e->getMessage());

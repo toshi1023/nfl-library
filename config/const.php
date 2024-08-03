@@ -11,6 +11,17 @@ return [
         'Inch'   => 2.54
     ],
     // rosterのスクレイプ先URLの設定で使用する定数
+    'TeamIds' => [
+        'buf' => 1, 'nwe' => 2, 'mia' => 3, 'nyj' => 4,  // AFC東地区
+        'cin' => 5, 'pit' => 6, 'cle' => 7, 'rav' => 8,  // AFC北地区
+        'oti' => 9, 'clt' => 10, 'htx' => 11, 'jax' => 12,  // AFC南地区
+        'kan' => 13, 'rai' => 14, 'sdg' => 15, 'den' => 16,  // AFC西地区
+        'dal' => 17, 'phi' => 18, 'was' => 19, 'nyg' => 20,  // NFC東地区
+        'gnb' => 21, 'min' => 22, 'chi' => 23, 'det' => 24,  // NFC北地区
+        'tam' => 25, 'nor' => 26, 'atl' => 27, 'car' => 28,  // NFC南地区
+        'ram' => 29, 'crd' => 30, 'sfo' => 31, 'sea' => 32,  // NFC西地区
+    ],
+    // チームIDを取得する
     'UrlTeams' => [
         'buf', 'nwe', 'mia', 'nyj',  // AFC東地区
         'cin', 'pit', 'cle', 'rav',  // AFC北地区

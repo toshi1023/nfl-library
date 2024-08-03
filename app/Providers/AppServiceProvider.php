@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Services\BaseServiceInterface;
+use App\Services\BaseService;
 use App\Services\Mobile\Auth\AuthServiceInterface;
 use App\Services\Mobile\Auth\AuthService;
 use App\Services\Mobile\Player\PlayerServiceInterface;
@@ -38,6 +40,7 @@ class AppServiceProvider extends ServiceProvider
         /************************************************
          *  サービス層
          ************************************************/
+        $this->app->singleton(BaseServiceInterface::class,          BaseService::class);
         $this->app->singleton(AuthServiceInterface::class,          AuthService::class);
         $this->app->singleton(PlayerServiceInterface::class,        PlayerService::class);
         $this->app->singleton(InitialServiceInterface::class,       InitialService::class);

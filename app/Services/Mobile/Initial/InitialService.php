@@ -3,11 +3,13 @@
 namespace App\Services\Mobile\Initial;
 
 use App\Repositories\BaseRepositoryInterface;
+use App\Services\BaseService;
 use App\Services\Mobile\Initial\InitialServiceInterface;
 use Illuminate\Support\Facades\Auth;
+use Exception;
 use InvalidArgumentException;
 
-class InitialService implements InitialServiceInterface
+class InitialService extends BaseService implements InitialServiceInterface
 {
     public function __construct(private BaseRepositoryInterface $repository) {}
 
@@ -27,9 +29,10 @@ class InitialService implements InitialServiceInterface
                 "status"  => config('const.Success'),
             ];
         } catch (Exception $e) {
-            Common::getErrorLog($e, get_class($this), __FUNCTION__);
+            logger()->info($e);
+            // Common::getErrorLog($e, get_class($this), __FUNCTION__);
 
-            return Common::setServerErrorMessage($e);
+            return $this->setServerErrorMessage($e);
         }
     }
 }
