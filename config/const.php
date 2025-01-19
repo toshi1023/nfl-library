@@ -116,7 +116,8 @@ return [
     'RootPassword'    => env('ROOT_PASSWORD'),
 
     // AWS S3バケット
-    'Url'           => env('AWS_BUCKET_URL'),
+    // 'Url'           => env('AWS_BUCKET_URL'),
+    'Url'           => storage_path('app/public'),
     // AWS S3フォルダ
     'Player'        => 'Player',
     'Team'          => 'Team',
