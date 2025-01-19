@@ -2,8 +2,6 @@
 
 namespace App\Console\Commands;
 
-require_once 'vendor/autoload.php';
-
 use Illuminate\Console\Command;
 use Facebook\WebDriver\Chrome\ChromeOptions;
 use Facebook\WebDriver\Chrome\ChromeDriver;
@@ -12,26 +10,25 @@ use Facebook\WebDriver\Remote\RemoteWebDriver;
 use Facebook\WebDriver\WebDriverExpectedCondition;
 use Facebook\WebDriver\WebDriverBy;
 use Illuminate\Support\Facades\Log;
-use App\Models\Player;
-use App\Models\Position;
-use App\Models\Roster;
+use Illuminate\Support\Facades\DB;
+use App\Models\OriginRoster;
 use Exception;
 
-class ScrapeRosters extends Command
+class ScrapeOriginRosters extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'scrape:rosters {season?} {teamId?}';
+    protected $signature = 'scrape:origin-rosters {season?} {teamId?}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'scrapping all nfl rosters';
+    protected $description = 'scrapping all nfl origin rosters';
 
     /**
      * Create a new command instance.
@@ -44,7 +41,7 @@ class ScrapeRosters extends Command
     }
 
     /**
-     * NFLのロスター情報を指定したwebページから一括でスクレイピングする
+     * Execute the console command.
      *
      * @return int
      */
@@ -58,13 +55,9 @@ class ScrapeRosters extends Command
             if(!is_null($this->argument('season'))) $season = $this->argument('season');
             if(!is_null($this->argument('teamId'))) $team_id = $this->argument('teamId');
             $urlteams = config('const.UrlTeams');
+            $skipIndex = $team_id - 1;
 
             if($season < 2012) throw new Exception('The value is invalid. Please set the value above 2012.');
-
-            // Model設定
-            $playerModel = new Player();
-            $positionModel = new Position();
-            $rosterModel = new Roster();
     
             // webdriveの設定
             // $driverPath = realpath("/usr/local/bin/chromedriver");
@@ -92,14 +85,10 @@ class ScrapeRosters extends Command
                 return RemoteWebDriver::create($host, $capabilitites, 20000, 20000);
             }, 1000);
             // $driver = RemoteWebDriver::create($host, $capabilitites, 5000, 5000);
-            foreach($urlteams as $val) {
-                // rosterのデータ存在有無を確認
-                $exist = $rosterModel->where('season', $season)->where('team_id', $team_id)->exists();
-                if($exist) {
-                    $team_id += 1;
-                    continue;
-                }
-
+            foreach($urlteams as $index => $val) {
+                // 指定したチームIDまでスキップ
+                if($index < $skipIndex) continue;
+                $this->line('start scraping target '.$val.'...');
                 // スクレイピングの設定
                 $driver->get('https://www.pro-football-reference.com/teams/'.$val.'/'.$season.'_roster.htm');
                 // 表示されるまで待つ
@@ -187,54 +176,47 @@ class ScrapeRosters extends Command
                     }
                 }
 
-                // playersテーブルとrostersテーブルのデータ作成
+                // データ作成
                 for($i = 0; $i < count($positions); $i++) {
-                    $player = $playerModel->where('firstname', $firstnamelist[$i])->where('lastname', $lastnamelist[$i])->where('birthday', $birthdaylist[$i])->first();
-                    if(is_null($player)) {
-                        // 身長と体重を日本式に変換
-                        $weight = null;
-                        $height = null;
-                        if(!empty($weightlist[$i])) $weight = round($weightlist[$i] * config('const.Calc.Weight'), 1);
-                        if(!empty($heightlist[$i])) $height = round((explode('-', $heightlist[$i])[0] * config('const.Calc.Feet')) + (explode('-', $heightlist[$i])[1] * config('const.Calc.Inch')), 1);
-                        
-                        // playersデータを作成
-                        $player = Player::create([
-                            'firstname'     => $firstnamelist[$i],
-                            'lastname'      => $lastnamelist[$i],
-                            'birthday'      => $birthdaylist[$i],
-                            'weight'        => $weight,
-                            'height'        => $height,
-                            'college'       => $collegelist[$i],
-                            'drafted_team'  => $draft_teamlist[$i],
-                            'drafted_round' => $draft_roundlist[$i],
-                            'drafted_rank'  => $draft_ranklist[$i],
-                            'drafted_year'  => $draft_yearlist[$i]
-                        ]);
-
-                        dump('【'.$val.'】'.$positions[$i].' : '.$firstnamelist[$i].' '.$lastnamelist[$i].' , '.$birthdaylist[$i].' [draft] team: '.$draft_teamlist[$i].', year: '.$draft_yearlist[$i]);
-                    }
-                    // rostersデータを作成
+                    // 身長と体重を日本式に変換
+                    $weight = null;
+                    $height = null;
+                    if(!empty($weightlist[$i])) $weight = round($weightlist[$i] * config('const.Calc.Weight'), 1);
+                    if(!empty($heightlist[$i])) $height = round((explode('-', $heightlist[$i])[0] * config('const.Calc.Feet')) + (explode('-', $heightlist[$i])[1] * config('const.Calc.Inch')), 1);
+                    
+                    // 空データの対処
                     if(empty($positions[$i])) $positions[$i] = 'No Data';
-                    $position = $positionModel->where('name', $positions[$i])->first();
-                    if(is_null($position)) throw new Exception('position is not define. team: '.$val.', position: '.$positions[$i]);
                     if(empty($numbers[$i])) $numbers[$i] = null;
 
-                    $roster = $rosterModel->where('season', $season)->where('team_id', $team_id)->where('player_id', $player->id)->first();
-                    $rosterData = [
-                        'position_id'   => $position['id'],
+                    // playersデータを作成
+                    $data = [
+                        'season'        => $season,
+                        'team_id'       => $team_id,
+                        'firstname'     => $firstnamelist[$i],
+                        'lastname'      => $lastnamelist[$i],
+                        'birthday'      => $birthdaylist[$i],
+                        'weight'        => $weight,
+                        'height'        => $height,
+                        'college'       => $collegelist[$i],
+                        'drafted_team'  => $draft_teamlist[$i],
+                        'drafted_round' => $draft_roundlist[$i],
+                        'drafted_rank'  => $draft_ranklist[$i],
+                        'drafted_year'  => $draft_yearlist[$i],
+                        'position_name' => $positions[$i],
                         'number'        => $numbers[$i],
                         'experience'    => $explist[$i]
                     ];
-                    if($roster) {
-                        $rosterModel->fill($rosterData)->save();
+
+                    $originRosterModel = OriginRoster::where('season', $season)->where('team_id', $team_id)
+                    ->where('firstname', $firstnamelist[$i])->where('lastname', $lastnamelist[$i])
+                    ->where('birthday', $birthdaylist[$i])->first();
+                    if($originRosterModel) {
+                        $this->warn('update 【'.$val.'】'.$positions[$i].' : '.$firstnamelist[$i].' '.$lastnamelist[$i].' , '.$birthdaylist[$i].' [draft] team: '.$draft_teamlist[$i].', year: '.$draft_yearlist[$i]);
                     } else {
-                        $rosterData = array_merge($rosterData, [
-                            'season'        => $season,
-                            'team_id'       => $team_id,
-                            'player_id'     => $player['id'],
-                        ]);
-                        Roster::create($rosterData);
+                        $this->info('create 【'.$val.'】'.$positions[$i].' : '.$firstnamelist[$i].' '.$lastnamelist[$i].' , '.$birthdaylist[$i].' [draft] team: '.$draft_teamlist[$i].', year: '.$draft_yearlist[$i]);
+                        $originRosterModel = new OriginRoster();
                     }
+                    $originRosterModel->fill($data)->save();
                 }
 
                 // team_idを更新

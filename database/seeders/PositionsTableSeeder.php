@@ -425,6 +425,12 @@ class PositionsTableSeeder extends Seeder
             'name' => 'ROLB/LOLB',
             'odflg' => false
         ]);
+        Position::create([
+            'abstract_category' => config('const.AbstCate.LB'),
+            'category' => config('const.Category.RLB'),
+            'name' => 'ROLB/LILB',
+            'odflg' => false
+        ]);
         // OLB
         Position::create([
             'abstract_category' => config('const.AbstCate.LB'),
@@ -463,6 +469,12 @@ class PositionsTableSeeder extends Seeder
             'abstract_category' => config('const.AbstCate.LB'),
             'category' => config('const.Category.LLB'),
             'name' => 'LOLB/ROLB',
+            'odflg' => false
+        ]);
+        Position::create([
+            'abstract_category' => config('const.AbstCate.LB'),
+            'category' => config('const.Category.LLB'),
+            'name' => 'LOLB/RILB',
             'odflg' => false
         ]);
         // LB

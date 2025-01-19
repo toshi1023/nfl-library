@@ -18,7 +18,6 @@ class CreatePositionsTable extends Migration
             $table->integer('abstract_category')->comment('抽象カテゴリー');
             $table->integer('category')->comment('カテゴリー');
             $table->string('name')->comment('名前');
-            $table->boolean('odflg')->default(true)->comment('攻守フラグ');   // true: Offence, false: Deffence
             $table->timestamps();
         });
     }

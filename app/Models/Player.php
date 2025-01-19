@@ -33,7 +33,7 @@ class Player extends Model
     {
         // 生年月日を設定(yyyy年MM月DD日)
         if($this->birthday) {
-            return mb_substr($this->birthday, 0, 4);
+            return (int)mb_substr($this->birthday, 0, 4);
         }
         return null;
     }
