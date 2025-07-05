@@ -14,18 +14,18 @@ class TeamListResource extends BaseResource
      */
     public function toArray($request)
     {
-        $teams = $this->resource['teams']->map(function($resData) {
+        $teams = $this->resource['data']['teams']->map(function($team) {
             return [
-                'id' => $resData->id,
-                'city' => $resData->city,
-                'name' => $resData->name,
-                'conference' => $resData->conference,
-                'area' => $resData->area,
-                'image_file' =>  $resData->image_file,
-                'back_image_file' => $resData->back_image_file
+                'id' => $team->id,
+                'city' => $team->city,
+                'name' => $team->name,
+                'conference' => $team->conference,
+                'area' => $team->area,
+                'image_file' =>  $team->image_file,
+                'back_image_file' => $team->back_image_file
             ];
         });
-        $this->resource['teams'] = $teams;
+        $this->resource['data']['teams'] = $teams;
         return $this->successResponse($request, $this->resource);
     }
 }

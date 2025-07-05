@@ -18,11 +18,9 @@ class SearchService extends BaseService implements SearchServiceInterface
      */
     public function getTeamList() : array
     {
-        return [
-            'teams'         => $this->repository->teamRepository()->queryTeams(),
-            'message'       => null,
-            'status'        => config('const.Success')
-        ];
+        return $this->wrapperResponse([
+            'teams'         => $this->repository->teamRepository()->queryTeams()
+        ]);
     }
 
     /**
@@ -30,10 +28,8 @@ class SearchService extends BaseService implements SearchServiceInterface
      */
     public function getSeasonList() : array
     {
-        return [
-            'seasons'       => $this->repository->rosterRepository()->querySeasons(),
-            'message'       => null,
-            'status'        => config('const.Success')
-        ];
+        return $this->wrapperResponse([
+            'seasons'       => $this->repository->rosterRepository()->querySeasons()
+        ]);
     }
 }

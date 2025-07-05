@@ -36,9 +36,9 @@ class SearchServiceTest extends TestCase
         // messageは空のデータを返す
         $this->assertNull($data['message']);
         // データはCollectionクラスを返す
-        $this->assertInstanceOf(Collection::class, $data['teams']);
+        $this->assertInstanceOf(Collection::class, $data['data']['teams']);
         // データ1件ずつにRosterクラスの型を返す
-        foreach($data['teams'] as $val) {
+        foreach($data['data']['teams'] as $val) {
             $this->assertInstanceOf(Team::class, $val);
         }
     }
@@ -55,9 +55,9 @@ class SearchServiceTest extends TestCase
         // messageは空のデータを返す
         $this->assertNull($data['message']);
         // データはCollectionクラスを返す
-        $this->assertInstanceOf(Collection::class, $data['seasons']);
+        $this->assertInstanceOf(Collection::class, $data['data']['seasons']);
         // データ1件ずつにRosterクラスの型を返す
-        foreach($data['seasons'] as $val) {
+        foreach($data['data']['seasons'] as $val) {
             $this->assertInstanceOf(Roster::class, $val);
         }
     }

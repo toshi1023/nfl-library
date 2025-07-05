@@ -9,6 +9,19 @@ use Illuminate\Support\Facades\Log;
 class BaseService implements BaseServiceInterface
 {
     /**
+     * レスポンスのラッパーを設定
+     */
+    public function wrapperResponse(array $data, ?string $status = null, ?string $message = null) : array
+    {
+        // レスポンスのラッパーを設定
+        return [
+            'data' => $data,
+            'status' => $status ?? config('const.Success'),
+            'message' => $message
+        ];
+    }
+
+    /**
      * ユーザ情報を取得(ユーザID, IPアドレス, ユーザエージェント)
      */
     public function getUserInfo() : string
