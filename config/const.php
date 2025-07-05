@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'app_env' => env('APP_ENV'),
+
     // batch実行のseasonを指定
     'Season' => 2020,
 

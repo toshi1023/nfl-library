@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Services\Mobile\Search\SearchServiceInterface;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
+use App\Http\Resources\Team\TeamListResource;
 
 class SearchController extends Controller
 {
@@ -14,10 +15,11 @@ class SearchController extends Controller
     /**
      * 検索用ドロップダウンリストに使用するチーム情報のデータをリターン
      */
-    public function teamIndex(Request $request) : JsonResponse
+    public function teamIndex(Request $request) : TeamListResource
     {
         // チーム情報を取得
-        return $this->jsonResponse($this->service->getTeamList());
+        return new TeamListResource($this->service->getTeamList());
+        // return $this->jsonResponse($this->service->getTeamList());
     }
 
     /**

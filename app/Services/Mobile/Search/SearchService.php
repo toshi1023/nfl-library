@@ -18,17 +18,11 @@ class SearchService extends BaseService implements SearchServiceInterface
      */
     public function getTeamList() : array
     {
-        try {
-            return [
-                'teams'         => $this->repository->teamRepository()->queryTeams(),
-                'message'       => null,
-                'status'        => config('const.Success')
-            ];
-        } catch (Exception $e) {
-            // Common::getErrorLog($e, get_class($this), __FUNCTION__);
-
-            return $this->setServerErrorMessage($e);
-        }
+        return [
+            'teams'         => $this->repository->teamRepository()->queryTeams(),
+            'message'       => null,
+            'status'        => config('const.Success')
+        ];
     }
 
     /**
@@ -36,16 +30,10 @@ class SearchService extends BaseService implements SearchServiceInterface
      */
     public function getSeasonList() : array
     {
-        try {
-            return [
-                'seasons'         => $this->repository->rosterRepository()->querySeasons(),
-                'message'       => null,
-                'status'        => config('const.Success')
-            ];
-        } catch (Exception $e) {
-            // Common::getErrorLog($e, get_class($this), __FUNCTION__);
-
-            return $this->setServerErrorMessage($e);
-        }
+        return [
+            'seasons'       => $this->repository->rosterRepository()->querySeasons(),
+            'message'       => null,
+            'status'        => config('const.Success')
+        ];
     }
 }
