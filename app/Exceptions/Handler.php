@@ -6,6 +6,7 @@ use App\Http\Resources\ErrorResource;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Validation\ValidationException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -49,12 +50,15 @@ class Handler extends ExceptionHandler
     {
         $e = $this->prepareException($e);
 
-        // エラーメッセージの生成処理
-
         // バリデーションは通常ルートへ
         if($e instanceof ValidationException) {
             parent::render($request, $e);
             return;
+        }
+
+        // ルートが見つからないエラー
+        if($e instanceof NotFoundHttpException) {
+            logger($e);
         }
 
         // それ以外は共通エラーメッセージに上書き

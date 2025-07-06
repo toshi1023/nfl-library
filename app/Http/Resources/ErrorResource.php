@@ -18,7 +18,6 @@ class ErrorResource extends JsonResource
     public function toArray($request)
     {
         $res = [
-            'status' => $this->resource['status'],
             'message'  => $this->resource['message'],
         ];
         if(config('const.app_env') === 'local') {
@@ -30,6 +29,15 @@ class ErrorResource extends JsonResource
                 ]
             ]);
         }
+        return $res;
+    }
+
+    public function with($request)
+    {
+        $res = [
+            'status' => $this->resource['status'],
+            'message'  => $this->resource['message'],
+        ];
         return $res;
     }
 

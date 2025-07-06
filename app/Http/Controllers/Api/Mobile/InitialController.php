@@ -14,9 +14,9 @@ class InitialController extends Controller
     /**
      * ログインユーザの設定情報をリターン
      */
-    public function info(Request $request) : JsonResponse
+    public function info(Request $request, int $user_id) : JsonResponse
     {
         // ログインユーザの設定情報を取得
-        return $this->jsonResponse($this->service->getAccountInfo($request->user_id));
+        return $this->jsonResponse($this->service->getAccountInfo($user_id));
     }
 }

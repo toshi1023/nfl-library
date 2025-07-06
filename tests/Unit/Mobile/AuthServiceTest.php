@@ -7,6 +7,7 @@ use App\Services\Mobile\Auth\AuthServiceInterface;
 use App\Services\Mobile\Auth\AuthService;
 use App\Repositories\BaseRepository;
 use App\Models\User;
+use InvalidArgumentException;
 
 class AuthServiceTest extends TestCase
 {
@@ -45,6 +46,9 @@ class AuthServiceTest extends TestCase
      */
     public function loginメソッドの失敗処理を確認_パラメーターの欠如()
     {
+        // 引数の例外処理を予測
+        $this->expectException(InvalidArgumentException::class);
+
         // メールアドレスが欠けた状態でログインを実施
         $credentials = [
             "password"  => 'test'
@@ -54,8 +58,8 @@ class AuthServiceTest extends TestCase
         // statusはサーバーエラーステータスを返す
         $this->assertEquals($data['status'], config('const.ServerError'));
         // メッセージはシステムエラーメッセージを配列形式で返す
-        $this->assertEquals($data['error_messages'], [config('const.SystemMessage.UNEXPECTED_ERR')]);
-        $this->assertEquals($data['details']['message'], 'メールアドレスが無効な値のため検索に失敗しました');
+        $this->assertEquals($data['message'], [config('const.SystemMessage.UNEXPECTED_ERR')]);
+        $this->assertEquals($data['data']['details']['message'], 'メールアドレスが無効な値のため検索に失敗しました');
 
         // パスワードが欠けた状態でログインを実施
         $credentials = [
@@ -66,8 +70,8 @@ class AuthServiceTest extends TestCase
         // statusはサーバーエラーステータスを返す
         $this->assertEquals($data['status'], config('const.ServerError'));
         // メッセージはシステムエラーメッセージを配列形式で返す
-        $this->assertEquals($data['error_messages'], [config('const.SystemMessage.UNEXPECTED_ERR')]);
-        $this->assertEquals($data['details']['message'], 'パスワードが無効な値のため検索に失敗しました');
+        $this->assertEquals($data['message'], [config('const.SystemMessage.UNEXPECTED_ERR')]);
+        $this->assertEquals($data['data']['details']['message'], 'パスワードが無効な値のため検索に失敗しました');
     }
 
     /**
@@ -87,7 +91,7 @@ class AuthServiceTest extends TestCase
         // messageは認証成功に応じたメッセージを返す
         $this->assertEquals($data['message'], config('const.SystemMessage.LOGIN_INFO'));
         // tokenが含まれていることを確認
-        $this->assertNotNull($data['token']);
+        $this->assertNotNull($data['data']['token']);
 
         // 指定したユーザがログイン済みの状態か確認
         $user = User::find($this->id);

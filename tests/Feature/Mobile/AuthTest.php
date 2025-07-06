@@ -77,8 +77,10 @@ class AuthTest extends TestCase
         $response
             ->assertStatus(config('const.Success'))
             ->assertJson([
-                'id'            => $user->id,
-                'name'          => $user->name,
+                'data' => [
+                    'id'            => $user->id,
+                    'name'          => $user->name,
+                ],
                 'message'       => config('const.SystemMessage.LOGIN_INFO'),
                 'status'        => config('const.Success')
             ]);

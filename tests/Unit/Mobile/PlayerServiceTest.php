@@ -8,6 +8,7 @@ use App\Services\Mobile\Player\PlayerServiceInterface;
 use App\Services\Mobile\Player\PlayerService;
 use App\Repositories\BaseRepository;
 use App\Models\Roster;
+use InvalidArgumentException;
 
 class PlayerServiceTest extends TestCase
 {
@@ -34,9 +35,9 @@ class PlayerServiceTest extends TestCase
         // messageは空のデータを返す
         $this->assertNull($data['message']);
         // データはCollectionクラスを返す
-        $this->assertInstanceOf(Collection::class, $data['rosters']);
+        $this->assertInstanceOf(Collection::class, $data['data']['rosters']);
         // データ1件ずつにRosterクラスの型を返す
-        foreach($data['rosters'] as $val) {
+        foreach($data['data']['rosters'] as $val) {
             $this->assertInstanceOf(Roster::class, $val);
         }
     }
@@ -51,7 +52,7 @@ class PlayerServiceTest extends TestCase
         // statusは成功ステータスを返す
         $this->assertEquals($data['status'], config('const.Success'));
         // データは空の配列を返す
-        $this->assertEmpty($data['rosters']);
+        $this->assertEmpty($data['data']['rosters']);
     }
 
     /**
@@ -59,6 +60,8 @@ class PlayerServiceTest extends TestCase
      */
     public function getPlayerInfoの失敗動作_検索値が無効な場合()
     {
+        // 引数の例外処理を予測
+        $this->expectException(InvalidArgumentException::class);
         // シーズンの検索条件が無効な値の場合
         $season = 0;
         $team_id = 1;
@@ -67,8 +70,8 @@ class PlayerServiceTest extends TestCase
         // statusはサーバーエラーステータスを返す
         $this->assertEquals($data['status'], config('const.ServerError'));
         // メッセージはシステムエラーメッセージを配列形式で返す
-        $this->assertEquals($data['error_messages'], [config('const.SystemMessage.UNEXPECTED_ERR')]);
-        $this->assertEquals($data['details']['message'], 'シーズンが無効な値のため検索に失敗しました');
+        $this->assertEquals($data['message'], [config('const.SystemMessage.UNEXPECTED_ERR')]);
+        $this->assertEquals($data['data']['details']['message'], 'シーズンが無効な値のため検索に失敗しました');
 
         // チームの検索条件が無効な値の場合
         $season = 2020;
@@ -78,7 +81,7 @@ class PlayerServiceTest extends TestCase
         // statusはサーバーエラーステータスを返す
         $this->assertEquals($data['status'], config('const.ServerError'));
         // メッセージはシステムエラーメッセージを配列形式で返す
-        $this->assertEquals($data['error_messages'], [config('const.SystemMessage.UNEXPECTED_ERR')]);
-        $this->assertEquals($data['details']['message'], 'チームが無効な値のため検索に失敗しました');
+        $this->assertEquals($data['message'], [config('const.SystemMessage.UNEXPECTED_ERR')]);
+        $this->assertEquals($data['data']['details']['message'], 'チームが無効な値のため検索に失敗しました');
     }
 }
