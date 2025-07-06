@@ -20,7 +20,7 @@ class FoulRuleTest extends TestCase
         // バリデーションエラーのステータスコードを返す
         $response
             ->assertStatus(config('const.ValidationError'))
-            ->assertJson(["error_messages" => [
+            ->assertJson(["message" => [
                 'status_type'    => ['攻守ステータスの検索値が無効な値を設定されています'],
                 'yard_info'      => ['罰則ヤードの検索値が無効な値を設定されています']
             ]

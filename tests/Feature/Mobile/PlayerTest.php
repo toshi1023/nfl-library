@@ -18,7 +18,7 @@ class PlayerTest extends TestCase
         // バリデーションエラーのステータスコードを返す
         $response
             ->assertStatus(config('const.ValidationError'))
-            ->assertJson(["error_messages" => [
+            ->assertJson(["message" => [
                 'season'    => ['シーズンの検索値が設定されていません'],
                 'team_id'   => ['チームの検索値が設定されていません']
             ]

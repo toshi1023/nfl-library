@@ -24,7 +24,7 @@ class AuthTest extends TestCase
         // 権限がない旨のエラーメッセージを取得できることを確認
         $response
             ->assertStatus(config('const.ValidationError'))
-            ->assertJson(["error_messages" => [
+            ->assertJson(["message" => [
                     'email' => ['メールアドレス は必須です']
                 ]
             ]);
@@ -37,7 +37,7 @@ class AuthTest extends TestCase
         // 権限がない旨のエラーメッセージを取得できることを確認
         $response
             ->assertStatus(config('const.ValidationError'))
-            ->assertJson(["error_messages" => [
+            ->assertJson(["message" => [
                     'password' => ['パスワード は必須です']
                 ]
             ]);
@@ -51,7 +51,7 @@ class AuthTest extends TestCase
         // 権限がない旨のエラーメッセージを取得できることを確認
         $response
             ->assertStatus(config('const.ValidationError'))
-            ->assertJson(["error_messages" => [
+            ->assertJson(["message" => [
                     'email' => ['メールアドレス の書式のみ有効です']
                 ]
             ]);

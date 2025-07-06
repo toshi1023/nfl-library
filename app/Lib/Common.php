@@ -178,7 +178,7 @@ class Common {
     {
         return response()->json([
             'status'            => config('const.ValidationError'),
-            'error_messages'    => $validator->errors(),
+            'message'    => $validator->errors(),
         ], config('const.ValidationError'), [], JSON_UNESCAPED_UNICODE);
     }
 }

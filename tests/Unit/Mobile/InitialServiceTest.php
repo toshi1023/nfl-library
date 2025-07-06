@@ -51,6 +51,6 @@ class InitialServiceTest extends TestCase
         // messageは空のデータを返す
         $this->assertNull($data['message']);
         // データはUserクラスを返す
-        $this->assertInstanceOf(User::class, $data['user']);
+        $this->assertInstanceOf(User::class, $data['data']['user']);
     }
 }

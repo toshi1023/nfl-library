@@ -18,21 +18,12 @@ class InitialService extends BaseService implements InitialServiceInterface
      */
     public function getAccountInfo(int $user_id) : array
     {
-        try {
-            // ログインユーザの設定情報を取得
-            if(!$user_id) throw new InvalidArgumentException('ユーザIDが無効な値のため検索に失敗しました');
-            if($user_id !== Auth::id()) throw new InvalidArgumentException('リクエストされたユーザIDがログインユーザのIDと一致しないため検索に失敗しました');
+        // ログインユーザの設定情報を取得
+        if(!$user_id) throw new InvalidArgumentException('ユーザIDが無効な値のため検索に失敗しました');
+        if($user_id !== Auth::id()) throw new InvalidArgumentException('リクエストされたユーザIDがログインユーザのIDと一致しないため検索に失敗しました');
 
-            return [
-                "user"    => $this->repository->userRepository()->queryUserSettingSingle($user_id),
-                "message" => null,
-                "status"  => config('const.Success'),
-            ];
-        } catch (Exception $e) {
-            logger()->info($e);
-            // Common::getErrorLog($e, get_class($this), __FUNCTION__);
-
-            return $this->setServerErrorMessage($e);
-        }
+        return $this->wrapperResponse([
+            'user'    => $this->repository->userRepository()->queryUserSettingSingle($user_id),
+        ]);
     }
 }

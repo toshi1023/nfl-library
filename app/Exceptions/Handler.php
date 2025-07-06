@@ -67,9 +67,9 @@ class Handler extends ExceptionHandler
     private function setServerErrorMessage(Throwable $e) : array
     {
         return [
-            'error_messages'  => [config('const.SystemMessage.UNEXPECTED_ERR')],
-            'status'          => config('const.ServerError'),
-            'details'         => [
+            'message'      => [config('const.SystemMessage.UNEXPECTED_ERR')],
+            'status'       => config('const.ServerError'),
+            'details'      => [
                 'message'  => $e->getMessage(),
                 'file'     => $e->getFile(),
                 'line'     => $e->getLine()

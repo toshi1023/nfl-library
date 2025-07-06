@@ -31,7 +31,7 @@ class InitialTest extends TestCase
             ->assertStatus(config('const.ServerError'))
             ->assertJson([
                 'status'            => config('const.ServerError'),
-                'error_messages'    => [config('const.SystemMessage.UNEXPECTED_ERR')]
+                'message'    => [config('const.SystemMessage.UNEXPECTED_ERR')]
             ]);
     }
 

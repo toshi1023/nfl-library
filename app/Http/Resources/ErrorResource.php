@@ -3,6 +3,9 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class ErrorResource extends JsonResource
 {
@@ -16,7 +19,7 @@ class ErrorResource extends JsonResource
     {
         $res = [
             'status' => $this->resource['status'],
-            'message'  => $this->resource['error_messages'],
+            'message'  => $this->resource['message'],
         ];
         if(config('const.app_env') === 'local') {
             $res = array_merge($res, [
@@ -28,5 +31,20 @@ class ErrorResource extends JsonResource
             ]);
         }
         return $res;
+    }
+
+    /**
+     * レスポンスのステータスコードを指定
+     * 
+     * ※引数に型指定をすると親クラスのメソッドとシグネチャが異なるため、エラーとなる。
+     *  そのため、引数の型指定はあえて外している。
+     *
+     * @param Request $request
+     * @param JsonResponse $response
+     * @return void
+     */
+    public function withResponse($request, $response)
+    {
+        $response->setStatusCode(Response::HTTP_INTERNAL_SERVER_ERROR);
     }
 }
