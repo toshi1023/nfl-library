@@ -47,20 +47,20 @@ class PlayerListResource extends BaseResource
                     'birthday_year' => $roster->player->birthday_year,
                     'birthday_date' => $roster->player->birthday_date,
                     'image_url' => $roster->player->image_url,
-                    'position' => [
-                        'id' => $roster->position->id,
-                        'abstract_category' => $roster->position->abstract_category,
-                        'category' => $roster->position->category,
-                        'name' => $roster->position->name,
-                        'odflg' => $roster->position->odflg,
-                    ],
-                    'roster_starter' => $roster->rosterStarter ? [
-                        'id' => $roster->rosterStarter->id,
-                        'season' => $roster->rosterStarter->season,
-                        'odflg' => $roster->rosterStarter->odflg,
-                        'roster_id' => $roster->rosterStarter->roster_id,
-                    ] : null,
-                ]
+                ],
+                'position' => [
+                    'id' => $roster->position->id,
+                    'abstract_category' => $roster->position->abstract_category,
+                    'category' => $roster->position->category,
+                    'name' => $roster->position->name,
+                    'odflg' => $roster->position->odflg,
+                ],
+                'roster_starter' => $roster->rosterStarter ? [
+                    'id' => $roster->rosterStarter->id,
+                    'season' => $roster->rosterStarter->season,
+                    'odflg' => $roster->rosterStarter->odflg,
+                    'roster_id' => $roster->rosterStarter->roster_id,
+                ] : null,
             ];
         });
         $this->resource['data']['rosters'] = $rosters;
