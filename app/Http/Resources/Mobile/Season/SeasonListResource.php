@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources\Season;
+namespace App\Http\Resources\Mobile\Season;
 
 use App\Http\Resources\BaseResource;
 

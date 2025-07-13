@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Api\Mobile;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Season\SeasonListResource;
 use App\Services\Mobile\Search\SearchServiceInterface;
 use Illuminate\Http\Request;
-use App\Http\Resources\Team\TeamListResource;
+use App\Http\Resources\Mobile\Season\SeasonListResource;
+use App\Http\Resources\Mobile\Team\TeamListResource;
 
 class SearchController extends Controller
 {

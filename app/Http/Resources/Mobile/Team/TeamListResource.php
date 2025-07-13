@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources\Team;
+namespace App\Http\Resources\Mobile\Team;
 
 use App\Http\Resources\BaseResource;
 

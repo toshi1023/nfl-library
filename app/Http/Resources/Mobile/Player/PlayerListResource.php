@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources\Player;
+namespace App\Http\Resources\Mobile\Player;
 
 use App\Http\Resources\BaseResource;
 

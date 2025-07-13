@@ -18,7 +18,6 @@ class AuthController extends Controller
     public function login(LoginRequest $request) : BaseResource
     {
         // 認証処理
-        // return $this->jsonResponse($this->service->login($request->validated()));
         return new BaseResource($this->service->login($request->validated()));
     }
 
@@ -28,7 +27,6 @@ class AuthController extends Controller
     public function logout() : BaseResource
     {
         // ログアウト処理の実行
-        // return $this->jsonResponse($this->service->logout());
         return new BaseResource($this->service->logout());
     }
 }

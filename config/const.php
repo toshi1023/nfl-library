@@ -129,7 +129,7 @@ return [
     // httpステータス
     'Success'           => 200,
     'ServerError'       => 500,
-    'ValidationError'   => 400,
+    'ValidationError'   => 422,
     'Unauthorized'      => 401,
 
 

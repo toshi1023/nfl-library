@@ -177,7 +177,7 @@ class Common {
     public static function setValidationJsonResponse(Validator $validator) : JsonResponse
     {
         return response()->json([
-            'status'            => config('const.ValidationError'),
+            'status'     => config('const.ValidationError'),
             'message'    => $validator->errors(),
         ], config('const.ValidationError'), [], JSON_UNESCAPED_UNICODE);
     }
