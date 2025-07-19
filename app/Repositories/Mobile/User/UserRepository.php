@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Repositories\User;
+namespace App\Repositories\Mobile\User;
 
 use App\Models\User;
 use App\Repositories\BaseRepository;
-use App\Repositories\User\UserRepositoryInterface;
+use App\Repositories\Mobile\User\UserRepositoryInterface;
 use InvalidArgumentException;
 
 class UserRepository extends BaseRepository implements UserRepositoryInterface

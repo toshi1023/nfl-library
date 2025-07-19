@@ -13,11 +13,12 @@ use App\Models\Starter;
 use App\Models\Team;
 use App\Models\TfRelation;
 use App\Models\User;
-use App\Repositories\FoulRule\FoulRuleRepositoryInterface;
-use App\Repositories\Player\PlayerRepositoryInterface;
-use App\Repositories\Roster\RosterRepositoryInterface;
-use App\Repositories\Team\TeamRepositoryInterface;
-use App\Repositories\User\UserRepositoryInterface;
+use App\Repositories\Mobile\FoulRule\FoulRuleRepositoryInterface;
+use App\Repositories\Mobile\Player\PlayerRepositoryInterface;
+use App\Repositories\Mobile\Roster\RosterRepositoryInterface;
+use App\Repositories\Mobile\Team\TeamRepositoryInterface;
+use App\Repositories\Mobile\User\UserRepositoryInterface;
+use App\Repositories\Admin\Player\PlayerRepositoryInterface as AdminPlayerRepositoryInterface;
 
 class BaseRepository implements BaseRepositoryInterface
 {
@@ -59,6 +60,14 @@ class BaseRepository implements BaseRepositoryInterface
     public function rosterRepository() : RosterRepositoryInterface
     {
         return app()->make(RosterRepositoryInterface::class);
+    }
+
+    /**
+     * Admin\PlayerRepositoryInterface
+     */
+    public function adminPlayerRepository() : AdminPlayerRepositoryInterface
+    {
+        return app()->make(AdminPlayerRepositoryInterface::class);
     }
 
     /**

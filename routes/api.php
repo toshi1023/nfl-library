@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\Mobile\AuthController;
 use App\Http\Controllers\Api\Mobile\InitialController;
 use App\Http\Controllers\Api\Mobile\FoulRuleController;
 use App\Http\Controllers\Api\Mobile\SearchController;
+use App\Http\Controllers\Api\Admin\PlayerController as AdminPlayerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,3 +52,14 @@ Route::get('/foul_rules/info',                  [FoulRuleController::class, 'inf
 /********** 検索管理 **********/
 Route::get('/search/team/index',                  [SearchController::class, 'teamIndex'])->name('search.team.index');
 Route::get('/search/season/index',                  [SearchController::class, 'seasonIndex'])->name('search.season.index');
+
+
+/************************************************
+ *  管理画面側ルーティング
+ ************************************************/
+Route::prefix('admin')->group(function() {
+
+    /********** プレイヤー管理(players) **********/
+    Route::resource('/players', AdminPlayerController::class);
+
+});

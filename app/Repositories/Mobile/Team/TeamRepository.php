@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Repositories\Team;
+namespace App\Repositories\Mobile\Team;
 
 use App\Models\User;
 use App\Repositories\BaseRepository;
-use App\Repositories\Team\TeamRepositoryInterface;
+use App\Repositories\Mobile\Team\TeamRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 use InvalidArgumentException;
 

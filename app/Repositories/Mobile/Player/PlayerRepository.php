@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repositories\Player;
+namespace App\Repositories\Mobile\Player;
 
-use App\Repositories\Player\PlayerRepositoryInterface;
+use App\Repositories\Mobile\Player\PlayerRepositoryInterface;
 use App\Models\Roster;
 use App\Models\Starter;
 use App\Repositories\BaseRepository;

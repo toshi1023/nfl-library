@@ -44,7 +44,7 @@ class BaseService implements BaseServiceInterface
      */
     public function getErrorLog(Exception $e, string $class, string $function) : void
     {
-        $msg = config('const.SystemMessage.SYSTEM_ERR').$class.'::'.$function.' (File : '.$e->getFile().' ('. $e->getLine().')) : '.$e->getMessage(). Common::getUserInfo();
+        $msg = config('const.SystemMessage.SYSTEM_ERR').$class.'::'.$function.' (File : '.$e->getFile().' ('. $e->getLine().')) : '.$e->getMessage(). $this->getUserInfo();
         $msg2 = '';
 
         // 標準メッセージをLogに出力
@@ -54,7 +54,12 @@ class BaseService implements BaseServiceInterface
         $index = 1;
         foreach($e->getTrace() as $val) {
             // 例) StackTrace[1] :: /home/test/app/Http/Controllers/TestController.php 22行目, { class: Test , function: test }
-            $trace = 'StackTrace['.$index.'] :: '.$val["file"].' '.$val["line"].'行目 , { class: '.$val["class"].' , function: '.$val["function"].' }';
+            $className = $val["class"] ?? 'unknown';
+            $functionName = $val["function"] ?? 'unknown';
+            $fileName = $val["file"] ?? 'unknown';
+            $lineNumber = $val["line"] ?? 'unknown';
+            
+            $trace = 'StackTrace['.$index.'] :: '.$fileName.' '.$lineNumber.'行目 , { class: '.$className.' , function: '.$functionName.' }';
             Log::error($trace);
 
             if($index === 1) $msg2 = $trace;

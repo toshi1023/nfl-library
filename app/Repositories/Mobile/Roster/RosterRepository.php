@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Repositories\Roster;
+namespace App\Repositories\Mobile\Roster;
 
 use App\Repositories\BaseRepository;
-use App\Repositories\Roster\RosterRepositoryInterface;
+use App\Repositories\Mobile\Roster\RosterRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 use InvalidArgumentException;
 

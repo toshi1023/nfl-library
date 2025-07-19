@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Roster;
+namespace App\Repositories\Mobile\Roster;
 
 use Illuminate\Database\Eloquent\Collection;
 

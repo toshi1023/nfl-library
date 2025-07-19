@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\FoulRule;
+namespace App\Repositories\Mobile\FoulRule;
 
 use Illuminate\Database\Eloquent\Collection;
 
