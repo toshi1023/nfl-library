@@ -26,7 +26,6 @@ class PlayerRequest extends FormRequest
      */
     public function rules()
     {
-        logger()->info($this->input('season'));
         return [
             // ロスター・スターター・フォーメーションのリクエスト用バリデーションチェック
             'season'                  => 'required|integer|digits:4|min:1900|max:2100',
