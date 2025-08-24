@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StorePlayerRequest;
 use App\Http\Requests\Admin\UpdatePlayerRequest;
 use App\Http\Resources\Admin\PlayerResource;
+use App\Http\Resources\BaseResource;
 use App\Services\Admin\Player\PlayerServiceInterface;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -93,6 +94,6 @@ class PlayerController extends Controller
             return response()->json($result, Response::HTTP_NOT_FOUND);
         }
         
-        return new PlayerResource($result);
+        return new BaseResource($result);
     }
 }

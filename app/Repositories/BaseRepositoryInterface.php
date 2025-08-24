@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use Illuminate\Database\Eloquent\Model;
 use App\Repositories\Mobile\FoulRule\FoulRuleRepositoryInterface;
 use App\Repositories\Mobile\Player\PlayerRepositoryInterface;
 use App\Repositories\Mobile\Roster\RosterRepositoryInterface;
@@ -11,6 +12,20 @@ use App\Repositories\Admin\Player\PlayerRepositoryInterface as AdminPlayerReposi
 
 interface BaseRepositoryInterface
 {
+    /**********************************************************************
+     * 共通メソッド
+     **********************************************************************/
+    /**
+     * モデルの更新を行い、更新後のモデルを返す
+     * @param Model $model 更新対象のモデル
+     * @param array $data 更新するデータ
+     * @return Model 更新後のモデル
+     */
+    public function updateWithTap(Model $model, array $data): Model;
+
+    /**********************************************************************
+     * Repository取得
+     **********************************************************************/
     /**
      * UserRepository
      */

@@ -107,30 +107,38 @@ $this->adminPlayerRepository()  // Admin\PlayerRepositoryInterface
 ### 4. CRUD操作パターン
 ```php
 // 取得系
+// 全件取得
 public function getAllPlayers() : Collection
 {
     return $this->player()->orderBy('id', 'desc')->get();
 }
 
+// ページネーション付き取得
 public function getPaginatedPlayers(int $perPage = 15) : LengthAwarePaginator
 {
     return $this->player()->orderBy('id', 'desc')->paginate($perPage);
 }
 
+// 単一取得
 public function getPlayerById(int $id) : ?Player
 {
     return $this->player()->find($id);
 }
 
 // 操作系
+// 新規作成(Eloquentのcreateメソッドを使用すること)
 public function createPlayer(array $data) : Player
 {
     return $this->player()->create($data);
 }
 
-public function updatePlayer(int $id, array $data) : bool
+// 更新(BaseRepositoryのupdateWithTapメソッドを使用すること)
+public function updatePlayer(int $id, array $data) : Player
 {
-    return $this->player()->where('id', $id)->update($data);
+    return $this->updateWithTap(
+        $this->player()->find('id', $id), 
+        $data
+    );
 }
 
 public function deletePlayer(int $id) : bool
