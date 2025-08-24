@@ -14,8 +14,18 @@ class PlayerResource extends BaseResource
      */
     public function toArray($request)
     {
-        $player = $this->resource['data']['player'];
-        $this->resource['data']['player'] = $this->formatPlayerData($player);
+        $players = $this->resource['data']['players'];
+        
+        $this->resource['data']['players'] = collect($players->items())->map(function($player) {
+            return $this->formatPlayerData($player);
+        })->toArray();
+
+        // Paginatorの場合
+        if ($this->checkPagination($players)) {
+            
+            return $this->successResponse($request, $this->resource, $this->getPaginationInfo($players));
+        }
+        // Collectionの場合
         return $this->successResponse($request, $this->resource);
     }
 
