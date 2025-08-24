@@ -45,9 +45,12 @@ class PlayerRepository extends BaseRepository implements PlayerRepositoryInterfa
     /**
      * プレイヤーを更新
      */
-    public function updatePlayer(int $id, array $data) : bool
+    public function updatePlayer(int $id, array $data) : Player
     {
-        return $this->player()->where('id', $id)->update($data);
+        return $this->updateWithTap(
+            $this->player()->find('id', $id), 
+            $data
+        );
     }
 
     /**

@@ -31,7 +31,7 @@ interface PlayerRepositoryInterface
     /**
      * プレイヤーを更新
      */
-    public function updatePlayer(int $id, array $data) : bool;
+    public function updatePlayer(int $id, array $data) : Player;
 
     /**
      * プレイヤーを削除

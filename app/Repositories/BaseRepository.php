@@ -32,7 +32,7 @@ class BaseRepository implements BaseRepositoryInterface
      * @param array $data 更新するデータ
      * @return Model 更新後のモデル
      */
-    public function updateWithTap(Model $model, array $data): Model
+    protected function updateWithTap(Model $model, array $data): Model
     {
         return tap($model, function ($model) use ($data) {
             $model->update($data);

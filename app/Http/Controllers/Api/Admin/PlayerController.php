@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Api\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\StorePlayerRequest;
-use App\Http\Requests\Admin\UpdatePlayerRequest;
+use App\Http\Requests\Admin\Player\IndexRequest;
+use App\Http\Requests\Admin\Player\StoreRequest;
+use App\Http\Requests\Admin\Player\UpdateRequest;
+use App\Http\Resources\Admin\PlayerListResource;
 use App\Http\Resources\Admin\PlayerResource;
 use App\Http\Resources\BaseResource;
 use App\Services\Admin\Player\PlayerServiceInterface;
@@ -18,28 +20,18 @@ class PlayerController extends Controller
     /**
      * プレイヤー一覧を表示
      */
-    public function index(Request $request): PlayerResource
+    public function index(IndexRequest $request): PlayerListResource
     {
         $perPage = $request->query('per_page', 15);
         $result = $this->playerService->getPaginatedPlayers((int)$perPage);
         
-        // ページネーション情報を追加
-        $result['meta'] = [
-            'current_page' => $result['data']['players']->currentPage(),
-            'per_page' => $result['data']['players']->perPage(),
-            'total' => $result['data']['players']->total(),
-            'last_page' => $result['data']['players']->lastPage(),
-            'from' => $result['data']['players']->firstItem(),
-            'to' => $result['data']['players']->lastItem(),
-        ];
-        
-        return new PlayerResource($result);
+        return new PlayerListResource($result);
     }
 
     /**
      * 新しいプレイヤーを保存
      */
-    public function store(StorePlayerRequest $request)
+    public function store(StoreRequest $request)
     {
         $result = $this->playerService->createPlayer($request->validated());
         
@@ -70,7 +62,7 @@ class PlayerController extends Controller
     /**
      * 指定されたプレイヤーを更新
      */
-    public function update(UpdatePlayerRequest $request, string $id)
+    public function update(UpdateRequest $request, string $id)
     {
         $result = $this->playerService->updatePlayer((int)$id, $request->validated());
         

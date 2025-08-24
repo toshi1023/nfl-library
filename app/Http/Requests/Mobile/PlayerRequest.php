@@ -34,16 +34,25 @@ class PlayerRequest extends FormRequest
     }
 
     /**
-     * メッセージをカスタマイズ
+     * 属性名をカスタマイズ
+     */
+    public function attributes()
+    {
+        return [
+            'season' => 'シーズン',
+            'team_id' => 'チーム',
+        ];
+    }
+
+    /**
+     * 独自バリデーションメッセージのみ定義
      */
     public function messages()
     {
         return [
-            "season.required"       => "シーズンの検索値が設定されていません",
-            "team_id.required"      => "チームの検索値が設定されていません",
-            "season.integer"        => "シーズンの検索値は整数で指定してください",
-            "team_id.integer"       => "チームの検索値は整数で指定してください",
-            "season.max"            => "シーズンの検索値は2100以下で指定してください",
+            "season.digits"         => ":attribute は4桁で指定してください",
+            "season.min"            => ":attribute は1900以上で指定してください",
+            "season.max"            => ":attribute は2100以下で指定してください",
         ];
     }
 
