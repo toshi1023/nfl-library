@@ -62,7 +62,7 @@ class Handler extends ExceptionHandler
         }
 
         // それ以外は共通エラーメッセージに上書き
-        return new ErrorResource($this->setServerErrorMessage($e));
+        return new ErrorResource($this->setServerErrorMessage($e), $e->getCode() ?: config('const.ServerError'));
     }
 
     /**
