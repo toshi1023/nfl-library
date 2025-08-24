@@ -9,6 +9,14 @@ use Symfony\Component\HttpFoundation\Response;
 
 class ErrorResource extends JsonResource
 {
+    private int $statusCode;
+    
+    public function __construct(array $data = [], int $statusCode = Response::HTTP_INTERNAL_SERVER_ERROR)
+    {
+        parent::__construct($data);
+        $this->statusCode = $statusCode;
+    }
+
     /**
      * Transform the resource into an array.
      *
@@ -53,6 +61,6 @@ class ErrorResource extends JsonResource
      */
     public function withResponse($request, $response)
     {
-        $response->setStatusCode(Response::HTTP_INTERNAL_SERVER_ERROR);
+        $response->setStatusCode($this->statusCode);
     }
 }
