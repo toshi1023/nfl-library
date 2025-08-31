@@ -19,8 +19,8 @@ class PlayerTest extends TestCase
         $response
             ->assertStatus(config('const.ValidationError'))
             ->assertJson(["message" => [
-                'season'    => ['シーズンの検索値が設定されていません'],
-                'team_id'   => ['チームの検索値が設定されていません']
+                'season'    => ['シーズン は必須です'],
+                'team_id'   => ['チーム は必須です']
             ]
         ]);
     }

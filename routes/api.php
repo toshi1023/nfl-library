@@ -30,7 +30,7 @@ Route::middleware('auth:sanctum')->group(function () {
     /********** ユーザ管理(users) **********/
     // Route::post('/users/update',                    'Api\UserController@update')->name('users.update');
 
-    /********** ログイン管理(auth) **********/
+    /********** ログアウト管理(auth) **********/
     Route::post('/auth/logout',                     [AuthController::class, 'logout'])->name('logout');
 });
 
