@@ -13,17 +13,61 @@ class PlayerRepository extends BaseRepository implements PlayerRepositoryInterfa
     /**
      * 全プレイヤーを取得
      */
-    public function getAllPlayers() : Collection
+    public function getAllPlayers(array $params = []) : Collection
     {
-        return $this->player()->orderBy('id', 'desc')->get();
+        return $this->player()
+        ->when(array_key_exists('drafted_year', $params) && isset($params['drafted_year']), 
+            function ($query) use ($params) {
+                $query->where('drafted_year', $params['drafted_year']);
+            })
+        ->when(array_key_exists('drafted_round', $params) && isset($params['drafted_round']),
+            function ($query) use ($params) {
+                $query->where('drafted_round', $params['drafted_round']);
+            })
+        // キーワード検索
+        ->when(array_key_exists('keyword', $params) && isset($params['keyword']),
+            function ($query) use ($params) {
+                $keyword = $params['keyword'];
+                logger()->info('Search Keyword: ' . $keyword);
+                $query->where(function ($q) use ($keyword) {
+                    $q->where('firstname', 'like', "%{$keyword}%")
+                      ->orWhere('lastname', 'like', "%{$keyword}%")
+                      ->orWhere('college', 'like', "%{$keyword}%")
+                      ->orWhere('drafted_team', 'like', "%{$keyword}%");
+                });
+            })
+        ->orderBy('id', 'desc')
+        ->get();
     }
 
     /**
      * プレイヤーをページネーションで取得
      */
-    public function getPaginatedPlayers(int $perPage = 15) : LengthAwarePaginator
+    public function getPaginatedPlayers(int $perPage = 15, array $params = []) : LengthAwarePaginator
     {
-        return $this->player()->orderBy('id', 'desc')->paginate($perPage);
+        return $this->player()
+        ->when(array_key_exists('drafted_year', $params) && isset($params['drafted_year']), 
+            function ($query) use ($params) {
+                $query->where('drafted_year', $params['drafted_year']);
+            })
+        ->when(array_key_exists('drafted_round', $params) && isset($params['drafted_round']),
+            function ($query) use ($params) {
+                $query->where('drafted_round', $params['drafted_round']);
+            })
+        // キーワード検索
+        ->when(array_key_exists('keyword', $params) && isset($params['keyword']),
+            function ($query) use ($params) {
+                $keyword = $params['keyword'];
+                logger()->info('Search Keyword: ' . $keyword);
+                $query->where(function ($q) use ($keyword) {
+                    $q->where('firstname', 'like', "%{$keyword}%")
+                      ->orWhere('lastname', 'like', "%{$keyword}%")
+                      ->orWhere('college', 'like', "%{$keyword}%")
+                      ->orWhere('drafted_team', 'like', "%{$keyword}%");
+                });
+            })
+        ->orderBy('id', 'desc')
+        ->paginate($perPage);
     }
 
     /**

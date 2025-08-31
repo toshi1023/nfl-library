@@ -11,12 +11,12 @@ interface PlayerRepositoryInterface
     /**
      * 全プレイヤーを取得
      */
-    public function getAllPlayers() : Collection;
+    public function getAllPlayers(array $params = []) : Collection;
 
     /**
      * プレイヤーをページネーションで取得
      */
-    public function getPaginatedPlayers(int $perPage = 15) : LengthAwarePaginator;
+    public function getPaginatedPlayers(int $perPage = 15, array $params = []) : LengthAwarePaginator;
 
     /**
      * IDでプレイヤーを取得

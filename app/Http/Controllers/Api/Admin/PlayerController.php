@@ -23,7 +23,8 @@ class PlayerController extends Controller
     public function index(IndexRequest $request): PlayerListResource
     {
         $perPage = $request->query('per_page', 15);
-        $result = $this->playerService->getPaginatedPlayers((int)$perPage);
+        $isAll = $request->query('is_all', false);
+        $result = $isAll ? $this->playerService->getAllPlayers($request->validated()) : $this->playerService->getPaginatedPlayers((int)$perPage, $request->validated());
         
         return new PlayerListResource($result);
     }

@@ -7,12 +7,12 @@ interface PlayerServiceInterface
     /**
      * 全プレイヤーを取得
      */
-    public function getAllPlayers() : array;
+    public function getAllPlayers(array $params = []) : array;
 
     /**
      * プレイヤーをページネーションで取得
      */
-    public function getPaginatedPlayers(int $perPage = 15) : array;
+    public function getPaginatedPlayers(int $perPage = 15, array $params = []) : array;
 
     /**
      * IDでプレイヤーを取得

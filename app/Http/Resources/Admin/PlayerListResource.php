@@ -4,7 +4,7 @@ namespace App\Http\Resources\Admin;
 
 use App\Http\Resources\BaseResource;
 
-class PlayerResource extends BaseResource
+class PlayerListResource extends BaseResource
 {
     /**
      * リソースを配列に変換する
@@ -16,16 +16,19 @@ class PlayerResource extends BaseResource
     {
         $players = $this->resource['data']['players'];
         
-        $this->resource['data']['players'] = collect($players->items())->map(function($player) {
-            return $this->formatPlayerData($player);
-        })->toArray();
-
+        
         // Paginatorの場合
         if ($this->checkPagination($players)) {
+            $this->resource['data']['players'] = collect($players->items())->map(function($player) {
+                return $this->formatPlayerData($player);
+            })->toArray();
             
             return $this->successResponse($request, $this->resource, $this->getPaginationInfo($players));
         }
         // Collectionの場合
+        $this->resource['data']['players'] = collect($players)->map(function($player) {
+            return $this->formatPlayerData($player);
+        })->toArray();
         return $this->successResponse($request, $this->resource);
     }
 

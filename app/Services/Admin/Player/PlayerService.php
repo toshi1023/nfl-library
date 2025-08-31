@@ -15,20 +15,20 @@ class PlayerService extends BaseService implements PlayerServiceInterface
     /**
      * 全プレイヤーを取得
      */
-    public function getAllPlayers() : array
+    public function getAllPlayers(array $params = []) : array
     {   
         return $this->wrapperResponse([
-            'players' => $this->repository->adminPlayerRepository()->getAllPlayers()
+            'players' => $this->repository->adminPlayerRepository()->getAllPlayers($params)
         ]);
     }
 
     /**
      * プレイヤーをページネーションで取得
      */
-    public function getPaginatedPlayers(int $perPage = 15) : array
+    public function getPaginatedPlayers(int $perPage = 15, array $params = []) : array
     {
         return $this->wrapperResponse([
-            'players' => $this->repository->adminPlayerRepository()->getPaginatedPlayers($perPage)
+            'players' => $this->repository->adminPlayerRepository()->getPaginatedPlayers($perPage, $params)
         ]);
     }
 

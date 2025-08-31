@@ -21,86 +21,60 @@ class PlayerServiceTest extends TestCase
         $this->playerService = new PlayerService(new BaseRepository());
     }
 
-    // /**
-    //  * getAllPlayersメソッドのテスト - 成功パターン
-    //  */
-    // public function test_全プレイヤー取得_成功()
-    // {
-    //     // 準備
-    //     $players = new Collection([
-    //         new Player(['id' => 1, 'firstname' => 'John', 'lastname' => 'Doe']),
-    //         new Player(['id' => 2, 'firstname' => 'Jane', 'lastname' => 'Smith'])
-    //     ]);
+    /**
+     * getAllPlayersメソッドのテスト - 成功パターン
+     */
+    public function test_全プレイヤー取得_成功()
+    {
+        // 準備
+        $players = Player::get();
 
-    //     $this->playerRepository->shouldReceive('getAllPlayers')
-    //         ->once()
-    //         ->andReturn($players);
+        // 実行
+        $result = $this->playerService->getAllPlayers();
 
-    //     // 実行
-    //     $result = $this->playerService->getAllPlayers();
+        // 検証
+        $this->assertIsArray($result);
+        $this->assertArrayHasKey('data', $result);
+        $this->assertArrayHasKey('players', $result['data']);
+        $this->assertArrayHasKey('status', $result);
+        $this->assertEquals(config('const.Success'), $result['status']);
+        // 完全に中身の一致は難しいため、件数だけでも比較
+        $this->assertEquals($players->count(), count($result['data']['players']));
+    }
 
-    //     // 検証
-    //     $this->assertIsArray($result);
-    //     $this->assertArrayHasKey('data', $result);
-    //     $this->assertArrayHasKey('players', $result['data']);
-    //     $this->assertArrayHasKey('status', $result);
-    //     $this->assertEquals(config('const.Success'), $result['status']);
-    //     $this->assertEquals($players, $result['data']['players']);
-    // }
+    /**
+     * Test getPaginatedPlayers method - success case
+     */
+    public function test_ページネーションでの取得_成功()
+    {
+        // Arrange
+        $players = new Collection([
+            new Player(['id' => 1, 'firstname' => 'John', 'lastname' => 'Doe'])
+        ]);
+        $paginator = new LengthAwarePaginator(
+            $players,
+            25,
+            15,
+            1,
+            ['path' => '/api/admin/players']
+        );
 
-    // /**
-    //  * Test getAllPlayers method - exception case
-    //  */
-    // public function test_get_all_players_handles_exception()
-    // {
-    //     // Arrange
-    //     $this->playerRepository->shouldReceive('getAllPlayers')
-    //         ->once()
-    //         ->andThrow(new Exception('Database error'));
+        $this->playerRepository->shouldReceive('getPaginatedPlayers')
+            ->once()
+            ->with(15)
+            ->andReturn($paginator);
 
-    //     // Act
-    //     $result = $this->playerService->getAllPlayers();
+        // Act
+        $result = $this->playerService->getPaginatedPlayers(15);
 
-    //     // Assert
-    //     $this->assertIsArray($result);
-    //     $this->assertArrayHasKey('error_messages', $result);
-    //     $this->assertArrayHasKey('status', $result);
-    //     $this->assertEquals(config('const.ServerError'), $result['status']);
-    // }
-
-    // /**
-    //  * Test getPaginatedPlayers method - success case
-    //  */
-    // public function test_get_paginated_players_returns_success_response()
-    // {
-    //     // Arrange
-    //     $players = new Collection([
-    //         new Player(['id' => 1, 'firstname' => 'John', 'lastname' => 'Doe'])
-    //     ]);
-    //     $paginator = new LengthAwarePaginator(
-    //         $players,
-    //         25,
-    //         15,
-    //         1,
-    //         ['path' => '/api/admin/players']
-    //     );
-
-    //     $this->playerRepository->shouldReceive('getPaginatedPlayers')
-    //         ->once()
-    //         ->with(15)
-    //         ->andReturn($paginator);
-
-    //     // Act
-    //     $result = $this->playerService->getPaginatedPlayers(15);
-
-    //     // Assert
-    //     $this->assertIsArray($result);
-    //     $this->assertArrayHasKey('data', $result);
-    //     $this->assertArrayHasKey('players', $result['data']);
-    //     $this->assertArrayHasKey('status', $result);
-    //     $this->assertEquals(config('const.Success'), $result['status']);
-    //     $this->assertEquals($paginator, $result['data']['players']);
-    // }
+        // Assert
+        $this->assertIsArray($result);
+        $this->assertArrayHasKey('data', $result);
+        $this->assertArrayHasKey('players', $result['data']);
+        $this->assertArrayHasKey('status', $result);
+        $this->assertEquals(config('const.Success'), $result['status']);
+        $this->assertEquals($paginator, $result['data']['players']);
+    }
 
     // /**
     //  * Test getPaginatedPlayers method - invalid per_page case
