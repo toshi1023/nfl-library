@@ -97,6 +97,8 @@ class PlayerService extends BaseService implements PlayerServiceInterface
 - `private` プロパティ宣言でプロパティプロモーション使用
 - 必ず入力値チェックを実装
 - レスポンスは `wrapperResponse()` でラップ
+- エラーチェックに引っかかった場合はthrow new Exception({メッセージ内容})を実行してhandler.phpにエラー処理をスローすること
+- エラーのExceptionの種類を絞れる場合は絞ること(throw new InvalidArgumentException({メッセージ内容}))
 
 ### 3. BaseService活用
 
@@ -121,12 +123,6 @@ $this->getUserInfo();
 return $this->wrapperResponse([
     'players' => $data
 ], null, 'プレイヤーが正常に作成されました');
-
-// エラー系
-return [
-    'error_messages' => ['指定されたプレイヤーが見つかりません'],
-    'status' => config('const.NotFound')
-];
 ```
 
 ### 4. バリデーション・例外処理
@@ -211,27 +207,8 @@ public function updatePlayer(int $id, array $data) : array
 5. 基本PHPクラス (`Exception`, `InvalidArgumentException`)
 
 ### 7. エラーハンドリング
-
-#### エラーレスポンス形式
-```php
-// 404エラー
-return [
-    'error_messages' => ['指定されたプレイヤーが見つかりません'],
-    'status' => config('const.NotFound')
-];
-
-// バリデーションエラー
-return [
-    'error_messages' => ['プレイヤーの更新に失敗しました'],
-    'status' => config('const.ValidationError')
-];
-
-// 認証エラー
-return [
-    "message" => config('const.SystemMessage.LOGIN_ERR'),
-    "status"  => config('const.Unauthorized')
-];
-```
+- エラーチェックに引っかかった場合はthrow new Exception({メッセージ内容})を実行してhandler.phpにエラー処理をスローすること
+- エラーのExceptionの種類を絞れる場合は絞ること(throw new InvalidArgumentException({メッセージ内容}))
 
 ### 8. Repository活用パターン
 ```php

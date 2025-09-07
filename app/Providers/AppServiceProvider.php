@@ -17,6 +17,8 @@ use App\Services\Mobile\Search\SearchService;
 use App\Services\Mobile\Search\SearchServiceInterface;
 use App\Services\Admin\Player\PlayerService as AdminPlayerService;
 use App\Services\Admin\Player\PlayerServiceInterface as AdminPlayerServiceInterface;
+use App\Services\Admin\Team\TeamService as AdminTeamService;
+use App\Services\Admin\Team\TeamServiceInterface as AdminTeamServiceInterface;
 use App\Repositories\BaseRepositoryInterface;
 use App\Repositories\BaseRepository;
 use App\Repositories\Mobile\Player\PlayerRepositoryInterface;
@@ -31,6 +33,8 @@ use App\Repositories\Mobile\Team\TeamRepository;
 use App\Repositories\Mobile\Team\TeamRepositoryInterface;
 use App\Repositories\Admin\Player\PlayerRepository as AdminPlayerRepository;
 use App\Repositories\Admin\Player\PlayerRepositoryInterface as AdminPlayerRepositoryInterface;
+use App\Repositories\Admin\Team\TeamRepository as AdminTeamRepository;
+use App\Repositories\Admin\Team\TeamRepositoryInterface as AdminTeamRepositoryInterface;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -53,6 +57,7 @@ class AppServiceProvider extends ServiceProvider
         
         // Admin Services
         $this->app->singleton(AdminPlayerServiceInterface::class,   AdminPlayerService::class);
+        $this->app->singleton(AdminTeamServiceInterface::class,     AdminTeamService::class);
 
         /************************************************
          *  リポジトリ層
@@ -66,6 +71,7 @@ class AppServiceProvider extends ServiceProvider
         
         // Admin Repositories
         $this->app->singleton(AdminPlayerRepositoryInterface::class, AdminPlayerRepository::class);
+        $this->app->singleton(AdminTeamRepositoryInterface::class,   AdminTeamRepository::class);
     }
 
     /**
