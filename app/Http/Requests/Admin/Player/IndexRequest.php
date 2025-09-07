@@ -33,7 +33,8 @@ class IndexRequest extends FormRequest
     {
         return [
             'keyword' => 'sometimes|nullable|string|max:255',
-            'drafted_year' => 'sometimes|nullable|integer|min:1900|max:' . date('Y'),
+            'drafted_year_start' => 'sometimes|nullable|integer|min:1900|max:' . date('Y'),
+            'drafted_year_end' => 'sometimes|nullable|integer|min:1900|max:' . date('Y'),
             'drafted_round' => 'sometimes|nullable|string|max:255',
             'is_all' => 'required|boolean',
             'per_page' => 'sometimes|integer|min:1|max:1000',
@@ -44,11 +45,17 @@ class IndexRequest extends FormRequest
     {
         return [
             'keyword' => 'キーワード',
-            'drafted_year' => 'ドラフト年',
+            'drafted_year_start' => 'ドラフト年',
+            'drafted_year_end' => 'ドラフト年',
             'drafted_round' => 'ドラフト順',
             'is_all' => '全件取得フラグ',
             'per_page' => '1ページあたりの件数',
         ];
+    }
+
+    public function isAll()
+    {
+        return $this->boolean('is_all');
     }
 
     /**

@@ -29,7 +29,7 @@ class PlayerServiceTest extends TestCase
         // 準備
         $players = Player::get();
 
-        // 実行
+        // テスト対象のメソッドを実行
         $result = $this->playerService->getAllPlayers();
 
         // 検証
@@ -43,29 +43,27 @@ class PlayerServiceTest extends TestCase
     }
 
     /**
-     * Test getPaginatedPlayers method - success case
+     * getPaginatedPlayersメソッドのテスト - 成功パターン
      */
     public function test_ページネーションでの取得_成功()
     {
-        // Arrange
-        $players = new Collection([
-            new Player(['id' => 1, 'firstname' => 'John', 'lastname' => 'Doe'])
-        ]);
-        $paginator = new LengthAwarePaginator(
-            $players,
-            25,
-            15,
-            1,
-            ['path' => '/api/admin/players']
-        );
+        $params = [
+            'keyword' => 'John',
+            'drafted_year_start' => 2018,
+        ];
+        $players = Player::where('drafted_year', '>=', $params['drafted_year_start'])
+        ->where(function($query) use ($params) {
+            $keyword = $params['keyword'];
+            $query->where('firstname', 'like', "%{$keyword}%")
+                  ->orWhere('lastname', 'like', "%{$keyword}%")
+                  ->orWhere('college', 'like', "%{$keyword}%")
+                  ->orWhere('drafted_team', 'like', "%{$keyword}%");
+        })
+        ->orderBy('id', 'desc')
+        ->paginate();
 
-        $this->playerRepository->shouldReceive('getPaginatedPlayers')
-            ->once()
-            ->with(15)
-            ->andReturn($paginator);
-
-        // Act
-        $result = $this->playerService->getPaginatedPlayers(15);
+        // テスト対象のメソッドを実行
+        $result = $this->playerService->getPaginatedPlayers(15, $params);
 
         // Assert
         $this->assertIsArray($result);
@@ -73,7 +71,28 @@ class PlayerServiceTest extends TestCase
         $this->assertArrayHasKey('players', $result['data']);
         $this->assertArrayHasKey('status', $result);
         $this->assertEquals(config('const.Success'), $result['status']);
-        $this->assertEquals($paginator, $result['data']['players']);
+        // 取得件数比較
+        $this->assertEquals($players->total(), $result['data']['players']->total());
+    }
+
+    /**
+     * getPaginatedPlayersメソッドのテスト - 成功パターン
+     */
+    public function test_ページネーションでの件数指定取得_成功()
+    {
+        $players = Player::orderBy('id', 'desc')->paginate(28);
+
+        // テスト対象のメソッドを実行
+        $result = $this->playerService->getPaginatedPlayers(28);
+
+        // Assert
+        $this->assertIsArray($result);
+        $this->assertArrayHasKey('data', $result);
+        $this->assertArrayHasKey('players', $result['data']);
+        $this->assertArrayHasKey('status', $result);
+        $this->assertEquals(config('const.Success'), $result['status']);
+        // 取得件数比較
+        $this->assertEquals($players->perPage(), $result['data']['players']->perPage());
     }
 
     // /**

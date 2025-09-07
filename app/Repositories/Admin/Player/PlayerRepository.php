@@ -16,9 +16,13 @@ class PlayerRepository extends BaseRepository implements PlayerRepositoryInterfa
     public function getAllPlayers(array $params = []) : Collection
     {
         return $this->player()
-        ->when(array_key_exists('drafted_year', $params) && isset($params['drafted_year']), 
+        ->when(array_key_exists('drafted_year_start', $params) && isset($params['drafted_year_start']), 
             function ($query) use ($params) {
-                $query->where('drafted_year', $params['drafted_year']);
+                $query->where('drafted_year', '>=', $params['drafted_year_start']);
+            })
+        ->when(array_key_exists('drafted_year_end', $params) && isset($params['drafted_year_end']), 
+            function ($query) use ($params) {
+                $query->where('drafted_year', '<=', $params['drafted_year_end']);
             })
         ->when(array_key_exists('drafted_round', $params) && isset($params['drafted_round']),
             function ($query) use ($params) {
@@ -28,7 +32,6 @@ class PlayerRepository extends BaseRepository implements PlayerRepositoryInterfa
         ->when(array_key_exists('keyword', $params) && isset($params['keyword']),
             function ($query) use ($params) {
                 $keyword = $params['keyword'];
-                logger()->info('Search Keyword: ' . $keyword);
                 $query->where(function ($q) use ($keyword) {
                     $q->where('firstname', 'like', "%{$keyword}%")
                       ->orWhere('lastname', 'like', "%{$keyword}%")
@@ -46,9 +49,13 @@ class PlayerRepository extends BaseRepository implements PlayerRepositoryInterfa
     public function getPaginatedPlayers(int $perPage = 15, array $params = []) : LengthAwarePaginator
     {
         return $this->player()
-        ->when(array_key_exists('drafted_year', $params) && isset($params['drafted_year']), 
+        ->when(array_key_exists('drafted_year_start', $params) && isset($params['drafted_year_start']), 
             function ($query) use ($params) {
-                $query->where('drafted_year', $params['drafted_year']);
+                $query->where('drafted_year', '>=', $params['drafted_year_start']);
+            })
+        ->when(array_key_exists('drafted_year_end', $params) && isset($params['drafted_year_end']), 
+            function ($query) use ($params) {
+                $query->where('drafted_year', '<=', $params['drafted_year_end']);
             })
         ->when(array_key_exists('drafted_round', $params) && isset($params['drafted_round']),
             function ($query) use ($params) {
@@ -58,7 +65,6 @@ class PlayerRepository extends BaseRepository implements PlayerRepositoryInterfa
         ->when(array_key_exists('keyword', $params) && isset($params['keyword']),
             function ($query) use ($params) {
                 $keyword = $params['keyword'];
-                logger()->info('Search Keyword: ' . $keyword);
                 $query->where(function ($q) use ($keyword) {
                     $q->where('firstname', 'like', "%{$keyword}%")
                       ->orWhere('lastname', 'like', "%{$keyword}%")

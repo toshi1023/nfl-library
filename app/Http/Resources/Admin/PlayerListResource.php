@@ -16,7 +16,6 @@ class PlayerListResource extends BaseResource
     {
         $players = $this->resource['data']['players'];
         
-        
         // Paginatorの場合
         if ($this->checkPagination($players)) {
             $this->resource['data']['players'] = collect($players->items())->map(function($player) {
