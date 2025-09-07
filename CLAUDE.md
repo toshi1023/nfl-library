@@ -58,7 +58,6 @@ docker-compose logs -f [service_name]
 - **モデル**：データベースエンティティの`app/Models/`内のEloquentモデル
 - **認証**：APIトークン認証用のLaravel Sanctum
 - **テスト**：`tests/`内のPHPUnitテスト（FeatureテストとUnitテストスイート）
-- **ファイル実装**：該当するクラスファイルを管轄するフォルダ直下にclaude.mdがある場合は、先にその内容を確認してルールに沿ったファイル作成を実施する
 
 ### 主要モデル
 - `Player`：ポジションと統計を含むNFLプレイヤーデータ
@@ -106,3 +105,9 @@ docker-compose logs -f [service_name]
 - サービス：PHP-FPM、Nginx、MySQL、Redis、Selenium
 - PhpMyAdminはポート8080で利用可能
 - アプリケーションはポート80（nginx）で動作
+
+### Claude Codeのファイル作成時の注意事項
+- 各クラスファイルを作成する場合は、先に該当するクラスファイルを管轄するフォルダ直下にclaude.mdがあるかどうかを確認する
+- claude.mdファイルが存在する場合は該当するクラスを生成する際の決まりごとが記載されているため、そのルールに沿ってファイル作成を実施すること
+- 「管理画面の〜を作って」と言う命令が来たときは、Controller、Request、Resource、Service、Repository、Testの必要なクラスファイルは基本的にAdminフォルダ直下に作成する
+- 「モバイル画面の〜を作って」と言う命令が来たときは、Controller、Request、Resource、Service、Repository、Testの必要なクラスファイルは基本的にMobileフォルダ直下に作成する
