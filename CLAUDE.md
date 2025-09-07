@@ -93,6 +93,7 @@ docker-compose logs -f [service_name]
    - `php artisan csv:import {year}`
    - `php artisan scrape:starters {year}`
    - `php artisan make:tf {year}`
+   ※例：php artisan scrape:rosters 2024
 
 ### テスト
 - `phpunit.xml`内のPHPUnit設定
@@ -109,5 +110,5 @@ docker-compose logs -f [service_name]
 ### Claude Codeのファイル作成時の注意事項
 - 各クラスファイルを作成する場合は、先に該当するクラスファイルを管轄するフォルダ直下にclaude.mdがあるかどうかを確認する
 - claude.mdファイルが存在する場合は該当するクラスを生成する際の決まりごとが記載されているため、そのルールに沿ってファイル作成を実施すること
-- 「管理画面の〜を作って」と言う命令が来たときは、Controller、Request、Resource、Service、Repository、Testの必要なクラスファイルは基本的にAdminフォルダ直下に作成する
-- 「モバイル画面の〜を作って」と言う命令が来たときは、Controller、Request、Resource、Service、Repository、Testの必要なクラスファイルは基本的にMobileフォルダ直下に作成する
+- 「管理画面の〜を作って」と言う命令が来たときは、Controller、Request、Resource、Service、Repository、Testの必要なクラスファイルは基本的にAdminフォルダ直下に作成する（例：「管理画面のロスターのCRUDを作って」など）
+- 「モバイル画面の〜を作って」と言う命令が来たときは、Controller、Request、Resource、Service、Repository、Testの必要なクラスファイルは基本的にMobileフォルダ直下に作成する（例：「モバイル画面のロスターのCRUDを作って」など）
