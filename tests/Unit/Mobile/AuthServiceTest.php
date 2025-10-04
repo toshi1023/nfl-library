@@ -58,7 +58,7 @@ class AuthServiceTest extends TestCase
         // statusはサーバーエラーステータスを返す
         $this->assertEquals($data['status'], config('const.ServerError'));
         // メッセージはシステムエラーメッセージを配列形式で返す
-        $this->assertEquals($data['message'], [config('const.SystemMessage.UNEXPECTED_ERR')]);
+        $this->assertEquals($data['message'], config('const.SystemMessage.UNEXPECTED_ERR'));
         $this->assertEquals($data['data']['details']['message'], 'メールアドレスが無効な値のため検索に失敗しました');
 
         // パスワードが欠けた状態でログインを実施
@@ -70,7 +70,7 @@ class AuthServiceTest extends TestCase
         // statusはサーバーエラーステータスを返す
         $this->assertEquals($data['status'], config('const.ServerError'));
         // メッセージはシステムエラーメッセージを配列形式で返す
-        $this->assertEquals($data['message'], [config('const.SystemMessage.UNEXPECTED_ERR')]);
+        $this->assertEquals($data['message'], config('const.SystemMessage.UNEXPECTED_ERR'));
         $this->assertEquals($data['data']['details']['message'], 'パスワードが無効な値のため検索に失敗しました');
     }
 

@@ -31,7 +31,7 @@ class BaseResource extends JsonResource
         }
 
         if(!array_key_exists('status', $data) || !$data['status']) $data['status'] = config('const.Success');
-        if(!array_key_exists('message', $data) || !$data['message']) $data['message'][] = $this->getInitialMessage($method);
+        if(!array_key_exists('message', $data) || !$data['message']) $data['message'] = $this->getInitialMessage($method);
         
         return $data;
     }

@@ -70,7 +70,7 @@ class PlayerServiceTest extends TestCase
         // statusはサーバーエラーステータスを返す
         $this->assertEquals($data['status'], config('const.ServerError'));
         // メッセージはシステムエラーメッセージを配列形式で返す
-        $this->assertEquals($data['message'], [config('const.SystemMessage.UNEXPECTED_ERR')]);
+        $this->assertEquals($data['message'], config('const.SystemMessage.UNEXPECTED_ERR'));
         $this->assertEquals($data['data']['details']['message'], 'シーズンが無効な値のため検索に失敗しました');
 
         // チームの検索条件が無効な値の場合
@@ -81,7 +81,7 @@ class PlayerServiceTest extends TestCase
         // statusはサーバーエラーステータスを返す
         $this->assertEquals($data['status'], config('const.ServerError'));
         // メッセージはシステムエラーメッセージを配列形式で返す
-        $this->assertEquals($data['message'], [config('const.SystemMessage.UNEXPECTED_ERR')]);
+        $this->assertEquals($data['message'], config('const.SystemMessage.UNEXPECTED_ERR'));
         $this->assertEquals($data['data']['details']['message'], 'チームが無効な値のため検索に失敗しました');
     }
 }
